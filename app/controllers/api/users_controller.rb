@@ -5,7 +5,7 @@ class Api::UsersController < ApplicationController
     @user.img_url = 'placeholder_image'
     if @user.save!
       login(@user)
-      render :show
+      render "api/users/currentUser"
     else
       render json: @user.errors.full_messages, status: 422
     end

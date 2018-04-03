@@ -1,14 +1,15 @@
 class Api::UsersController < ApplicationController
+
   def create
     @user = User.new(user_params)
     @user.img_url = 'placeholder_image'
-    if @user.save
+    if @user.save!
       login(@user)
       render :show
     else
       render json: @user.errors.full_messages, status: 422
     end
-    
+
   end
 
   def edit
@@ -16,6 +17,7 @@ class Api::UsersController < ApplicationController
 
   def show
   end
+
   private
   def user_params
     params.require(:user).permit(:username, :email, :password)

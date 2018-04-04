@@ -17,7 +17,7 @@ class Navbar extends React.Component {
   logged_in(currentUser, logout) {
     return (
       <div className="header-group">
-        <h2 className="header-name">Hi, {currentUser.username}!</h2>
+        <h2 className="header-name">Hi, {currentUser.email}!</h2>
         <button className="header-button" onClick={logout}>Log Out</button>
       </div>
     )
@@ -25,7 +25,6 @@ class Navbar extends React.Component {
 
   render(){
     let { currentUser, logout } = this.props;
-
     return (
       <div>
         { currentUser ? this.logged_in(currentUser, logout) : this.sessionLinks() }

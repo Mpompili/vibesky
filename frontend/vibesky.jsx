@@ -4,6 +4,8 @@ import configureStore from './store/store';
 import { login, logout, RECEIVE_CURRENT_USER } from './actions/session_actions';
 import * as APIUtil from './util/session_api_util';
 import Root from './components/root';
+
+
 document.addEventListener("DOMContentLoaded", ()=>{
   const root = document.getElementById('root');
   const store = configureStore();

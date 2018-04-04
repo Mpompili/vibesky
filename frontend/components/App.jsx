@@ -1,14 +1,18 @@
 import React from 'react';
 import NavbarContainer from './navbar/navbar_container';
-import { Route } from 'react-router-dom';
+import { Route, HashRouter, Switch } from 'react-router-dom';
 import SessionContainer from './session/session_container';
+import { AuthRoute } from '../util/route_util';
+import { Provider } from 'react-redux';
 
 const App = () => (
   <div>
     <h1>vibesky</h1>
     <NavbarContainer />
-    <Route exact path='/login' component={SessionContainer} />
-    <Route exact path='/signup' component={SessionContainer} />
+      <Switch>
+        <AuthRoute exact path='/login' component={SessionContainer} />
+        <AuthRoute exact path='/signup' component={SessionContainer} />
+      </Switch>
 
   </div>
 );

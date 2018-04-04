@@ -16,11 +16,8 @@ class sessionForm extends React.Component {
   }
 
   handleSubmit(e){
-    e.preventDefault;
-    debugger
-    // check here if submit form dont work
+    e.preventDefault();
     this.props.submitForm(Object.assign({}, this.state));
-
   }
 
   render(){

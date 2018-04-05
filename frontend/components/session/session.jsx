@@ -45,6 +45,7 @@ class sessionForm extends React.Component {
 
    closeModal() {
      this.setState({modalIsOpen: false});
+     this.props.clearErrors();
      this.props.history.push("/");
    }
 
@@ -65,10 +66,14 @@ class sessionForm extends React.Component {
   }
 
   render(){
-    let { path, submitForm  } = this.props
-    let message;
-    message = path === 'signup' ?
+    let { path, submitForm, errors } = this.props
+    let message = path === 'signup' ?
       'Create your VIBESKY account' : 'Log in';
+
+    let inputStyle = errors !== undefined ?
+     'session-input error' : 'session-input';
+
+    let styledErrors = errors.map(err => <li>{err}</li>);
 
     return(
       <div>
@@ -81,12 +86,13 @@ class sessionForm extends React.Component {
        >
         <form onSubmit={this.handleSubmit} className="session-form-box">
           <h1>{ message }</h1><br/>
+            <p id="session-error-message">{styledErrors}</p>
             <input
               type="text"
               value={this.state.email}
               placeholder="Your email address"
               onChange={this.update('email')}
-              className="session-input"
+              className={inputStyle}
               />
           <br/>
             <input
@@ -94,7 +100,7 @@ class sessionForm extends React.Component {
               value={this.state.password}
               placeholder="Your Password"
               onChange={this.update('password')}
-              className="session-input"
+              className={inputStyle}
               />
             <br/>
           <input className="session-submit" type="submit" value='Continue' />

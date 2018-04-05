@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => ({
   path: ownProps.location.pathname.slice(1),
-  errors: state.errors
+  errors: {}
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

@@ -42,3 +42,13 @@ font-family: $sans-serif;
 .demo-submit{
   cursor: pointer;
 }
+
+.error{
+  border: 1.5px solid red;
+}
+
+.session-error-message{
+  color: red;
+  font-family: $sans-serif;
+  margin: 10px auto; 
+}

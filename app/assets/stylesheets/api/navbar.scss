@@ -4,7 +4,7 @@
   .backbar{
     position: fixed;
     width: 100vw;
-    background-color: #333;
+    background-color: $dark-gray;
     height: 46px;
   }
 }
@@ -29,7 +29,7 @@ align-items: center;
 justify-content: space-between;
 font: 14px/1.5 normal white;
 font-family: "Lucida Grande", Arial, sans-serif;
-background-color: #333;
+background-color: $dark-gray;
   .navbar-left {
     display: flex;
     align-items: center;
@@ -53,12 +53,12 @@ background-color: #333;
   font-size: 14px;
   padding: 12px 0px;
   width: 104px;
-  color: #ccc;
+  color: $cloud-gray;
   border-right: 1px black solid;
 
 }
 .header-item:hover {
-  color: #fff;
+  color: $white;
 }
 // .header-item:hover{
 //   color: #fff;

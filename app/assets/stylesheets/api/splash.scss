@@ -6,7 +6,7 @@
   min-width: 960px;
   width: 95vw;
   max-width: 1240px;
-  border-top: 4px solid #f50;
+  border-top: 4px solid $cloud-orange;
 }
 
 .splash-cloud {
@@ -75,10 +75,10 @@ font-family: "Lucida Grande", Arial, sans-serif;
   box-sizing: border-box;
   width: 136px;
   padding: 3px 16px;
-  background-color: #f50;
-  font-weight: 400;
+  background-color: $cloud-orange;
+  font-weight: 100;
   font-family: 'IBM Plex Sans', "Lucida Grande",
 }
 .signin-button:hover{
-  border-color: white;
+  border-color: $white;
 }

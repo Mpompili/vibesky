@@ -1,3 +1,39 @@
-// Place all the styles related to the Api::Sessions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.session-form-box{
+width: 400px;
+height: 570px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+  h1{
+    text-align: center;
+    font-family: 'IBM Plex Sans';
+    font-weight: 500;
+  }
+  input {
+    box-sizing: border-box;
+    width: 400px;
+    font-size: 18px;
+    padding: 8px 7px;
+  }
+  .session-input{
+    border-radius: 5px;
+    border: 1px lightgray solid;
+  }
+  .session-submit{
+    border-radius: 3px;
+    border-color: $cloud-orange;
+    background-color: $cloud-orange;
+    color: $white;
+  }
+  .session-text{
+    margin-top: 10px;
+    font-size: 12px;
+    color: #999;
+    line-height: 16.8px;
+  }
+  .stcenter{
+    margin: 10px auto;
+  }
+
+}

@@ -59,10 +59,12 @@ class sessionForm extends React.Component {
 
   render(){
     let { path, submitForm  } = this.props
+    let message;
+    message = path === 'signup' ?
+      'Create your VIBESKY account' : 'Log in';
 
     return(
       <div>
-        <button onClick={this.openModal}>Open Modal</button>
         <Modal
           isOpen={this.state.modalIsOpen}
          onAfterOpen={this.afterOpenModal}
@@ -71,9 +73,7 @@ class sessionForm extends React.Component {
          contentLabel="Example Modal"
        >
         <form onSubmit={this.handleSubmit} className="session-form-box">
-          <h3>{ path }</h3><br/>
-
-          <label>Email:
+          <h1>{ message }</h1><br/>
             <input
               type="text"
               value={this.state.email}
@@ -81,9 +81,7 @@ class sessionForm extends React.Component {
               onChange={this.update('email')}
               className="session-input"
               />
-          </label>
           <br/>
-          <label>Password:
             <input
               type="password"
               value={this.state.password}
@@ -91,8 +89,15 @@ class sessionForm extends React.Component {
               onChange={this.update('password')}
               className="session-input"
               />
-          </label><br/>
-          <input className="session-submit" type="submit" value={path} />
+            <br/>
+          <input className="session-submit" type="submit" value='Continue' />
+          <br/><br/>
+          <p className="session-text">We may use your email for updates and tips on SoundCloud's
+            products and services. You can unsubscribe for free at any time
+            in your notification preferences.</p>
+          <p className="session-text stcenter">By signing in, you agree to our
+            <a target="_blank" href="www.google.com"> Terms of Use</a>
+          </p>
         </form>
       </Modal>
       </div>

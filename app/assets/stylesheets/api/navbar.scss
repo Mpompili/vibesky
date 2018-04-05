@@ -3,8 +3,8 @@
   background-repeat: no-repeat;
   height: 45px;
   position: relative;
-  top: 10px;
-  left: 11px;
+  top: 25px;
+  left: 30px;
   padding-top: 1px;
 }
 .logo-text {
@@ -12,7 +12,8 @@
   background-repeat: no-repeat;
   height: 45px;
   position: relative;
-  top: 10px;
+  top: -20px;
+  left: 80px;
 }
 .cloud-logo-li {
   background: url('cloud.png');
@@ -27,9 +28,11 @@
 
 #header-carousel{
   position: relative;
-  background: url(https://a-v2.sndcdn.com/assets/images/home/hp_image_creator_slide-ad5bb1e.jpg) 0 0/cover no-repeat;
-  height: 454px;
-  margin: 0 30px;
+  background: url(https://a-v2.sndcdn.com/assets/images/home/hp_image-6155d6b.jpg) 0 0/cover no-repeat;
+  height: 446px;
+  margin: 0 auto;
+  min-width: 450px;
+  max-width: 1240px;
   border-top: 4px solid #f50;
     .navbar {
       background-color: transparent;
@@ -39,11 +42,17 @@
 #header-carousel-off{
   display: hidden;
   position: relative;
+  .backbar{
+    width: 100%;
+    background-color: #333;
+  }
 }
 
 
 
 .navbar {
+width: 80%;
+margin: 0 auto;
 display: flex;
 height: 46px;
 align-items: center;
@@ -103,23 +112,30 @@ background-color: #333;
   top: 20px;
   right: 30px;
   .sbutton {
-    box-sizing: border-box;
     border-radius: 3px;
     color: white;
     height: 28px;
-    font-weight: 100;
+
   }
 }
 .signin-button {
+  box-sizing: border-box;
   width: 74px;
   border: 1px solid rgb(204, 204, 204);
   background-color: rgba(0, 0, 0, 0);
   padding: 2px;
-  margin-right: 6px;
+  margin-right: 8px;
+
+  font-weight: 100;
+  font-family: 'IBM Plex Sans', "Lucida Grande",
 }
 .signup-button {
+  box-sizing: border-box;
+  width: 136px;
   padding: 3px 16px;
   background-color: #f50;
+  font-weight: 400;
+  font-family: 'IBM Plex Sans', "Lucida Grande",
 }
 .signin-button:hover{
   border-color: white;

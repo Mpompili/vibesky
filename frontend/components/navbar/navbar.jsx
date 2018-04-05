@@ -66,9 +66,11 @@ class Navbar extends React.Component {
 
     return (
       <div id={carosel}>
+        <div className="backbar">
         <div className="navbar">
           {navleft}
           {navright}
+        </div>
         </div>
       </div>
     )

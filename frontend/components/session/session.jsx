@@ -28,6 +28,7 @@ class sessionForm extends React.Component {
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemo = this.handleDemo.bind(this);
   }
 
   componentWillMount(){
@@ -56,6 +57,11 @@ class sessionForm extends React.Component {
     let user = Object.assign({},
       {email: this.state.email, password: this.state.password});
     this.props.submitForm(user);
+  }
+
+  handleDemo(e){
+    e.preventDefault();
+    this.props.demoSumit({email: 'newuser', password: 'password'});
   }
 
   render(){
@@ -98,7 +104,8 @@ class sessionForm extends React.Component {
             in your notification preferences.</p>
           <p className="session-text stcenter">By signing in, you agree to our
             <a target="_blank" href="www.google.com"> Terms of Use</a>
-          </p>
+          </p><br/>
+        <button className="session-submit demo-submit" onClick={this.handleDemo}>Demo Login</button>
         </form>
       </Modal>
       </div>

@@ -25,6 +25,7 @@ justify-content: center;
     border-color: $cloud-orange;
     background-color: $cloud-orange;
     color: $white;
+    box-shadow: 1px 1px 5px darkgrey;
   }
   .session-text{
     margin-top: 10px;
@@ -36,4 +37,8 @@ justify-content: center;
     margin: 10px auto;
   }
 
+}
+
+.demo-submit{
+  cursor: pointer;
 }

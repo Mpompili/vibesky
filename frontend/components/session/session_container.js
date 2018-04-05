@@ -12,6 +12,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     submitForm: ownProps.location.pathname.slice(1) === 'login' ?
       (user) => dispatch(login(user)) :
       (user) => dispatch(signup(user)),
+    demoSumit: (user) => dispatch(login(user))
 });
 
 

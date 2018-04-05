@@ -13,7 +13,7 @@ const customStyles = {
   }
 };
 
-Modal.setAppElement(document.getElementById('header-carousel'));
+
 
 class sessionForm extends React.Component {
   constructor(props){
@@ -29,10 +29,10 @@ class sessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount(){
-    console.log(this.props);
+  componentWillMount(){
+    Modal.setAppElement(document.getElementById('root'));
   }
-
+  
   openModal() {
      this.setState({modalIsOpen: true});
    }

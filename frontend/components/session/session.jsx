@@ -61,7 +61,7 @@ class sessionForm extends React.Component {
 
   handleDemo(e){
     e.preventDefault();
-    this.props.demoSumit({email: 'yesmam', password: 'password'});
+    this.props.demoSumit({email: 'demouser', password: 'password'});
   }
 
   render(){

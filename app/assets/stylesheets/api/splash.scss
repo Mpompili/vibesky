@@ -1,0 +1,83 @@
+#header-carousel{
+  position: relative;
+  background: url(https://a-v2.sndcdn.com/assets/images/home/hp_image-6155d6b.jpg) 0 0/cover no-repeat;
+  height: 446px;
+  margin: 0 auto;
+  min-width: 960px;
+  max-width: 95vw;
+  border-top: 4px solid #f50;
+}
+
+.splash-cloud {
+  background: image_url('cloud.png');
+  background-repeat: no-repeat;
+  height: 45px;
+  position: relative;
+  top: 25px;
+  left: 30px;
+  padding-top: 1px;
+}
+.splash-text {
+  background: image_url('logotext.png');
+  background-repeat: no-repeat;
+  height: 45px;
+  position: relative;
+  top: -20px;
+  left: 80px;
+}
+
+.splashbar {
+width: 90vw;
+display: flex;
+height: 46px;
+align-items: center;
+justify-content: space-between;
+font: 14px/1.5 normal white;
+font-family: "Lucida Grande", Arial, sans-serif;
+  .splash-left {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    .splash-logo{
+      box-sizing: border-box;
+      width: 184px;
+      height: 46px;
+    }
+  }
+  .splash-right {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    .sbutton {
+      border-radius: 3px;
+      color: white;
+      height: 28px;
+    }
+  }
+}
+
+.signin-button {
+  box-sizing: border-box;
+  width: 74px;
+  border: 1px solid rgb(204, 204, 204);
+  background-color: rgba(0, 0, 0, 0);
+  padding: 2px;
+  margin-right: 8px;
+
+  font-weight: 100;
+  font-family: 'IBM Plex Sans', "Lucida Grande",
+}
+.signup-button {
+  box-sizing: border-box;
+  width: 136px;
+  padding: 3px 16px;
+  background-color: #f50;
+  font-weight: 400;
+  font-family: 'IBM Plex Sans', "Lucida Grande",
+}
+.signin-button:hover{
+  border-color: white;
+}

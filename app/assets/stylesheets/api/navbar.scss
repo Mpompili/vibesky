@@ -1,46 +1,5 @@
-.cloud-logo {
-  background: url('cloud.png');
-  background-repeat: no-repeat;
-  height: 45px;
-  position: relative;
-  top: 25px;
-  left: 30px;
-  padding-top: 1px;
-}
-.logo-text {
-  background: url('logotext.png');
-  background-repeat: no-repeat;
-  height: 45px;
-  position: relative;
-  top: -20px;
-  left: 80px;
-}
-.cloud-logo-li {
-  background: url('cloud.png');
-  background-repeat: no-repeat;
-  height: 45px;
-  position: relative;
-  top: 10px;
-  left: 11px;
-  padding-top: 1px;
-}
-
-
-#header-carousel{
-  position: relative;
-  background: url(https://a-v2.sndcdn.com/assets/images/home/hp_image-6155d6b.jpg) 0 0/cover no-repeat;
-  height: 446px;
-  margin: 0 auto;
-  min-width: 450px;
-  max-width: 1240px;
-  border-top: 4px solid #f50;
-    .navbar {
-      background-color: transparent;
-    }
-}
-
 #header-carousel-off{
-  display: hidden;
+  // display: hidden;
   position: relative;
   .backbar{
     width: 100%;
@@ -48,7 +7,15 @@
   }
 }
 
-
+.cloud-logo-li {
+  background: image_url('cloud.png');
+  background-repeat: no-repeat;
+  height: 45px;
+  position: relative;
+  top: 10px;
+  left: 11px;
+  padding-top: 1px;
+}
 
 .navbar {
 width: 80%;
@@ -69,31 +36,15 @@ background-color: #333;
       background: linear-gradient(#f70,#f30);
       width: 69px;
     }
-    .logo-header{
-      box-sizing: border-box;
-      width: 184px;
-      height: 46px;
-     .cloud-logo-home {
-      background: url('soundcloud-icon-1.svg');
-      background-size: contain;
-      background-repeat: no-repeat;
-      box-sizing: border-box;
-      padding: 20px 10px;
-
-      }
-    }
   }
   .navbar-right {
     display: flex;
     align-items: center;
     text-align: center;
-    .header-item {
-      border-left: 1px black solid;
-    }
   }
 }
-
 .header-item {
+  border-left: 1px black solid;
   text-align: center;
   box-sizing: border-box;
   font-size: 14px;
@@ -101,51 +52,12 @@ background-color: #333;
   width: 104px;
   color: #ccc;
   border-right: 1px black solid;
+
 }
-.header-item:hover{
+.header-item:hover {
   color: #fff;
-  cursor: pointer;
 }
-
-.nbr {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  .sbutton {
-    border-radius: 3px;
-    color: white;
-    height: 28px;
-
-  }
-}
-.signin-button {
-  box-sizing: border-box;
-  width: 74px;
-  border: 1px solid rgb(204, 204, 204);
-  background-color: rgba(0, 0, 0, 0);
-  padding: 2px;
-  margin-right: 8px;
-
-  font-weight: 100;
-  font-family: 'IBM Plex Sans', "Lucida Grande",
-}
-.signup-button {
-  box-sizing: border-box;
-  width: 136px;
-  padding: 3px 16px;
-  background-color: #f50;
-  font-weight: 400;
-  font-family: 'IBM Plex Sans', "Lucida Grande",
-}
-.signin-button:hover{
-  border-color: white;
-}
-// .logo-home {
-//   background: url('soundcloud-icon-1.svg');
-//   background-size: contain;
-//   background-repeat: no-repeat;
-//   position: absolute;
-//   height: 46px;
-//   top: 13px;
-//   left: 19px;
+// .header-item:hover{
+//   color: #fff;
+//   cursor: pointer;
 // }

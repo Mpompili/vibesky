@@ -28,7 +28,7 @@ height: 46px;
 align-items: center;
 justify-content: space-between;
 font: 14px/1.5 normal white;
-font-family: "Lucida Grande", Arial, sans-serif;
+font-family: $sans-serif;
 background-color: $dark-gray;
   .navbar-left {
     display: flex;

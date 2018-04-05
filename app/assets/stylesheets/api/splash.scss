@@ -34,7 +34,7 @@ height: 46px;
 align-items: center;
 justify-content: space-between;
 font: 14px/1.5 normal white;
-font-family: "Lucida Grande", Arial, sans-serif;
+font-family: "Roboto", "Lucida Grande", Arial, sans-serif;
   .splash-left {
     display: flex;
     align-items: center;
@@ -69,7 +69,7 @@ font-family: "Lucida Grande", Arial, sans-serif;
   margin-right: 8px;
 
   font-weight: 100;
-  font-family: 'IBM Plex Sans', "Lucida Grande",
+
 }
 .signup-button {
   box-sizing: border-box;
@@ -77,7 +77,7 @@ font-family: "Lucida Grande", Arial, sans-serif;
   padding: 3px 16px;
   background-color: $cloud-orange;
   font-weight: 100;
-  font-family: 'IBM Plex Sans', "Lucida Grande",
+
 }
 .signin-button:hover{
   border-color: $white;

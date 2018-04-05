@@ -9,9 +9,10 @@ import { Provider } from 'react-redux';
 const App = () => (
   <div>
     <Switch>
-      <Route exact path ='/' component={SplashContainer}/>
-      <Route path ='/' component={NavbarContainer} />
+      <Route exact path ='/dashboard' component={NavbarContainer} />
+      <Route path ='/' component={SplashContainer}/>
     </Switch>
+
     <Switch>
       <AuthRoute exact path='/login' component={SessionContainer} />
       <AuthRoute exact path='/signup' component={SessionContainer} />

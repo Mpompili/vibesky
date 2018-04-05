@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
+import SplashContainer from '../splash/splash_container';
 
 const customStyles = {
   content : {
@@ -32,7 +33,7 @@ class sessionForm extends React.Component {
   componentWillMount(){
     Modal.setAppElement(document.getElementById('root'));
   }
-  
+
   openModal() {
      this.setState({modalIsOpen: true});
    }

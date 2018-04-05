@@ -8,7 +8,7 @@ class Navbar extends React.Component {
 
   componentWillReceiveProps(nextProps){
     if (!nextProps.currentUser) {
-      this.props.history.push('/');
+      this.props.history.replace('/');
     }
   }
 
@@ -27,7 +27,7 @@ class Navbar extends React.Component {
   logged_in_right() {
     return (
       <div className="navbar-right">
-        <Link to='/dashboard' className="header-item" onClick={this.logout}>Logout</Link>
+        <Link to='/' className="header-item" onClick={this.logout}>Logout</Link>
       </div>
     )
   }

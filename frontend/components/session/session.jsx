@@ -1,5 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Modal from 'react-modal';
+
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)'
+  }
+};
+
+Modal.setAppElement(document.getElementById('header-carousel'));
 
 class sessionForm extends React.Component {
   constructor(props){
@@ -7,9 +21,30 @@ class sessionForm extends React.Component {
     this.state = {
       email: '',
       password: '',
+      modalIsOpen: true,
     };
+    this.openModal = this.openModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  componentDidMount(){
+    console.log(this.props);
+  }
+
+  openModal() {
+     this.setState({modalIsOpen: true});
+   }
+
+   afterOpenModal() {
+     // references are now sync'd and can be accessed.
+   }
+
+   closeModal() {
+     this.setState({modalIsOpen: false});
+     this.props.history.push("/");
+   }
 
   update(field){
     return e => this.setState({ [field]: e.currentTarget.value })
@@ -17,7 +52,9 @@ class sessionForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.submitForm(Object.assign({}, this.state));
+    let user = Object.assign({},
+      {email: this.state.email, password: this.state.password});
+    this.props.submitForm(user);
   }
 
   render(){
@@ -25,6 +62,14 @@ class sessionForm extends React.Component {
 
     return(
       <div>
+        <button onClick={this.openModal}>Open Modal</button>
+        <Modal
+          isOpen={this.state.modalIsOpen}
+         onAfterOpen={this.afterOpenModal}
+         onRequestClose={this.closeModal}
+         style={customStyles}
+         contentLabel="Example Modal"
+       >
         <form onSubmit={this.handleSubmit} className="session-form-box">
           <h3>{ path }</h3><br/>
 
@@ -49,6 +94,7 @@ class sessionForm extends React.Component {
           </label><br/>
           <input className="session-submit" type="submit" value={path} />
         </form>
+      </Modal>
       </div>
     )
   }

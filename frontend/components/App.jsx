@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 
 const App = () => (
   <div>
-    <h1>vibesky</h1>
     <NavbarContainer />
       <Switch>
         <AuthRoute exact path='/login' component={SessionContainer} />

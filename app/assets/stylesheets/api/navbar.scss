@@ -1,0 +1,135 @@
+.cloud-logo {
+  background: url('cloud.png');
+  background-repeat: no-repeat;
+  height: 45px;
+  position: relative;
+  top: 10px;
+  left: 11px;
+  padding-top: 1px;
+}
+.logo-text {
+  background: url('logotext.png');
+  background-repeat: no-repeat;
+  height: 45px;
+  position: relative;
+  top: 10px;
+}
+.cloud-logo-li {
+  background: url('cloud.png');
+  background-repeat: no-repeat;
+  height: 45px;
+  position: relative;
+  top: 10px;
+  left: 11px;
+  padding-top: 1px;
+}
+
+
+#header-carousel{
+  position: relative;
+  background: url(https://a-v2.sndcdn.com/assets/images/home/hp_image_creator_slide-ad5bb1e.jpg) 0 0/cover no-repeat;
+  height: 454px;
+  margin: 0 30px;
+  border-top: 4px solid #f50;
+    .navbar {
+      background-color: transparent;
+    }
+}
+
+#header-carousel-off{
+  display: hidden;
+  position: relative;
+}
+
+
+
+.navbar {
+display: flex;
+height: 46px;
+align-items: center;
+justify-content: space-between;
+font: 14px/1.5 normal white;
+font-family: "Lucida Grande", Arial, sans-serif;
+background-color: #333;
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    .header-logo {
+      box-sizing: border-box;
+      background: linear-gradient(#f70,#f30);
+      width: 69px;
+    }
+    .logo-header{
+      box-sizing: border-box;
+      width: 184px;
+      height: 46px;
+     .cloud-logo-home {
+      background: url('soundcloud-icon-1.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      box-sizing: border-box;
+      padding: 20px 10px;
+
+      }
+    }
+  }
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    .header-item {
+      border-left: 1px black solid;
+    }
+  }
+}
+
+.header-item {
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 14px;
+  padding: 12px 0px;
+  width: 104px;
+  color: #ccc;
+  border-right: 1px black solid;
+}
+.header-item:hover{
+  color: #fff;
+  cursor: pointer;
+}
+
+.nbr {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  .sbutton {
+    box-sizing: border-box;
+    border-radius: 3px;
+    color: white;
+    height: 28px;
+    font-weight: 100;
+  }
+}
+.signin-button {
+  width: 74px;
+  border: 1px solid rgb(204, 204, 204);
+  background-color: rgba(0, 0, 0, 0);
+  padding: 2px;
+  margin-right: 6px;
+}
+.signup-button {
+  padding: 3px 16px;
+  background-color: #f50;
+}
+.signin-button:hover{
+  border-color: white;
+}
+// .logo-home {
+//   background: url('soundcloud-icon-1.svg');
+//   background-size: contain;
+//   background-repeat: no-repeat;
+//   position: absolute;
+//   height: 46px;
+//   top: 13px;
+//   left: 19px;
+// }

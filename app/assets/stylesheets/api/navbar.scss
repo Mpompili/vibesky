@@ -1,9 +1,11 @@
 #header-carousel-off{
   // display: hidden;
-  position: relative;
+  // position: relative;
   .backbar{
-    width: 100%;
+    position: fixed;
+    width: 100vw;
     background-color: #333;
+    height: 46px;
   }
 }
 
@@ -18,6 +20,7 @@
 }
 
 .navbar {
+left: 50px;
 width: 80%;
 margin: 0 auto;
 display: flex;

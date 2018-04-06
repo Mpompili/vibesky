@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 //will import track index item
-class TrackIndex extends React.Component {
+class TrackForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,7 +11,8 @@ class TrackIndex extends React.Component {
       imageFile: null,
       imageUrl: null
     }
-    this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateFile = this.updateFile.bind(this);
   }
 
 
@@ -23,16 +24,18 @@ class TrackIndex extends React.Component {
     const file = e.currentTarget.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
-      this.setState({ imageFile: file, imageUrl: fileReader.result });
-    };
-    if (file) {
-      console.log("entered if statement");
-      debugger
-      fileReader.readAsDataURL(file);
-      console.log("ending if statement");
-    } else {
-      this.setState({ imageUrl: '', imageFile: null })
+      console.log('in onloadend');
+      console.log(this.state);
+      return this.setState({ imageFile: file, imageUrl: fileReader.result });
     }
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+    } else {
+      this.setState({ imageUrl: 'didnt work', imageFile: null })
+    }
+
+    console.log(this.state);
   }
 
   handleSubmit(e) {
@@ -41,7 +44,7 @@ class TrackIndex extends React.Component {
     formData.append("track[title]", this.state.title);
     formData.append("track[description]", this.state.description);
     if (this.state.imageFile) formData.append("track[image]", this.state.imageFile);
-    this.props.createTrack(formData).then(this.props.history.push('/'));
+    this.props.createTrack(formData).then(() => this.props.history.push('/'));
 }
 
   render(){
@@ -58,4 +61,4 @@ class TrackIndex extends React.Component {
   }
 }
 
-export default TrackIndex;
+export default TrackForm;

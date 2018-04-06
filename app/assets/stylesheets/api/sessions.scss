@@ -20,6 +20,10 @@ font-family: $sans-serif;
     border-radius: 5px;
     border: 1px lightgray solid;
   }
+  .error{
+    border-color: red;
+  }
+
   .session-submit{
     border-radius: 3px;
     border-color: $cloud-orange;
@@ -47,8 +51,10 @@ font-family: $sans-serif;
   border: 1.5px solid red;
 }
 
-.session-error-message{
-  color: red;
-  font-family: $sans-serif;
-  margin: 10px auto; 
+#session-error-message {
+     width: 100%;
+     // list-style: ;
+     color: red;
+     padding-bottom: 10px;
+
 }

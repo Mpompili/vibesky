@@ -19,12 +19,12 @@
   padding-top: 1px;
 }
 .splash-text {
-  background: image_url('logotext.png');
-  background-repeat: no-repeat;
   height: 45px;
   position: relative;
   top: -20px;
-  left: 80px;
+  left: 38px;
+  letter-spacing: 5px;
+  color: white;
 }
 
 .splashbar {
@@ -80,4 +80,8 @@ font-family: "Roboto", "Lucida Grande", Arial, sans-serif;
 }
 .signin-button:hover{
   border-color: $white;
+}
+
+.titlespacing{
+letter-spacing: 5px;
 }

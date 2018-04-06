@@ -11,7 +11,7 @@ class Splash extends React.Component {
       <div className="splash-left">
         <a href="/" className="splash-logo">
           <div className="splash-cloud"></div>
-          <div className="splash-text"></div>
+          <div className="splash-text">VIBESKY</div>
         </a>
       </div>
     )

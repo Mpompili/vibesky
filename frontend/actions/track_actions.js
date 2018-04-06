@@ -42,8 +42,8 @@ export const fetchTrack = () => dispatch => (
   ))
 );
 
-export const createTrack = track => dispatch => (
-  APIUtil.createTrack(track).then(track => (
+export const createTrack = formData => dispatch => (
+  APIUtil.createTrack(formData).then(track => (
     dispatch(receiveTrack(track))
   ), err => (
     dispatch(receiveTrackErrors(err.responseJSON))

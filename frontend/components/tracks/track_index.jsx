@@ -1,19 +1,22 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import TrackFormContainer from './track_form_container';
 //will import track index item
 class TrackIndex extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.fetchTracks();
   }
 
   render(){
 
     let { tracks, errors } = this.props;
-    let trackIndex = Object.keys(tracks).map(key => <li>{tracks[key].title}</li>);
+    let trackIndex = Object.keys(tracks).map(key => (
+      <li>{tracks[key].title},<br/>{tracks[key].image}</li>
+    ));
     let styledErrors = errors.map(err => <li><br/>{err}</li>);
 
     return (
@@ -25,6 +28,8 @@ class TrackIndex extends React.Component {
         <div className="track-index">
           {trackIndex}
         </div>
+        <br/>
+        <TrackFormContainer /> 
       </div>
     )
   }

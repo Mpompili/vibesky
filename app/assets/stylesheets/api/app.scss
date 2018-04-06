@@ -1,0 +1,17 @@
+#app{
+  background-color: $background-gray;
+}
+.content-container{
+  width: 91.75vw;
+  max-width: 1240px;
+  padding-top: 46px;
+  background: $white;
+  height: 2000px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.sidebar-placeholder{
+  flex: 1;
+  border-left: 0.5px $light-gray solid;
+}

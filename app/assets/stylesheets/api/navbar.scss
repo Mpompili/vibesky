@@ -20,11 +20,11 @@
 }
 
 .navbar {
-left: 50px;
-width: 80%;
-margin: 0 auto;
 display: flex;
+width: 91.75vw;
+max-width: 1240px;
 height: 46px;
+margin: 0 auto;
 align-items: center;
 justify-content: space-between;
 font: 14px/1.5 normal white;
@@ -44,10 +44,12 @@ background-color: $dark-gray;
     display: flex;
     align-items: center;
     text-align: center;
+    .header-item{
+      border-left: 1px black solid;
+    }
   }
 }
 .header-item {
-  border-left: 1px black solid;
   text-align: center;
   box-sizing: border-box;
   font-size: 14px;

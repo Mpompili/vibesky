@@ -8,10 +8,15 @@ import { Provider } from 'react-redux';
 import TrackIndexContainer from './tracks/track_index_container';
 
 const App = () => (
-  <div>
+  <div id='app'>
       <AuthRoute path ='/' component={SplashContainer}/>
       <ProtectedRoute path ='/' component={NavbarContainer} />
-      <ProtectedRoute path ='/tracks' component={TrackIndexContainer} />
+
+      <div className="content-container">
+        <ProtectedRoute path ='/tracks' component={TrackIndexContainer} />
+        <div className="sidebar-placeholder"></div>
+      </div>
+      
     <Switch>
       <AuthRoute exact path='/login' component={SessionContainer} />
       <AuthRoute exact path='/signup' component={SessionContainer} />

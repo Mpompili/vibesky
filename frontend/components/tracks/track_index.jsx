@@ -17,7 +17,11 @@ class TrackIndex extends React.Component {
     let styledErrors = errors.map(err => <li><br/>{err}</li>);
 
     return (
-      <div id='track-index-container'>
+      <div className='track-index-container'>
+        <ul className='track-index-tabs'>
+          <li className='ti-tab'><a href='/#/tracks'>Stream</a></li>
+          <li className='ti-tab ttmid'><a href='/#/tracks'>Discover</a></li>
+        </ul>
         <div className="track-index">
           {trackIndex}
         </div>

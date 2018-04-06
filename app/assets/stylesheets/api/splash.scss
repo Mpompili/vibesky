@@ -55,7 +55,8 @@ font-family: "Roboto", "Lucida Grande", Arial, sans-serif;
     .sbutton {
       border-radius: 3px;
       color: white;
-      height: 28px;
+      height: 30px;
+      padding: 4px;
     }
   }
 }
@@ -65,7 +66,6 @@ font-family: "Roboto", "Lucida Grande", Arial, sans-serif;
   width: 74px;
   border: 1px solid rgb(204, 204, 204);
   background-color: rgba(0, 0, 0, 0);
-  padding: 2px;
   margin-right: 8px;
 
   font-weight: 100;
@@ -74,7 +74,6 @@ font-family: "Roboto", "Lucida Grande", Arial, sans-serif;
 .signup-button {
   box-sizing: border-box;
   width: 136px;
-  padding: 3px 16px;
   background-color: $cloud-orange;
   font-weight: 100;
 

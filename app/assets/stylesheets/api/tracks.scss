@@ -1,3 +1,32 @@
-track-index-container {
 
+.track-index-container {
+  flex: 2;
+  padding: 30px 30px;
+  .track-index-tabs{
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid $light-gray;
+    .ti-tab{
+      font-size: 24px;
+      height: 39px;
+      margin-right: 12px;
+      a {
+        color: black;
+        line-height: 38.4px;
+
+      }
+    }
+    .ttmid{
+      margin-left: 12px; 
+    }
+  }
 }
+.ti-tab a:hover {
+  padding-bottom: 7px;
+  border-bottom: 1px black solid;
+  cursor: pointer;
+}
+//
+// .ti-tab a:active {
+//   color: $cloud-orange;
+// }

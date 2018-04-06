@@ -10,6 +10,11 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
+  has_many :tracks,
+    primary_key: :id,
+    foreign_key: :uploader_id,
+    class_name: :Track
+    
   # associations:
   # has_many :tracks
   # has_many :comments

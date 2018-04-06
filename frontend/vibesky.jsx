@@ -5,6 +5,8 @@ import { login, logout, RECEIVE_CURRENT_USER } from './actions/session_actions';
 import * as APIUtil from './util/session_api_util';
 import Root from './components/root';
 
+import { fetchTracks, fetchTrack } from './util/track_api_util';
+
 
 document.addEventListener("DOMContentLoaded", ()=>{
   const root = document.getElementById('root');

@@ -6,10 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create([
+users = User.create([
   {email: 'michael@gmail.com', password: 'password'},
   {email: 'yuujie@gmail.com', password: 'password'},
   {email: 'nima@gmail.com', password: 'password'},
   {email: 'demouser', password: 'password'},
   {email: 'Oprah@gmail.com', password: 'password'}
 ])
+
+Track.create([
+  {title: 'a beautiful song', uploader_id: 1},
+  {title: 'sad songs', uploader_id: 2},
+  {title: 'o fortuna', uploader_id: 1}
+  ])

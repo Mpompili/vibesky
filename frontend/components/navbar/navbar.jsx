@@ -6,6 +6,10 @@ class Navbar extends React.Component {
     super(props);
   }
 
+  componentDidMount(){
+    this.props.fetchTracks();
+  }
+
   componentWillReceiveProps(nextProps){
     if (!nextProps.currentUser) {
       this.props.history.replace('/');

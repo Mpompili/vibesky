@@ -1,4 +1,5 @@
-import { RECEIVE_SESSION_ERRORS, RECEIVE_CURRENT_USER, CLEAR_ERRORS } from '../actions/session_actions';
+import { RECEIVE_SESSION_ERRORS, RECEIVE_CURRENT_USER, CLEAR_ERRORS,  } from '../actions/session_actions';
+import { RECEIVE_TRACK_ERRORS } from '../actions/track_actions';
 import merge from 'lodash/merge';
 
 const errorsReducer = (state = {}, action) => {
@@ -6,9 +7,12 @@ const errorsReducer = (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_SESSION_ERRORS:
       return { session: action.errors }
+    case RECEIVE_TRACK_ERRORS:
+      return { track: action.errors }
     case RECEIVE_CURRENT_USER:
       return {};
     case CLEAR_ERRORS:
+      //for the modal
       return {};
     default:
       return state;

@@ -19,3 +19,18 @@ export const createTrack = track => (
     data: { track }
   })
 );
+
+export const updateTrack = track => (
+  $.ajax({
+    method: 'PATCH',
+    url: `api/tracks/${track.id}`,
+    data: { track }
+  })
+);
+
+export const deleteTrack = id => (
+  $.ajax({
+    method: 'DELETE',
+    url: `api/tracks/${id}`
+  })
+);

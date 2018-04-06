@@ -7,7 +7,6 @@ class Api::TracksController < ApplicationController
   def create
     @track = current_user.tracks.new(track_params)
     debugger
-
     if @track.save
       render "api/tracks/show"
     else
@@ -35,7 +34,7 @@ class Api::TracksController < ApplicationController
   def destroy
     @track = Track.find(params[:id])
     @track.destroy
-    render "api/tracks/index"
+    render json: {}
   end
 
   private

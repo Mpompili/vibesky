@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create([
-  {email: 'michael@gmail.com', password: 'password', img_url: 'placeholder_image'},
-  {email: 'yuujie@gmail.com', password: 'password', img_url: 'placeholder_image'},
-  {email: 'nima@gmail.com', password: 'password', img_url: 'placeholder_image'},
-  {email: 'demouser', password: 'password', img_url: 'placeholder_image'},
-  {email: 'Oprah@gmail.com', password: 'password', img_url: 'placeholder_image'}
+  {email: 'michael@gmail.com', password: 'password'},
+  {email: 'yuujie@gmail.com', password: 'password'},
+  {email: 'nima@gmail.com', password: 'password'},
+  {email: 'demouser', password: 'password'},
+  {email: 'Oprah@gmail.com', password: 'password'}
 ])

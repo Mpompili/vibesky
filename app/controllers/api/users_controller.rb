@@ -2,7 +2,7 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.img_url = 'placeholder_image'
+    # @user.img_url = 'placeholder_image'
 
     if @user.save
       login(@user)

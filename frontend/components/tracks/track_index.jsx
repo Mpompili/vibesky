@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import TrackFormContainer from './track_form_container';
+import TrackItem from './track_index_item';
+
 //will import track index item
 class TrackIndex extends React.Component {
   constructor(props) {
@@ -12,10 +14,10 @@ class TrackIndex extends React.Component {
   }
 
   render(){
-
+    // <li>{tracks[key].title},<br/>{tracks[key].image}</li>
     let { tracks, errors } = this.props;
-    let trackIndex = Object.keys(tracks).map(key => (
-      <li>{tracks[key].title},<br/>{tracks[key].image}</li>
+    let trackItems = Object.keys(tracks).map(key => (
+      <TrackItem key={key} track={tracks[key]} />
     ));
     let styledErrors = errors.map(err => <li><br/>{err}</li>);
 
@@ -26,10 +28,10 @@ class TrackIndex extends React.Component {
           <li className='ti-tab ttmid'><a href='/#/tracks'>Discover</a></li>
         </ul>
         <div className="track-index">
-          {trackIndex}
+          {trackItems}
         </div>
         <br/>
-        <TrackFormContainer /> 
+        <TrackFormContainer />
       </div>
     )
   }

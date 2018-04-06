@@ -24,8 +24,6 @@ class TrackForm extends React.Component {
     const file = e.currentTarget.files[0];
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
-      console.log('in onloadend');
-      console.log(this.state);
       return this.setState({ imageFile: file, imageUrl: fileReader.result });
     }
 
@@ -35,7 +33,6 @@ class TrackForm extends React.Component {
       this.setState({ imageUrl: 'didnt work', imageFile: null })
     }
 
-    console.log(this.state);
   }
 
   handleSubmit(e) {

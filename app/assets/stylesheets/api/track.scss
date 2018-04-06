@@ -1,0 +1,106 @@
+.track-item-container{
+  display: flex;
+  flex-direction: column;
+  height: 210px;
+  width: 100%;
+  justify-content: space-evenly;
+  font-weight: 300;
+
+  .track-uploader-info{
+    display: flex;
+    align-items: center;
+
+    .track-uploader-circle{
+      box-sizing: border-box;
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
+      border: 1px black solid;
+    }
+    .track-uploader-name{
+      color: black;
+      margin-left: 6px;
+    }
+  }
+
+  .track-item{
+    display: flex;
+    height: 170px;
+    .track-image-box{
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      box-sizing: border-box;
+      width: 160px;
+      height: 160px;
+      min-width: 160px;
+      min-height: 160px;
+
+      img {
+        flex-shrink: 0;
+        min-width: 100%;
+        max-width: 100%;
+      }
+    }
+    .track-details{
+      flex: 4;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      margin-left: 15px;
+      .td-top{
+        box-sizing: border-box;
+        display: flex;
+        height: 50px;
+        align-items: center;
+        .ti-play {
+          box-sizing: border-box;
+
+          border-radius: 50%;
+          height: 36px;
+          width: 36px;
+          background-color: $cloud-orange;
+        }
+        .ti-upload-det{
+          height: 100%;
+          margin-left: 6px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          aside{
+            padding: 2px 0px;
+          }
+        }
+        .ti-description{
+          color: $cloud-gray;
+          font-size: 12px;
+        }
+        .ti-description:hover{
+          color: black;
+        }
+        .ti-title{
+          color: black;
+          font-size: 15px;
+        }
+      }
+      .sound-bar{
+        width: 100%;
+        height: 60px;
+        background-color: $cloud-orange;
+      }
+      .comment-bar{
+        width: 100%;
+        height: 32px;
+        background-color: black;
+      }
+      .button-bar{
+        margin-top: 10px;
+        height: 30px;
+      }
+    }
+  }
+
+
+}

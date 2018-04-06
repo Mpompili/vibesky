@@ -19,11 +19,11 @@ class Navbar extends React.Component {
   logged_in_left() {
     return (
       <div className="navbar-left">
-        <a href="/#/dashboard" className="header-logo">
+        <a href="/#/tracks" className="header-logo">
           <div className="cloud-logo-li"></div>
         </a>
-        <a href="/#/dashboard" className="header-item">Home</a>
-        <a href="/#/dashboard" className="header-item">Collection</a>
+        <a href="/#/tracks" className="header-item">Home</a>
+        <a href="/#/tracks" className="header-item">Collection</a>
       </div>
     )
   }

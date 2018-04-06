@@ -8,7 +8,7 @@ const errorsReducer = (state = {}, action) => {
     case RECEIVE_SESSION_ERRORS:
       return { session: action.errors }
     case RECEIVE_TRACK_ERRORS:
-      return { track: action.errors }
+      return { tracks: action.errors }
     case RECEIVE_CURRENT_USER:
       return {};
     case CLEAR_ERRORS:

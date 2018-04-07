@@ -2,7 +2,7 @@ class Track < ApplicationRecord
   validates :title, presence: true
   validates :uploader_id, presence: true
 
-  has_attached_file :image, default_url: "http://d2dzjyo4yc2sta.cloudfront.net/?url=images.pitchero.com%2Fui%2F220891%2F1511183769_0.jpg&w=720&t=fit&q=85"
+  has_attached_file :image, default_url: "https://s3-us-west-1.amazonaws.com/vibesky-dev/tracks/images/public_images/missing.png"
   validates_attachment_content_type :image,
   :content_type => /^image\/(jpg|jpeg|pjpeg|png|x-png|gif)$/,
    :message => 'file type is not allowed (only jpeg/png/gif images)'

@@ -9,6 +9,7 @@ import { fetchTracks, fetchTrack } from './util/track_api_util';
 
 
 document.addEventListener("DOMContentLoaded", ()=>{
+
   const root = document.getElementById('root');
 
   let store;

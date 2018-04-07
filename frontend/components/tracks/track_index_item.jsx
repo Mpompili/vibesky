@@ -9,17 +9,20 @@ class TrackItem extends React.Component {
 
   render(){
     let { track } = this.props;
+    
     return (
       <div className='track-item-container'>
 
         <div className='track-uploader-info'>
-          <aside className="track-uploader-circle"></aside>
+          <aside className="track-uploader-circle">
+            <img src={track.imageUrl}/>
+          </aside>
           <aside className="track-uploader-name">{track.uploader}</aside>
         </div>
 
         <div className='track-item'>
           <div className='track-image-box'>
-            <img src={track.imageUrl} className='track-image'/>
+            <img src={track.imageUrl}/>
           </div>
 
           <section className='track-details'>

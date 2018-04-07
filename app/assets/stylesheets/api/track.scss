@@ -11,11 +11,23 @@
     align-items: center;
 
     .track-uploader-circle{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
       box-sizing: border-box;
       border-radius: 50%;
       height: 30px;
       width: 30px;
-      border: 1px black solid;
+      box-shadow: 1px 1px 5px lightgrey;
+      // background: image_url('missing.png');
+      // background-size: contain;
+
+      img {
+        flex-shrink: 0;
+        min-width: 100%;
+        max-width: 100%;
+      }
     }
     .track-uploader-name{
       color: black;
@@ -37,7 +49,9 @@
       height: 160px;
       min-width: 160px;
       min-height: 160px;
-
+      box-shadow: 1px 1px 5px lightgrey;
+      // background: image_url('missing.png');
+      // background-size: contain;
       img {
         flex-shrink: 0;
         min-width: 100%;
@@ -62,6 +76,7 @@
           height: 36px;
           width: 36px;
           background-color: $cloud-orange;
+          box-shadow: 1px 1px 5px lightgrey;
         }
         .ti-upload-det{
           height: 100%;
@@ -70,11 +85,11 @@
           flex-direction: column;
           justify-content: center;
           aside{
-            padding: 2px 0px;
+            padding: 2.5px 0px;
           }
         }
         .ti-description{
-          color: $cloud-gray;
+          color: gray;
           font-size: 12px;
         }
         .ti-description:hover{
@@ -88,7 +103,7 @@
       .sound-bar{
         width: 100%;
         height: 60px;
-        background-color: $cloud-orange;
+        background-color: $cloud-gray;
       }
       .comment-bar{
         width: 100%;

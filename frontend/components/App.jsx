@@ -6,17 +6,19 @@ import SplashContainer from './splash/splash_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Provider } from 'react-redux';
 import TrackIndexContainer from './tracks/track_index_container';
+import TrackFormContainer from './tracks/track_form_container';
 
 const App = () => (
   <div id='app'>
       <AuthRoute path ='/' component={SplashContainer}/>
       <ProtectedRoute path ='/' component={NavbarContainer} />
-
       <div className="content-container">
-        <ProtectedRoute path ='/tracks' component={TrackIndexContainer} />
-        <div className="sidebar-placeholder"></div>
+        <Switch>
+          <ProtectedRoute exact path ='/tracks/new' component={TrackFormContainer} />
+          <ProtectedRoute exact path ='/tracks' component={TrackIndexContainer} />
+        </Switch>
       </div>
-      
+
     <Switch>
       <AuthRoute exact path='/login' component={SessionContainer} />
       <AuthRoute exact path='/signup' component={SessionContainer} />

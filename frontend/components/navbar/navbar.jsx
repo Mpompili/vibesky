@@ -31,6 +31,7 @@ class Navbar extends React.Component {
   logged_in_right() {
     return (
       <div className="navbar-right">
+        <Link to='/tracks/new' className="header-item">Upload</Link>
         <Link to='/' className="header-item" onClick={this.logout}>Logout</Link>
       </div>
     )

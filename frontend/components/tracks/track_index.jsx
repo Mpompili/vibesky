@@ -53,7 +53,7 @@ class TrackIndex extends React.Component {
           <div >
             <ReactPlayer
               url={trackToPlay}
-              playing
+              playing={trackplayer.playing}
               controls
               width='200px'
               height='28px'

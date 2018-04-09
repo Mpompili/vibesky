@@ -1,12 +1,12 @@
 import { RECEIVE_CURRENT_TRACK, PLAY_PAUSE_TRACK, REPLACE_CURRENT_TRACK} from '../actions/track_actions';
 import merge from 'lodash/merge';
 
-const trackplayerReducer = (oldState = { currentTrack: null, playing: false}, action) => {
+const trackplayerReducer = (oldState = { currentTrack: null, playing: false, trackId: -1}, action) => {
   Object.freeze(oldState);
   let newState;
   switch (action.type) {
     case RECEIVE_CURRENT_TRACK:
-      return {currentTrack: action.track, playing: true };
+      return {currentTrack: action.track, playing: true, trackId: action.track.id};
     case PLAY_PAUSE_TRACK:
       newState = merge({}, oldState, {playing: action.boolean });
       return newState;

@@ -13,38 +13,24 @@ class TrackItem extends React.Component {
 
   songButton(track, e) {
     e.preventDefault();
-    let { currentTrack, playing } = this.props.trackplayer;
+    let { currentTrack, playing, trackId } = this.props.trackplayer;
     if (currentTrack === null) { this.props.setCurrentTrack(track) };
-    if (currentTrack !== null) {
-      if (currentTrack.id == track.id){
+    if (currentTrack !== null && trackId == track.id) {
         this.props.setPlayPause(!playing);
       } else {
         this.props.setCurrentTrack(track);
       }
-    }
   }
 
   componentDidMount() {
-    // let wavesurfer = WaveSurfer.create({
-    //   container: '#waveform',
-    //   waveColor: 'violet',
-    //   progressColor: 'purple',
-    //   height: 100
-    // });
-    // wavesurfer.load(this.props.track.audioUrl);
   }
 
   render(){
-    let { track } = this.props;
+    let { track, trackplayer } = this.props;
 
-    // let waveformdiv;
-    // if (track.id == 10) {
-    //   console.log('yes it is 10');
-    //   waveformdiv = (<div id='waveform'><div></div></div>);
-    //
-    // } else {
-    //   waveformdiv = (<div></div>);
-    // }
+    let buttonPlaying = (trackplayer.playing && trackplayer.trackId === track.id) ?
+      'ti-play playing' : 'ti-play';
+
     return (
       <div className='track-item-container'>
 
@@ -62,8 +48,8 @@ class TrackItem extends React.Component {
 
           <section className='track-details'>
             <div className='td-top'>
-              <div className="ti-play">
-                <button onClick={(e) => this.songButton(track, e)}></button>
+              <div className={buttonPlaying} onClick={(e) => this.songButton(track, e)}>
+
               </div>
               <div className="ti-upload-det">
                 <aside className="ti-description">{track.uploader}</aside>

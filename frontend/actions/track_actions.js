@@ -4,6 +4,18 @@ export const RECEIVE_TRACKS = 'RECEIVE_TRACKS';
 export const RECEIVE_TRACK = 'RECEIVE_TRACK';
 export const REMOVE_TRACK = 'REMOVE_TRACK';
 export const RECEIVE_TRACK_ERRORS = 'RECEIVE_TRACK_ERRORS';
+export const RECEIVE_CURRENT_TRACK = 'RECEIVE_CURRENT_TRACK';
+export const PLAY_PAUSE_TRACK = 'PLAY_PAUSE_TRACK';
+
+export const receiveCurrentTrack = track => ({
+  type: RECEIVE_CURRENT_TRACK,
+  track
+});
+
+export const playPauseTrack = boolean => ({
+  type: PLAY_PAUSE_TRACK,
+  boolean
+});
 
 export const receiveTracks = tracks => ({
   type: RECEIVE_TRACKS,
@@ -65,4 +77,12 @@ export const deleteTrack = trackId => dispatch => (
   ), err => (
     dispatch(receiveTrackErrors(err.responseJSON))
   ))
+);
+
+export const setCurrentTrack = track => dispatch => (
+  dispatch(receiveCurrentTrack(track))
+);
+
+export const setPlayPause = boolean => dispatch => (
+  dispatch(playPauseTrack(boolean))
 );

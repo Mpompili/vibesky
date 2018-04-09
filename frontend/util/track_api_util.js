@@ -1,7 +1,7 @@
 export const fetchTracks = () => (
   $.ajax({
     method: 'GET',
-    url: 'api/tracks',
+    url: 'api/tracks'
   })
 );
 

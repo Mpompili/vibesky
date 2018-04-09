@@ -14,7 +14,9 @@ class TrackItem extends React.Component {
   songButton(track, e) {
     e.preventDefault();
     let { currentTrack, playing, trackId } = this.props.trackplayer;
-    if (currentTrack === null) { this.props.setCurrentTrack(track) };
+    if (currentTrack === null) {
+      this.props.setCurrentTrack(track);
+    }
     if (currentTrack !== null && trackId == track.id) {
         this.props.setPlayPause(!playing);
       } else {
@@ -71,14 +73,3 @@ class TrackItem extends React.Component {
 }
 
 export default TrackItem;
-
-
-  //   if (this.props.trackplayer.currentTrack === track){
-  //     console.log('is the same song');
-  //     this.props.setPlayPause(!this.props.trackplayer.playing);
-  //   } else {
-  //     console.log('not the same song');
-  //
-  //     this.props.setCurrentTrack(track);
-  //   }
-  // }

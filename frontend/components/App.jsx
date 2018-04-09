@@ -8,23 +8,24 @@ import { Provider } from 'react-redux';
 import TrackIndexContainer from './tracks/track_index_container';
 import TrackFormContainer from './tracks/track_form_container';
 import ReactPlayer from 'react-player';
+import TrackPlayerContainer from './trackplayer/trackplayer_container';
 
 const App = () => (
   <div id='app'>
-      <AuthRoute path ='/' component={SplashContainer}/>
-      <ProtectedRoute path ='/' component={NavbarContainer} />
-      <div className="content-container">
-        <Switch>
-          <ProtectedRoute exact path ='/tracks/new' component={TrackFormContainer} />
-          <ProtectedRoute exact path ='/tracks' component={TrackIndexContainer} />
-        </Switch>
-      </div>
+    <AuthRoute path ='/' component={SplashContainer}/>
+    <ProtectedRoute path ='/' component={NavbarContainer} />
+    <div className="content-container">
+      <Switch>
+        <ProtectedRoute exact path ='/tracks/new' component={TrackFormContainer} />
+        <ProtectedRoute exact path ='/tracks' component={TrackIndexContainer} />
+      </Switch>
+    </div>
 
     <Switch>
       <AuthRoute exact path='/login' component={SessionContainer} />
       <AuthRoute exact path='/signup' component={SessionContainer} />
     </Switch>
-
+      <ProtectedRoute path ='/' component={TrackPlayerContainer} />
   </div>
 );
 

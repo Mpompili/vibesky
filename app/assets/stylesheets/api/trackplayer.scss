@@ -1,0 +1,76 @@
+#track-player-bar{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  background-color: #f2f2f2;
+  height: 48px;
+  z-index: 5;
+  border-top: 1px solid $cloud-gray;
+}
+
+#track-player-container{
+  width: 91.75vw;
+  max-width: 1240px;
+  height: 48px;
+  margin: 0 auto;
+  display: flex;
+}
+
+#tp-controller{
+  display: flex;
+
+}
+.controller-btn{
+  margin-left: 12px;
+  width: 24px;
+  height: 100%;
+}
+
+#tp-progress{
+  display: flex;
+  width: 100%;
+  max-width: 632px;
+  height: 100%;
+  #tp-timepassed, #tp-duration{
+    width: 50px;
+    height: 46px;
+  }
+}
+
+#tp-scrubbar{
+  position: relative;
+  padding: 10px 0;
+  margin: 13px 10px 0 10px;
+  width: 100%;
+  #scrub-bg{
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+  }
+  #scrub-progress{
+    position: absolute;
+    height: 1px;
+    background-color: $cloud-orange;
+    width: 35px;
+  }
+}
+
+#previous-btn{
+  background: url(https://a-v2.sndcdn.com/assets/images/playback/prev-859a883.svg) no-repeat center;
+}
+#play-pause-btn{
+  background: url(https://a-v2.sndcdn.com/assets/images/playback/play-6a409bd.svg) no-repeat center;
+}
+#next-btn{
+  background: url(https://a-v2.sndcdn.com/assets/images/playback/skip-c4f0490.svg) no-repeat center;
+}
+#shuffle-btn{
+  background: url(https://a-v2.sndcdn.com/assets/images/playback/shuffle-active-3c9efb1.svg) no-repeat center;
+}
+#loop-btn{
+  background: url(https://a-v2.sndcdn.com/assets/images/playback/repeat-all-098b32e.svg) no-repeat center;
+  margin-right: 20px;
+}

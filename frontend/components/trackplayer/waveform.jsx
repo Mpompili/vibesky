@@ -5,31 +5,23 @@ class WaveForm extends React.Component{
   constructor(props){
     super(props);
   }
+
   componentWillReceiveProps(newProps) {
     if (newProps.currentTrack == null) {
-      console.log('newprops currentTrack ISSS null');
     } else {
-
-      let nullTrack = this.props.currentTrack == null;
-      let cTrack;
-
-      if (this.props.currentTrack == null){
-        cTrack = -1 } else { cTrack = this.props.currentTrack.id };
-      let checkTrack = newProps.currentTrack.id == this.props.track.id;
-      let sameTrack = newProps.currentTrack.id == cTrack;
-
-      if (checkTrack && !sameTrack){
-        this.wavesurfer.play();
-      }
-
-      if (!checkTrack) {
-        this.wavesurfer.stop();
-      }
-
-      if (checkTrack && sameTrack && newProps.playing !== this.props.playing){
-        this.wavesurfer.playPause();
-      }
+      let checkTrack = newProps.trackId == this.props.track.id;
+      let sameTrack = newProps.trackId == this.props.trackId;
+      if (checkTrack && !sameTrack) this.wavesurfer.play();
+      if (!checkTrack) this.wavesurfer.stop();
+      if (checkTrack && sameTrack && newProps.playing !== this.props.playing) this.wavesurfer.playPause();
       this.wavesurfer.setMute(true);
+
+      //when the song ends, the waveform resets and currentTrack is set to null. 
+      this.wavesurfer.on('finish', () => {
+        this.wavesurfer.stop();
+        this.props.endCurrentTrack();
+      });
+
     }
   }
 
@@ -44,6 +36,7 @@ class WaveForm extends React.Component{
       waveColor: '#000'
     });
     this.wavesurfer.load(this.props.track.audioUrl);
+
   }
 
   render() {

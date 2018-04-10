@@ -55,22 +55,25 @@ class TrackShow extends React.Component {
     let buttonBar = this.userTrackButtons();
 
     return (
-      <div className='track-show-container'>
-        <div className='track-show-detail'>
-          <div className='track-sd-top'>
-            <div className={buttonPlaying} onClick={(e) => this.songButton(track, e)}></div>
-            <div className='track-sd-info'>
-              <div className='track-sd-uploader'>{track.uploader}</div>
-              <div className='track-sd-title'>{track.title}</div>
+      <div className='track-show-page'>
+        <div className='track-show-container'>
+          <div className='track-show-detail'>
+            <div className='track-sd-top'>
+              <div className={buttonPlaying} onClick={(e) => this.songButton(track, e)}></div>
+              <div className='track-sd-info'>
+                <div className='track-sd-uploader'>{track.uploader}</div>
+                <div className='track-sd-title'>{track.title}</div>
+              </div>
+            </div>
+            <div className='track-sd-bott'>
+              <WaveFormContainer track={track} height={100} color={'#fff'}/>
             </div>
           </div>
-          <div className='track-sd-bott'>
-            <WaveFormContainer track={track}/>
+          <div className='track-show-image-container'>
+            <img src={track.imageUrl}/>
           </div>
         </div>
-        <div className='track-show-image-container'>
-          <img src={track.imageUrl}/>
-        </div>
+        <div className='track-show-comments-container'></div>
       </div>
     )
   }

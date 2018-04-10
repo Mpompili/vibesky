@@ -75,12 +75,12 @@ class TrackItem extends React.Component {
               </div>
               <div className="ti-upload-det">
                 <aside className="ti-description">{track.uploader}</aside>
-                <aside className="ti-title">{track.title}</aside>
+                <a href={`/#/tracks/${track.id}`} className="ti-title">{track.title}</a>
               </div>
             </div>
             <div className='sound-bar'>
               <span></span>
-              <WaveFormContainer track={track}/>
+              <WaveFormContainer track={track} height={60} color={'#000'}/>
             </div>
             {buttonBar}
           </section>

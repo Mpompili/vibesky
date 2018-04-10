@@ -32,8 +32,8 @@ class WaveForm extends React.Component{
       barHeight: 3,
       barWidth: 2,
       cursorWidth: 0,
-      height: 60,
-      waveColor: '#000'
+      height: this.props.height,
+      waveColor: this.props.color
     });
     this.wavesurfer.load(this.props.track.audioUrl);
 

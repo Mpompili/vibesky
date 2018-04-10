@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 import WaveFormContainer from '../trackplayer/waveform_container';
 
-//will import track index item
-class TrackItem extends React.Component {
+class TrackShow extends React.Component {
   constructor(props) {
     super(props);
     this.songButton = this.songButton.bind(this);
@@ -28,6 +27,7 @@ class TrackItem extends React.Component {
   }
 
   componentDidMount() {
+    this.props.fetchTrack(this.props.match.params.id);
   }
 
   userTrackButtons() {
@@ -51,45 +51,29 @@ class TrackItem extends React.Component {
     let { track, trackplayer } = this.props;
 
     let buttonPlaying = (trackplayer.playing && trackplayer.trackId === track.id) ?
-      'ti-play playing' : 'ti-play';
+      'ts-play playing' : 'ts-play';
     let buttonBar = this.userTrackButtons();
+
     return (
-      <div className='track-item-container'>
-
-        <div className='track-uploader-info'>
-          <aside className="track-uploader-circle">
-            <img src={track.imageUrl}/>
-          </aside>
-          <aside className="track-uploader-name">{track.uploader}</aside>
-        </div>
-
-        <div className='track-item'>
-          <div className='track-image-box'>
-            <img src={track.imageUrl}/>
+      <div className='track-show-container'>
+        <div className='track-show-detail'>
+          <div className='track-sd-top'>
+            <div className={buttonPlaying} onClick={(e) => this.songButton(track, e)}></div>
+            <div className='track-sd-info'>
+              <div className='track-sd-uploader'>{track.uploader}</div>
+              <div className='track-sd-title'>{track.title}</div>
+            </div>
           </div>
-
-          <section className='track-details'>
-            <div className='td-top'>
-              <div className={buttonPlaying} onClick={(e) => this.songButton(track, e)}>
-
-              </div>
-              <div className="ti-upload-det">
-                <aside className="ti-description">{track.uploader}</aside>
-                <aside className="ti-title">{track.title}</aside>
-              </div>
-            </div>
-            <div className='sound-bar'>
-              <span></span>
-              <WaveFormContainer track={track}/>
-            </div>
-            {buttonBar}
-          </section>
-
+          <div className='track-sd-bott'>
+            <WaveFormContainer track={track}/>
+          </div>
         </div>
-
+        <div className='track-show-image-container'>
+          <img src={track.imageUrl}/>
+        </div>
       </div>
     )
   }
 }
 
-export default TrackItem;
+export default TrackShow;

@@ -7,9 +7,9 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Provider } from 'react-redux';
 import TrackIndexContainer from './tracks/track_index_container';
 import TrackFormContainer from './tracks/track_form_container';
-import ReactPlayer from 'react-player';
 import TrackPlayerContainer from './trackplayer/trackplayer_container';
 import EditFormContainer from './tracks/edit_track_container';
+import TrackShowContainer from './tracks/track_show_container';
 
 const App = () => (
   <div id='app'>
@@ -21,6 +21,7 @@ const App = () => (
       <Switch>
         <ProtectedRoute exact path ='/tracks/new' component={TrackFormContainer} />
         <ProtectedRoute exact path ='/tracks/:id/edit' component={EditFormContainer} />
+        <ProtectedRoute exact path ='/tracks/:id' component={TrackShowContainer} />
         <ProtectedRoute exact path ='/tracks' component={TrackIndexContainer} />
       </Switch>
     </div>

@@ -45,13 +45,12 @@
       align-items: center;
       overflow: hidden;
       box-sizing: border-box;
-      width: 160px;
-      height: 160px;
-      min-width: 160px;
-      min-height: 160px;
+      max-width: 340px;
+      max-height: 340px;
+      min-width: 340px;
+      min-height: 340px;
       box-shadow: 1px 1px 5px lightgrey;
-      // background: image_url('missing.png');
-      // background-size: contain;
+      margin: 20px;
       img {
         flex-shrink: 0;
         min-width: 100%;

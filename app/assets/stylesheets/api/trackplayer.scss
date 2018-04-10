@@ -24,8 +24,10 @@
 }
 .controller-btn{
   margin-left: 12px;
+  min-width: 24px;
   width: 24px;
   height: 100%;
+  cursor: pointer;
 }
 
 #tp-progress{
@@ -33,9 +35,16 @@
   width: 100%;
   max-width: 632px;
   height: 100%;
+  text-align: center;
   #tp-timepassed, #tp-duration{
     width: 50px;
     height: 46px;
+    padding: 17px 0;
+    font-size: 11px;
+    font-weight: 300;
+  }
+  #tp-timepassed{
+    color: $cloud-orange;
   }
 }
 
@@ -50,13 +59,45 @@
     height: 1px;
     background-color: #ccc;
   }
-  #scrub-progress{
-    position: absolute;
-    height: 1px;
-    background-color: $cloud-orange;
-    width: 35px;
+
+}
+
+#scrub-progress{
+  position: absolute;
+  height: 1px;
+  background-color: $cloud-orange;
+  width: 0%;
+  -webkit-transition: all 0.45s linear;
+  -moz-transition: all 0.45s linear;
+  -o-transition: all 0.45s linear;
+  transition: all 0.45s linear;
+}
+.tp-track-dets{
+  display: flex;
+  align-items: center;
+  .tp-td-uploader-pic{
+    box-sizing: border-box;
+    min-width: 30px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0 7px;
+    img {
+      flex-shrink: 0;
+      min-width: 100%;
+      max-width: 100%;
+    }
+  }
+  .tp-td-track-info{
+    min-width: 230px;
+    width:100%;
   }
 }
+
+
 
 #previous-btn{
   background: url(https://a-v2.sndcdn.com/assets/images/playback/prev-859a883.svg) no-repeat center;
@@ -68,9 +109,30 @@
   background: url(https://a-v2.sndcdn.com/assets/images/playback/skip-c4f0490.svg) no-repeat center;
 }
 #shuffle-btn{
-  background: url(https://a-v2.sndcdn.com/assets/images/playback/shuffle-active-3c9efb1.svg) no-repeat center;
+  background: url(https://a-v2.sndcdn.com/assets/images/playback/shuffle-cde403e.svg) no-repeat center;
 }
 #loop-btn{
+  background: url(https://a-v2.sndcdn.com/assets/images/playback/repeat-6c3e166.svg) no-repeat center;
+  margin-right: 20px;
+}
+#loop-btn-active{
   background: url(https://a-v2.sndcdn.com/assets/images/playback/repeat-all-098b32e.svg) no-repeat center;
   margin-right: 20px;
+}
+#mute-volume-btn{
+  background: url(https://a-v2.sndcdn.com/assets/images/playback/volume-max-1fbfd63.svg) no-repeat center;
+  margin: 0 12px;
+}
+#liked-button{
+  background: image_url('heart.svg') no-repeat center;
+  margin-left: 7px;
+  width: 24px;
+  height: 24px;
+}
+
+#playlist-button{
+  background: image_url('playlist.svg') no-repeat center;
+  width: 24px;
+  height: 24px;
+  margin: 3px 0 0 7px;
 }

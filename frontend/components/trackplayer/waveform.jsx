@@ -16,7 +16,7 @@ class WaveForm extends React.Component{
       if (checkTrack && sameTrack && newProps.playing !== this.props.playing) this.wavesurfer.playPause();
       this.wavesurfer.setMute(true);
 
-      //when the song ends, the waveform resets and currentTrack is set to null. 
+      //when the song ends, the waveform resets and currentTrack is set to null.
       this.wavesurfer.on('finish', () => {
         this.wavesurfer.stop();
         this.props.endCurrentTrack();

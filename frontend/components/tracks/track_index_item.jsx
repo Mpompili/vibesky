@@ -32,12 +32,29 @@ class TrackItem extends React.Component {
   componentDidMount() {
   }
 
+  userTrackButtons() {
+    let track = this.props.track;
+    if (this.props.currentUser.id == track.uploaderId){
+      return (
+        <div className='button-bar'>
+          <div className='controller-btn like-btn'>like</div>
+          <Link to={`/tracks/${track.id}/edit`} className="controller-btn edit-btn">Edit</Link>
+          <div className='controller-btn delete-btn' onClick={(e) => this.props.deleteSong(track.id, e)}>Delete</div>
+        </div>
+      )}else{
+        return (
+          <div className='button-bar'>
+            <div className='controller-btn like-btn'>like</div>
+          </div>
+        )};
+  }
+
   render(){
     let { track, trackplayer } = this.props;
 
     let buttonPlaying = (trackplayer.playing && trackplayer.trackId === track.id) ?
       'ti-play playing' : 'ti-play';
-
+    let buttonBar = this.userTrackButtons();
     return (
       <div className='track-item-container'>
 
@@ -67,9 +84,7 @@ class TrackItem extends React.Component {
               <span></span>
               <WaveFormContainer track={track}/>
             </div>
-            <Link to={`/tracks/${track.id}/edit`}className="header-item">Upload</Link>
-            <button onClick={(e) => this.deleteSong(track.id, e)}>destroy song</button>
-            <div className='button-bar'>buttonbar</div>
+            {buttonBar}
           </section>
 
         </div>

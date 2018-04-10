@@ -2,10 +2,12 @@
 .track-index-container {
   flex: 2;
   padding: 30px 30px;
+
   .track-index-tabs{
     display: flex;
     width: 100%;
     border-bottom: 1px solid $light-gray;
+    margin-bottom: 20px;
     .ti-tab{
       font-size: 24px;
       height: 39px;
@@ -17,7 +19,7 @@
       }
     }
     .ttmid{
-      margin-left: 12px; 
+      margin-left: 12px;
     }
   }
 }

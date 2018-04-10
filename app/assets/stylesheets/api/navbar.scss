@@ -30,6 +30,7 @@ justify-content: space-between;
 font: 14px/1.5 normal white;
 font-family: $sans-serif;
 background-color: $dark-gray;
+z-index: 10;
   .navbar-left {
     display: flex;
     align-items: center;

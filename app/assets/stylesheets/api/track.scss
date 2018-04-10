@@ -5,7 +5,7 @@
   width: 100%;
   justify-content: space-evenly;
   font-weight: 300;
-
+  margin-bottom: 36px;
   .track-uploader-info{
     display: flex;
     align-items: center;
@@ -116,7 +116,7 @@
           position: absolute;
           width: 100%;
           height: 30px;
-          z-index: 5;
+          z-index: 4;
           background-color: rgba(255,255,255,0.75);
           bottom: 0;
         }
@@ -127,8 +127,21 @@
         background-color: black;
       }
       .button-bar{
+        display: flex;
         margin-top: 10px;
-        height: 30px;
+        height: 22px;
+        text-align: center;
+        .controller-btn{
+          border: 1px lightgray solid;
+          margin: 0 5px;
+          width: 70px;
+          border-radius: 3px;
+          box-sizing: border-box;
+          padding: 4px;
+        }
+        .controller-btn:hover{
+          border-color: gray;
+        }
       }
     }
   }

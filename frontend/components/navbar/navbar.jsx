@@ -6,12 +6,6 @@ class Navbar extends React.Component {
     super(props);
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   if (!nextProps.currentUser) {
-  //     this.props.history.replace('/');
-  //   }
-  // }
-
   logged_in_left() {
     return (
       <div className="navbar-left">
@@ -28,7 +22,7 @@ class Navbar extends React.Component {
     return (
       <div className="navbar-right">
         <Link to='/tracks/new' className="header-item">Upload</Link>
-        <Link to='/' className="header-item" onClick={this.logout}>Logout</Link>
+        <Link to='/home' className="header-item" onClick={this.logout}>Logout</Link>
       </div>
     )
   }

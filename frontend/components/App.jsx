@@ -15,7 +15,7 @@ const App = () => (
   <div id='app'>
 
       <ProtectedRoute path ='/' component={NavbarContainer} />
-      <AuthRoute path ='/' component={SplashContainer}/>
+      <AuthRoute path ='/home' component={SplashContainer}/>
 
     <div className="content-container">
       <Switch>
@@ -27,8 +27,8 @@ const App = () => (
     </div>
 
     <Switch>
-      <AuthRoute exact path='/login' component={SessionContainer} />
-      <AuthRoute exact path='/signup' component={SessionContainer} />
+      <AuthRoute exact path='/home/login' component={SessionContainer} />
+      <AuthRoute exact path='/home/signup' component={SessionContainer} />
     </Switch>
       <ProtectedRoute path ='/' component={TrackPlayerContainer} />
   </div>

@@ -73,7 +73,23 @@ class TrackShow extends React.Component {
             <img src={track.imageUrl}/>
           </div>
         </div>
-        <div className='track-show-comments-container'></div>
+        <div className='track-show-container-bottom'>
+          <div className='track-show-comment-bar'>
+            <div className='comment-container'>
+              <div className='comment-form'>
+                <div className='comment-form-user'>
+                  <img src={track.imageUrl}/>
+                </div>
+                <div className='comment-input-container'>
+                  <input className='comment-input' type='text' placeholder='Write a Comment'/>
+                </div>
+              </div>
+              <div className='comment-buttons'></div>
+            </div>
+          </div>
+          <div className='tscb-sidebar'>
+          </div>
+        </div>
       </div>
     )
   }

@@ -20,8 +20,8 @@ class Splash extends React.Component {
   splash_right() {
     return (
       <nav className="splash-right">
-        <Link to="/login" className="signin-button sbutton">Sign in</Link>
-        <Link to="/signup" className="signup-button sbutton">Create Account</Link>
+        <Link to="/home/login" className="signin-button sbutton">Sign in</Link>
+        <Link to="/home/signup" className="signup-button sbutton">Create Account</Link>
       </nav>
     )
   }

@@ -20,7 +20,7 @@ const Protected = ({component: Component, path, loggedIn, exact}) => (
       <Component {...props} />
     ) : (
       <div>{console.warn('hitting protected tracks')}
-      <Redirect to="/" />
+      <Redirect to="/home" />
       </div>
     )
   )}/>

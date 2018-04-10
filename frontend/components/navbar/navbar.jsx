@@ -6,15 +6,11 @@ class Navbar extends React.Component {
     super(props);
   }
 
-  componentDidMount(){
-    this.props.fetchTracks();
-  }
-
-  componentWillReceiveProps(nextProps){
-    if (!nextProps.currentUser) {
-      this.props.history.replace('/');
-    }
-  }
+  // componentWillReceiveProps(nextProps){
+  //   if (!nextProps.currentUser) {
+  //     this.props.history.replace('/');
+  //   }
+  // }
 
   logged_in_left() {
     return (

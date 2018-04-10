@@ -24,6 +24,11 @@ class TrackItem extends React.Component {
       }
   }
 
+  deleteSong(trackId, e){
+    e.preventDefault();
+    this.props.deleteTrack(trackId);
+  }
+
   componentDidMount() {
   }
 
@@ -62,6 +67,8 @@ class TrackItem extends React.Component {
               <span></span>
               <WaveFormContainer track={track}/>
             </div>
+            <Link to={`/tracks/${track.id}/edit`}className="header-item">Upload</Link>
+            <button onClick={(e) => this.deleteSong(track.id, e)}>destroy song</button>
             <div className='button-bar'>buttonbar</div>
           </section>
 

@@ -101,8 +101,8 @@ class TrackPlayer extends React.Component{
               <p>{trackUploader}</p>
               <p>{trackName}</p>
             </div>
-            <div id='liked-button' classname='controller-btn'></div>
-            <div id='playlist-button' classname='controller-btn'></div>
+            <div id='liked-button' className='controller-btn'></div>
+            <div id='playlist-button' className='controller-btn'></div>
 
           </div>
         </div>

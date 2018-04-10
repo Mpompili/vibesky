@@ -11,28 +11,14 @@ class TrackIndex extends React.Component {
   }
 
   componentDidMount() {
+    console.log('hit here');
     this.props.fetchTracks();
   }
 
-  getctime(){
-    let tesst = this.reactplayer.getCurrentTime();
-    let durationn = this.reactplayer.getDuration();
-
-    var measuredTime = new Date(null);
-    measuredTime.setSeconds(tesst); // specify value of SECONDS
-    var MHSTime = measuredTime.toISOString().substr(14, 5);
-    console.log(MHSTime);
-
-    var measuredTime2 = new Date(null);
-    measuredTime2.setSeconds(durationn); // specify value of SECONDS
-    var MHSTime2 = measuredTime2.toISOString().substr(14,5);
-    console.log(MHSTime2);
-  }
-
   render(){
-    // <li>{tracks[key].title},<br/>{tracks[key].image}</li>
-    let { tracks, errors, trackplayer, setCurrentTrack, setPlayPause } = this.props;
-    // let reactplayer =  node => this.reactplayer = node;
+
+    let { tracks, errors, trackplayer, setCurrentTrack, setPlayPause, deleteTrack } = this.props;
+
     let trackItems = Object.keys(tracks).map(key => (
       <TrackItem
         key={key}
@@ -40,19 +26,11 @@ class TrackIndex extends React.Component {
         trackplayer={trackplayer}
         setCurrentTrack={setCurrentTrack}
         setPlayPause={setPlayPause}
+        deleteTrack={deleteTrack}
+        currentUser={this.props.currentUser}
       />
     ));
     let styledErrors = errors.map(err => <li>{err}</li>);
-
-    // let trackToPlay;
-    // if (trackplayer.currentTrack == null){
-    //   console.log('current track in trackplayer is null');
-    //   trackToPlay = '';}
-    //    else {
-    //      console.log('now it is not null');
-    //      trackToPlay = trackplayer.currentTrack.audioUrl;
-    //      console.log(trackToPlay);
-    //     };
 
     return (
       <span className='track-index-page-container'>
@@ -66,9 +44,6 @@ class TrackIndex extends React.Component {
           </div>
         </div>
         <div className="sidebar-placeholder">
-          <div>
-          <button onClick={this.getctime.bind(this)}>get current time</button>
-          </div>
         </div>
       </span>
     )
@@ -76,13 +51,3 @@ class TrackIndex extends React.Component {
 }
 
 export default TrackIndex;
-
-// <ReactPlayer
-//   ref={reactplayer}
-//   url={trackToPlay}
-//   playing={trackplayer.playing}
-//   controls
-//   progressInterval
-//   width='200px'
-//   height='28px'
-// />

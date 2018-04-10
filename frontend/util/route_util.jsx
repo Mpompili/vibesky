@@ -7,7 +7,9 @@ const Auth = ({component: Component, path, loggedIn, exact}) => (
     !loggedIn ? (
       <Component {...props} />
     ) : (
+      <div>{console.warn('hitting auth tracks')}
       <Redirect to="/tracks" />
+      </div>
     )
   )}/>
 );
@@ -17,7 +19,9 @@ const Protected = ({component: Component, path, loggedIn, exact}) => (
     loggedIn ? (
       <Component {...props} />
     ) : (
+      <div>{console.warn('hitting protected tracks')}
       <Redirect to="/" />
+      </div>
     )
   )}/>
 );
@@ -27,4 +31,4 @@ const mapStateToProps = state => {
 };
 
 export const AuthRoute = withRouter(connect(mapStateToProps, null)(Auth));
-export const ProtectedRoute = withRouter(connect(mapStateToProps, null)(Protected)); 
+export const ProtectedRoute = withRouter(connect(mapStateToProps, null)(Protected));

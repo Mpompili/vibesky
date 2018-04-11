@@ -2,14 +2,29 @@ import React from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import WaveFormContainer from '../trackplayer/waveform_container';
 import CommentsContainer from '../comments/comments_container';
-import CommentIndex from '../comments/comments_index_container';
+import CommentIndexContainer from '../comments/comments_index_container';
 
 class TrackShow extends React.Component {
   constructor(props) {
     super(props);
     this.songButton = this.songButton.bind(this);
+    this.state = {
+      firstLoad: true
+    };
+  }
+  
+  componentWillReceiveProps(newProps) {
+    if (this.props.match.params.id !== newProps.match.params.id){
+      console.log('willreceiveprops');
+      this.props.fetchTrack(newProps.match.params.id);
+    }
   }
 
+  componentDidMount(){
+    this.props.fetchTrack(this.props.match.params.id)
+    .then(()=> this.setState({firstLoad: false}));
+  }
+  
   songButton(track, e) {
     e.preventDefault();
     let { currentTrack, playing, trackId } = this.props.trackplayer;
@@ -25,18 +40,9 @@ class TrackShow extends React.Component {
 
   deleteSong(trackId, e){
     e.preventDefault();
-    this.props.deleteTrack(trackId);
+    this.props.deleteTrack(trackId).then(()=> this.props.history.push('/tracks'));
   }
 
-  componentWillReceiveProps(newProps) {
-    if (this.props.match.params.id != newProps.match.params.id){
-      this.props.fetchTrack(newProps.match.params.id);
-    }
-  }
-
-  componentWillMount(){
-    this.props.fetchTrack(this.props.match.params.id);
-  }
 
   userTrackButtons() {
     let track = this.props.track;
@@ -45,7 +51,7 @@ class TrackShow extends React.Component {
         <div className='button-bar'>
           <div className='controller-btn like-btn'>like</div>
           <Link to={`/tracks/${track.id}/edit`} className="controller-btn edit-btn">Edit</Link>
-          <div className='controller-btn delete-btn' onClick={(e) => this.props.deleteSong(track.id, e)}>Delete</div>
+          <div className='controller-btn delete-btn' onClick={(e) => this.deleteSong(track.id, e)}>Delete</div>
         </div>
       );}else{
         return (
@@ -55,11 +61,17 @@ class TrackShow extends React.Component {
         );}
   }
 
+  deleteSong(trackId, e){
+    e.preventDefault();
+    this.props.deleteTrack(trackId);
+    this.props.history.push('/tracks');
+  }
+
   render(){
-    let { track, trackplayer } = this.props;
-    ////
-    if (!track) {return(<div>loading</div>);}
-    ////
+    let { track, trackplayer, comments, loading, currentUser, deleteTrack } = this.props;
+  
+    if (this.state.firstLoad || loading) return (<div>loading</div>);
+
     let buttonPlaying = (trackplayer.playing && trackplayer.trackId === track.id) ?
       'ts-play playing' : 'ts-play';
     let buttonBar = this.userTrackButtons();
@@ -82,20 +94,37 @@ class TrackShow extends React.Component {
             <img src={track.imageUrl}/>
           </div>
         </div>
-        <div className='track-show-container-bottom'>
-          <div className='track-show-comment-bar'>
-            <CommentsContainer track={track}/>
-            <CommentIndex track={track}/> 
-          </div>
-          <div className='tscb-sidebar'>
-          </div>
+          <div className='track-show-container-bottom'>
+            <div className='tscb-left'>
+              <div className='track-show-comment-bar'>
+                <CommentsContainer track={track}/>
+              </div>
+              { buttonBar }
+              <div className='ts-uploader-ci'>
+                <div className='ts-uc-left'>
+                  <div className='ts-artist-circle'>
+                    <img src={track.imageUrl}/> 
+                  </div>
+                  <div className='ts-artist-name'>{track.uploader}</div>
+                  <div className='ts-follow-btn'>Follow</div> 
+                </div> 
+                <div className='ts-uc-right'>
+                  <div className='ts-track-description'>{track.description}</div> 
+                  <div className='track-show-comment-index'>
+                    <CommentIndexContainer track={track}/> 
+                  </div> 
+                </div> 
+              </div> 
+            </div>
+            <div className='tscb-sidebar'>
+            </div>
         </div>
       </div>
     );
   }
 }
 
-export default TrackShow;
+export default withRouter(TrackShow);
 
 // <div className='comment-container'>
 //   <div className='comment-form'>

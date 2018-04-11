@@ -4,11 +4,15 @@ export const RECEIVE_TRACKS = 'RECEIVE_TRACKS';
 export const RECEIVE_TRACK = 'RECEIVE_TRACK';
 export const REMOVE_TRACK = 'REMOVE_TRACK';
 export const RECEIVE_TRACK_ERRORS = 'RECEIVE_TRACK_ERRORS';
-
+export const REQUEST_TRACK_FETCH = 'REQUEST_TRACK_FETCH'; 
 
 export const receiveTracks = tracks => ({
   type: RECEIVE_TRACKS,
   tracks
+});
+
+export const requestTrackFetch = () => ({
+  type: REQUEST_TRACK_FETCH
 });
 
 export const receiveTrack = payload => ({
@@ -34,13 +38,14 @@ export const fetchTracks = () => dispatch => (
   ))
 );
 
-export const fetchTrack = (id) => dispatch => (
-  APIUtil.fetchTrack(id).then(payload => (
+export const fetchTrack = (id) => dispatch => {
+  dispatch(requestTrackFetch()); 
+ return APIUtil.fetchTrack(id).then(payload => (
     dispatch(receiveTrack(payload))
   ), err => (
     dispatch(receiveTrackErrors(err.responseJSON))
-  ))
-);
+  ));
+};
 
 export const createTrack = formData => dispatch => (
   APIUtil.createTrack(formData).then(payload => (

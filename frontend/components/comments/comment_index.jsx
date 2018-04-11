@@ -1,23 +1,24 @@
 import React from 'react'; 
+import CommentIndexItem from './comment_index_item'; 
 
 class CommentIndex extends React.Component{
     constructor(props){
         super(props);
     }
 
+
+
     render(){
-        let { track } = this.props; 
-        if (this.props.comments === {}) return(<li>loading</li>);
-        console.log(this.props.comments);
-        
+        let { track, comments, currentUser, deleteComment } = this.props; 
         let trackComments = track.commentIds.map(id => (
-            <li>{this.props.comments[id].body}</li> 
+            <CommentIndexItem key={id} track={track} currentUser={currentUser} id={id} deleteComment={deleteComment} comment={comments[id]}/>
         ));
 
+
         return(
-            <ul>
-            {trackComments}
-            </ul>
+            <div className='tsc-container'>
+            { trackComments }
+            </div> 
         );
     }
 

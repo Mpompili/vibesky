@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/comment_api_util';
+import { receiveTrack } from './track_actions'; 
 
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
@@ -11,22 +12,24 @@ export const receiveCommentErrors = errors => ({
 });
 
 export const removeComment = commentId => ({
-    type: RECEIVE_COMMENT_ERRORS,
+    type: REMOVE_COMMENT,
     commentId 
 });
 
 export const createComment = (comment, id) => dispatch => (
     APIUtil.createComment(comment, id).then(payload => (
-    dispatch({type: RECEIVE_TRACK, payload: payload})
-    ), err => (
-        dispatch(receiveCommentErrors(err.responseJSON))
+        dispatch(receiveTrack(payload))
     ))
 );
 
 export const deleteComment = commentId => dispatch => (
-    APIUtil.deleteComment(commentId).then(comment => (
-    dispatch(removeComment(commentId))
-    ), err => (
-        dispatch(receiveCommentErrors(err.responseJSON))
+    APIUtil.deleteComment(commentId).then(payload => (
+    dispatch(receiveTrack(payload))
     ))
 );
+
+// .then(payload => (
+//     dispatch({type: RECEIVE_TRACK, payload: payload})
+//     ), err => (
+//         dispatch(receiveCommentErrors(err.responseJSON))
+//     ))

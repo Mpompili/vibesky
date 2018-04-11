@@ -5,9 +5,11 @@ import { setCurrentTrack, setPlayPause  } from '../../actions/trackplayer_action
 
 const mapStateToProps = (state, ownProps) => ({
   track: state.entities.tracks[ownProps.match.params.id],
+  comments: state.entities.comments, 
   errors: state.errors.tracks || [],
   trackplayer: state.trackplayer || {},
-  currentUser: state.session.currentUser
+  currentUser: state.session.currentUser,
+  loading: state.ui.loading
 });
 
 const mapDispatchToProps = (dispatch) => ({

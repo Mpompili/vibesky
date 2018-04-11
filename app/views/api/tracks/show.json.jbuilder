@@ -12,7 +12,9 @@ end
 json.comments do
   @track.comments.each do |comment|
     json.set! comment.id do 
-      json.extract! comment, :id, :body
+      json.id comment.id 
+      json.body comment.body
+      json.user comment.user.email
     end 
   end
 end

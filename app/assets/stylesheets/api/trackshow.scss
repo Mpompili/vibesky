@@ -78,11 +78,19 @@
   height: 120px;
 }
 
-
+.tscb-left{
+  flex: 2;
+  display: flex; 
+  flex-direction: column; 
+  .button-bar{
+    margin-left: 25px;
+    height: inherit; 
+  }
+}
 .track-show-comment-bar{
   width: 100%;
-  flex: 2;
-  padding: 0 30px 30px 30px;
+  box-sizing: border-box;
+  padding: 20px 30px 5px;
 }
 //////
 .ti-comment-bar{
@@ -93,4 +101,61 @@
 .tscb-sidebar{
   flex: 1;
   border-left: 1px lightgray solid;
+  height: 100vh; 
+}
+
+.ts-uploader-ci{
+  display: flex;
+  max-width: 100%;
+  margin-top: 41px;
+  border-top: 1px lightgray solid;
+  padding-top: 25px;
+  margin: 30px 30px;
+  .ts-uc-left{
+    flex: 1;
+    .ts-artist-circle{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      box-sizing: border-box;
+      max-width: 120px;
+      max-height: 120px;
+      min-width: 120px;
+      min-height: 120px;
+      border-radius: 50%;
+      img {
+        flex-shrink: 0;
+        min-width: 100%;
+        max-width: 100%;
+      }
+    }
+    .ts-artist-name, .ts-follow-btn{
+      margin: 10px 0px; 
+    }
+    .ts-follow-btn{
+      font-size: 11px;
+      font-weight: 600;
+      color: white;
+      background-color: #f50;
+      cursor: pointer;
+      padding: 5px 10px;
+      border-radius: 3px;
+      width: min-content;
+    }
+  }
+
+  .ts-uc-right{
+    flex: 3; 
+    .ts-track-description{
+      border: 1px solid lightgray;
+      min-height: 149px;
+      font-size: 14px;
+      font-weight: 300;
+    }
+  }
+}
+
+.track-show-comment-index{
+  border-top: 1px solid lightgray;
 }

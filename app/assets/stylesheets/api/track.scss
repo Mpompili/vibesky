@@ -1,7 +1,6 @@
 .track-item-container{
   display: flex;
   flex-direction: column;
-  height: 210px;
   width: 100%;
   justify-content: space-evenly;
   font-weight: 300;
@@ -9,6 +8,7 @@
   .track-uploader-info{
     display: flex;
     align-items: center;
+    margin-bottom: 10px; 
 
     .track-uploader-circle{
       display: flex;
@@ -37,7 +37,6 @@
 
   .track-item{
     display: flex;
-    height: 170px;
     .track-image-box{
       flex: 1;
       display: flex;
@@ -126,25 +125,26 @@
         height: 32px;
         background-color: black;
       }
-      .button-bar{
-        display: flex;
-        margin-top: 10px;
-        height: 22px;
-        text-align: center;
-        .controller-btn{
-          border: 1px lightgray solid;
-          margin: 0 5px;
-          width: 70px;
-          border-radius: 3px;
-          box-sizing: border-box;
-          padding: 4px;
-        }
-        .controller-btn:hover{
-          border-color: gray;
-        }
-      }
     }
   }
 
 
+}
+
+.button-bar{
+  display: flex;
+  margin-top: 10px;
+  height: 22px;
+  text-align: center;
+  .controller-btn{
+    border: 1px lightgray solid;
+    margin: 0 5px;
+    width: 70px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 4px;
+  }
+  .controller-btn:hover{
+    border-color: gray;
+  }
 }

@@ -26,7 +26,7 @@ export const updateComment = (comment, id) => (
 export const deleteComment = id => (
     $.ajax({
       method: 'DELETE',
-      url: `api/comment/${id}`
+      url: `api/comments/${id}`
     })
   );
   

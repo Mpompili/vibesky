@@ -38,26 +38,26 @@ class TrackItem extends React.Component {
         <div className='button-bar'>
           <div className='controller-btn like-btn'>like</div>
           <Link to={`/tracks/${track.id}/edit`} className="controller-btn edit-btn">Edit</Link>
-          <div className='controller-btn delete-btn' onClick={(e) => this.props.deleteSong(track.id, e)}>Delete</div>
+          <div className='controller-btn delete-btn' onClick={(e) => this.deleteSong(track.id, e)}>Delete</div>
         </div>
-      )}else{
+      );}else{
         return (
           <div className='button-bar'>
             <div className='controller-btn like-btn'>like</div>
           </div>
-        )};
+        );}
   }
 
   showComments(){
     if (this.props.trackplayer.trackId == this.props.track.id){
          return (
           <CommentsContainer track={this.props.track} />
-         )
+         );
        }else{
          return (
            <div></div>
-         )
-       };
+         );
+       }
   }
 
   render(){
@@ -96,16 +96,16 @@ class TrackItem extends React.Component {
               <span></span>
               <WaveFormContainer track={track} height={60} color={'#000'}/>
             </div>
-            {buttonBar}
             <div className='ti-comment-bar'>
               {commentShow}
             </div>
+            {buttonBar}
           </section>
 
         </div>
 
       </div>
-    )
+    );
   }
 }
 

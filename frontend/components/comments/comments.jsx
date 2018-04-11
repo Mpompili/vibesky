@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 
-
+// .then(() => this.props.history.push('/tracks'))
 class CommentForm extends React.Component {
   constructor(props) {
     super(props);
@@ -16,6 +16,7 @@ class CommentForm extends React.Component {
     const formData = new FormData();
     formData.append("comment[body]", this.state.body);
     this.props.createComment(formData, this.props.track.id);
+    this.setState({body:''}); 
   }
 
   updateBody() {
@@ -43,4 +44,4 @@ class CommentForm extends React.Component {
   }
 }
 
-export default CommentForm;
+export default withRouter(CommentForm);

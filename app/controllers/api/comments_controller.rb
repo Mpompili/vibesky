@@ -4,6 +4,7 @@ class Api::CommentsController < ApplicationController
         @comment = current_user.comments.new(comment_params)
         @comment.track_id = params[:track_id]
         if @comment.save
+            @track = Track.find(@comment.track_id)
             render "api/tracks/show"
         else 
             render json: @comment.errors.full_messages, status: 401
@@ -22,7 +23,8 @@ class Api::CommentsController < ApplicationController
     def destroy
         @comment = Comment.find(params[:id])
         @comment.destroy
-        render json: {}
+        @track = Track.find(@comment.track_id)
+        render "api/tracks/show"
     end 
 
     private

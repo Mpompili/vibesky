@@ -115,9 +115,7 @@ class TrackPlayer extends React.Component{
              loop={loop}
              volume={volume}
              muted={muted}
-             onReady={() => console.log('onReady')}
-             onStart={() => console.log('onStart')}
-             onError={e => console.log('onError', e)}
+
              progressInterval={500}
              onProgress={this.onProgress()}
              onDuration={this.onDuration()}
@@ -129,3 +127,6 @@ class TrackPlayer extends React.Component{
 }
 
 export default TrackPlayer;
+// onReady={() => console.log('onReady')}
+// onStart={() => console.log('onStart')}
+// onError={e => console.log('onError', e)}

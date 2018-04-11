@@ -59,7 +59,7 @@ class TrackForm extends React.Component {
 
   render(){
   let detailSubmit, upload_container;
-  console.log(this.state);
+
   if (this.state.audioUrl === null) {
     upload_container = 'audio-upload-container';
     detailSubmit = '';

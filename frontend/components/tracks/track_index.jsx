@@ -11,7 +11,6 @@ class TrackIndex extends React.Component {
   }
 
   componentDidMount() {
-    console.log('hit here');
     this.props.fetchTracks();
   }
 

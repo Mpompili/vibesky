@@ -7,7 +7,11 @@ class Track < ApplicationRecord
   :content_type => /^image\/(jpg|jpeg|pjpeg|png|x-png|gif)$/,
    :message => 'file type is not allowed (only jpeg/png/gif images)'
 
-   has_attached_file :audio
+   has_attached_file :audio,
+                     storage: :s3,
+                     s3_credentials: "app/config/application.yml",
+                     path: "vibesky/:attachment/:style/:id.:extension"
+                     
  validates_attachment_content_type :audio, :content_type => [ 'audio/mpeg',
    'audio/x-mpeg', 'audio/mp3', 'audio/x-mp3', 'audio/mpeg3', 'audio/x-mpeg3',
    'audio/mpg', 'audio/x-mpg', 'audio/x-mpegaudio' ]

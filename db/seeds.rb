@@ -6,16 +6,29 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.destroy_all
+Track.destroy_all
+Comment.destroy_all
+
 users = User.create([
+  {email: 'demouser', password: 'password'},
   {email: 'michael@gmail.com', password: 'password'},
   {email: 'yuujie@gmail.com', password: 'password'},
   {email: 'nima@gmail.com', password: 'password'},
-  {email: 'demouser', password: 'password'},
   {email: 'Oprah@gmail.com', password: 'password'}
 ])
 
-Track.create([
-  {title: 'a beautiful song', uploader_id: 1},
-  {title: 'sad songs', uploader_id: 2},
-  {title: 'o fortuna', uploader_id: 1}
-  ])
+demo_user = User.find_by(email: 'demouser')
+
+# Track.create!({title: "Testpiece3", description: "asdfasdf", uploader_id: User.first.id, image_file_name: "Actionscene_edit1-1.png", image_content_type: "image/png", image_file_size: 3972643, audio_file_name: "SampleSynth.mp3", audio_content_type: "audio/mp3", audio_file_size: 1103329})
+
+track_names = ["SampleSynth.mp3"]
+
+track_names.each do |track|
+  Track.create!({
+    title: "#{track}", 
+    uploader_id: demo_user.id, 
+    description: "testing", 
+    audio: File.new(Rails.root.join('app','assets','tracks',"#{track}"))
+  })
+end

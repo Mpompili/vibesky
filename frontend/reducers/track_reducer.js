@@ -10,8 +10,6 @@ const trackReducer = (oldState = {}, action) => {
       return action.tracks;
     case RECEIVE_TRACK:
       newState = {[action.payload.track.id]: action.payload.track};
-   
-      // merge({}, oldState, newState);
       return Object.assign({}, oldState, newState);
     case REMOVE_TRACK:
       newState = merge({}, oldState);

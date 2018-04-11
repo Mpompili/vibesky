@@ -17,5 +17,5 @@ class Track < ApplicationRecord
   foreign_key: :uploader_id,
   class_name: :User
 
-  # has_many :comments
+  has_many :comments
 end

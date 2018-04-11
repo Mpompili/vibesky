@@ -6,14 +6,13 @@ json.track do
   json.uploader @track.user.email
   json.imageUrl asset_path(@track.image.url)
   json.audioUrl asset_path(@track.audio.url)
-
+  json.commentIds @track.comments.pluck(:id)
 end
 
-  # json.commentIds @track.comments.pluck(:id)
-
-
-# json.comments do
-#   @track.comments.each do |comment|
-#     json.extract! comment, :id, :body
-#   end
-# end
+json.comments do
+  @track.comments.each do |comment|
+    json.set! comment.id do 
+      json.extract! comment, :id, :body
+    end 
+  end
+end

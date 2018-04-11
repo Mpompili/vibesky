@@ -46,11 +46,11 @@ class sessionForm extends React.Component {
    closeModal() {
      this.setState({modalIsOpen: false});
      this.props.clearErrors();
-     this.props.history.push("/");
+     this.props.history.push("/home");
    }
 
   update(field){
-    return e => this.setState({ [field]: e.currentTarget.value })
+    return e => this.setState({ [field]: e.currentTarget.value });
   }
 
   handleSubmit(e){
@@ -66,7 +66,7 @@ class sessionForm extends React.Component {
   }
 
   render(){
-    let { path, submitForm, errors } = this.props
+    let { path, submitForm, errors } = this.props;
     let message = path === 'signup' ?
       <h1>Create your <span className="titlespacing">VIBESKY</span> account</h1> : <h1>Log in</h1>;
 
@@ -115,7 +115,7 @@ class sessionForm extends React.Component {
         </form>
       </Modal>
       </div>
-    )
+    );
   }
 }
 

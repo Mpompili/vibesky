@@ -14,6 +14,8 @@ class User < ApplicationRecord
     primary_key: :id,
     foreign_key: :uploader_id,
     class_name: :Track
+
+  has_many :comments
     
   # associations:
   # has_many :tracks

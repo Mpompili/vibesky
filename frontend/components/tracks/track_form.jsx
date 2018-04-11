@@ -10,7 +10,7 @@ class TrackForm extends React.Component {
   }
 
   update(type) {
-    return e => this.setState({ [type]: e.currentTarget.value })
+    return e => this.setState({ [type]: e.currentTarget.value });
   }
 
   updateFile(type, e) {
@@ -21,9 +21,9 @@ class TrackForm extends React.Component {
 
     fileReader.onloadend = () => {
       return this.setState({ [typeFile]: file, [typeUrl]: fileReader.result });
-    }
+    };
     file ? fileReader.readAsDataURL(file) :
-      this.setState({ [typeUrl]: 'didnt work', [typeFile]: null })
+      this.setState({ [typeUrl]: 'didnt work', [typeFile]: null });
   }
 
 

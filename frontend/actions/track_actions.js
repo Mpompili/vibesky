@@ -43,8 +43,8 @@ export const fetchTrack = (id) => dispatch => (
 );
 
 export const createTrack = formData => dispatch => (
-  APIUtil.createTrack(formData).then(track => (
-    dispatch(receiveTrack(track))
+  APIUtil.createTrack(formData).then(payload => (
+    dispatch(receiveTrack(payload))
   ), err => (
     dispatch(receiveTrackErrors(err.responseJSON))
   ))
@@ -52,8 +52,8 @@ export const createTrack = formData => dispatch => (
 
 
 export const updateTrack = (track, id) => dispatch => (
-  APIUtil.updateTrack(track, id).then(track => (
-    dispatch(receiveTrack(track))
+  APIUtil.updateTrack(track, id).then(payload => (
+    dispatch(receiveTrack(payload))
   ), err => (
     dispatch(receiveTrackErrors(err.responseJSON))
   ))

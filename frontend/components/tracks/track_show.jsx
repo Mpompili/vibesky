@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import WaveFormContainer from '../trackplayer/waveform_container';
 import CommentsContainer from '../comments/comments_container';
+import CommentIndex from '../comments/comments_index_container';
+
 class TrackShow extends React.Component {
   constructor(props) {
     super(props);
@@ -33,7 +35,7 @@ class TrackShow extends React.Component {
   }
 
   componentWillMount(){
-    this.props.fetchTrack(this.props.match.params.id)
+    this.props.fetchTrack(this.props.match.params.id);
   }
 
   userTrackButtons() {
@@ -45,18 +47,18 @@ class TrackShow extends React.Component {
           <Link to={`/tracks/${track.id}/edit`} className="controller-btn edit-btn">Edit</Link>
           <div className='controller-btn delete-btn' onClick={(e) => this.props.deleteSong(track.id, e)}>Delete</div>
         </div>
-      )}else{
+      );}else{
         return (
           <div className='button-bar'>
             <div className='controller-btn like-btn'>like</div>
           </div>
-        )};
+        );}
   }
 
   render(){
     let { track, trackplayer } = this.props;
     ////
-    if (!track){return(<div>loading</div>)};
+    if (!track) {return(<div>loading</div>);}
     ////
     let buttonPlaying = (trackplayer.playing && trackplayer.trackId === track.id) ?
       'ts-play playing' : 'ts-play';
@@ -83,12 +85,13 @@ class TrackShow extends React.Component {
         <div className='track-show-container-bottom'>
           <div className='track-show-comment-bar'>
             <CommentsContainer track={track}/>
+            <CommentIndex track={track}/> 
           </div>
           <div className='tscb-sidebar'>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

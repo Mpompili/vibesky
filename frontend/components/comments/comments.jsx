@@ -5,6 +5,21 @@ import { Link, Redirect, withRouter } from 'react-router-dom';
 class CommentForm extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      body: ''
+    };
+    this.handleSubmit = this.handleSubmit.bind(this); 
+  }
+
+  handleSubmit(e){
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("comment[body]", this.state.body);
+    this.props.createComment(formData, this.props.track.id);
+  }
+
+  updateBody() {
+    return e => this.setState({ body: e.currentTarget.value });
   }
 
   render(){
@@ -12,16 +27,19 @@ class CommentForm extends React.Component {
     return (
             <div className='comment-container'>
               <div className='comment-form'>
-                <div className='comment-form-user'>
-                  <img src={track.imageUrl}/>
-                </div>
-                <div className='comment-input-container'>
-                  <input className='comment-input' type='text' placeholder='Write a Comment'/>
-                </div>
+                <form onSubmit={this.handleSubmit} className='cform'> 
+                  <div className='comment-form-user'>
+                    <img src={track.imageUrl}/>
+                  </div>
+                  <div className='comment-input-container'>
+                    <input className='comment-input' type='text' onChange={this.updateBody()} value={this.state.body} placeholder='Write a Comment'/>
+                  </div>
+                  <input type='submit' className='h-input'/> 
+                </form> 
               </div>
               <div className='comment-buttons'></div>
             </div>
-    )
+    );
   }
 }
 

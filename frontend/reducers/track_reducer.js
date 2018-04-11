@@ -9,7 +9,7 @@ const trackReducer = (oldState = {}, action) => {
     case RECEIVE_TRACKS:
       return action.tracks;
     case RECEIVE_TRACK:
-      newState = {[action.payload.track.id]: action.payload.track}
+      newState = {[action.payload.track.id]: action.payload.track};
       return merge({}, oldState, newState);
     case REMOVE_TRACK:
       newState = merge({}, oldState);
@@ -20,6 +20,6 @@ const trackReducer = (oldState = {}, action) => {
     default:
       return oldState;
   }
-}
+};
 
 export default trackReducer;

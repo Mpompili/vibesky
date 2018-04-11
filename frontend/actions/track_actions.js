@@ -11,9 +11,9 @@ export const receiveTracks = tracks => ({
   tracks
 });
 
-export const receiveTrack = track => ({
+export const receiveTrack = payload => ({
   type: RECEIVE_TRACK,
-  track
+  payload
 });
 
 export const removeTrack = trackId => ({
@@ -35,8 +35,8 @@ export const fetchTracks = () => dispatch => (
 );
 
 export const fetchTrack = (id) => dispatch => (
-  APIUtil.fetchTrack(id).then(track => (
-    dispatch(receiveTrack(track))
+  APIUtil.fetchTrack(id).then(payload => (
+    dispatch(receiveTrack(payload))
   ), err => (
     dispatch(receiveTrackErrors(err.responseJSON))
   ))

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import WaveFormContainer from '../trackplayer/waveform_container';
-
+import CommentsContainer from '../comments/comments_container';
 class TrackShow extends React.Component {
   constructor(props) {
     super(props);
@@ -26,8 +26,14 @@ class TrackShow extends React.Component {
     this.props.deleteTrack(trackId);
   }
 
-  componentDidMount() {
-    this.props.fetchTrack(this.props.match.params.id);
+  componentWillReceiveProps(newProps) {
+    if (this.props.match.params.id != newProps.match.params.id){
+      this.props.fetchTrack(newProps.match.params.id);
+    }
+  }
+
+  componentWillMount(){
+    this.props.fetchTrack(this.props.match.params.id)
   }
 
   userTrackButtons() {
@@ -49,11 +55,12 @@ class TrackShow extends React.Component {
 
   render(){
     let { track, trackplayer } = this.props;
-
+    ////
+    if (!track){return(<div>loading</div>)};
+    ////
     let buttonPlaying = (trackplayer.playing && trackplayer.trackId === track.id) ?
       'ts-play playing' : 'ts-play';
     let buttonBar = this.userTrackButtons();
-
     return (
       <div className='track-show-page'>
         <div className='track-show-container'>
@@ -75,17 +82,7 @@ class TrackShow extends React.Component {
         </div>
         <div className='track-show-container-bottom'>
           <div className='track-show-comment-bar'>
-            <div className='comment-container'>
-              <div className='comment-form'>
-                <div className='comment-form-user'>
-                  <img src={track.imageUrl}/>
-                </div>
-                <div className='comment-input-container'>
-                  <input className='comment-input' type='text' placeholder='Write a Comment'/>
-                </div>
-              </div>
-              <div className='comment-buttons'></div>
-            </div>
+            <CommentsContainer track={track}/>
           </div>
           <div className='tscb-sidebar'>
           </div>
@@ -96,3 +93,15 @@ class TrackShow extends React.Component {
 }
 
 export default TrackShow;
+
+// <div className='comment-container'>
+//   <div className='comment-form'>
+//     <div className='comment-form-user'>
+//       <img src={track.imageUrl}/>
+//     </div>
+//     <div className='comment-input-container'>
+//       <input className='comment-input' type='text' placeholder='Write a Comment'/>
+//     </div>
+//   </div>
+//   <div className='comment-buttons'></div>
+// </div>

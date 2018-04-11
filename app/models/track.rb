@@ -22,7 +22,7 @@ class Track < ApplicationRecord
   has_many :comments, dependent: :destroy 
 end
 
-
+#yes
 # storage: :s3,
 #                      s3_credentials: "app/config/application.yml",
 #                      path: "vibesky/:attachment/:style/:id.:extension"

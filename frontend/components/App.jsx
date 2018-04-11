@@ -18,7 +18,7 @@ const App = () => (
       <AuthRoute path ='/home' component={SplashContainer}/>
 
     <div className="content-container">
-      <Switch>
+      <Switch>g
         <ProtectedRoute exact path ='/tracks/new' component={TrackFormContainer} />
         <ProtectedRoute exact path ='/tracks/:id/edit' component={EditFormContainer} />
         <ProtectedRoute exact path ='/tracks/:id' component={TrackShowContainer} />

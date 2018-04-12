@@ -24,7 +24,7 @@ class CommentForm extends React.Component {
   }
 
   render(){
-    let { track } = this.props;
+    let { track, currentUser } = this.props;
     return (
             <div className='comment-container'>
               <div className='comment-form'>
@@ -35,7 +35,7 @@ class CommentForm extends React.Component {
                   <div className='comment-input-container'>
                     <input className='comment-input' type='text' onChange={this.updateBody()} value={this.state.body} placeholder='Write a Comment'/>
                   </div>
-                  <input type='submit' className='h-input'/> 
+                  <input type='submit' className='h-input'/>              
                 </form> 
               </div>
               <div className='comment-buttons'></div>

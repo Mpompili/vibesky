@@ -92,3 +92,13 @@
   display: flex; 
   flex-direction: column-reverse;
 }
+.commentOnTracks{
+  position: absolute;
+  top: -19px;
+  left: 48px;
+  color: black;
+  font-weight: 600;
+  span{
+    color: #f50
+  }
+}

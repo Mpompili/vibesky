@@ -105,20 +105,25 @@
 #play-pause-btn{
   background: url(https://a-v2.sndcdn.com/assets/images/playback/play-6a409bd.svg) no-repeat center;
 }
+
+#play-pause-btn-paused{
+  background: url(https://a-v2.sndcdn.com/assets/images/playback/pause-795d912.svg) no-repeat center;
+}
+
 #next-btn{
   background: url(https://a-v2.sndcdn.com/assets/images/playback/skip-c4f0490.svg) no-repeat center;
 }
-#shuffle-btn{
+.shuffle-btn{
   background: url(https://a-v2.sndcdn.com/assets/images/playback/shuffle-cde403e.svg) no-repeat center;
 }
-#loop-btn{
+.loop-btn{
   background: url(https://a-v2.sndcdn.com/assets/images/playback/repeat-6c3e166.svg) no-repeat center;
   margin-right: 20px;
 }
-#loop-btn-active{
-  background: url(https://a-v2.sndcdn.com/assets/images/playback/repeat-all-098b32e.svg) no-repeat center;
-  margin-right: 20px;
-}
+// #loop-btn-active{
+//   background: url(https://a-v2.sndcdn.com/assets/images/playback/repeat-all-098b32e.svg) no-repeat center;
+//   margin-right: 20px;
+// }
 #mute-volume-btn{
   background: url(https://a-v2.sndcdn.com/assets/images/playback/volume-max-1fbfd63.svg) no-repeat center;
   margin: 0 12px;
@@ -142,4 +147,23 @@
   width: 24px;
   height: 24px;
   margin: 3px 0 0 7px;
+}
+
+
+.tp-trackuploader, .tp-trackname {
+font-weight: 300; 
+}
+.tp-trackname{
+  color: rgb(51,51,51) 
+}
+.tp-trackuploader{
+  color: #999; 
+}
+.tp-trackuploader:hover, .tp-trackname:hover {
+  color: black; 
+}
+
+.non-active-btn{
+  cursor: default; 
+  opacity: 0.7;
 }

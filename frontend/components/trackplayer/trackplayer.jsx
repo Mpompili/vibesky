@@ -13,7 +13,7 @@ class TrackPlayer extends React.Component{
         loaded: 0,
         duration: 0,
         playbackRate: 1.0,
-        loop: false
+        loop: false,
     };
     this.reactplayer = React.createRef(); 
     this.seekTest = this.seekTest.bind(this); 
@@ -66,9 +66,11 @@ class TrackPlayer extends React.Component{
         trackImage: 'https://image.flaticon.com/icons/svg/3/3722.svg',
         trackUploader: '',
         trackName: '',
-        likeButton: 'liked-button'
+        likeButton: 'liked-button',
+        linkToTrack: `/#/tracks`
     };} else {
       let liked; 
+  
       if (this.props.liked){
         liked = 'liked-button-t';}else{ liked = 'liked-button';}
       return {
@@ -76,7 +78,8 @@ class TrackPlayer extends React.Component{
         trackImage: this.props.currentTrack.imageUrl,
         trackUploader: this.props.currentTrack.uploader,
         trackName: this.props.currentTrack.title,
-        likeButton: liked 
+        likeButton: liked,
+        linkToTrack: `/#/tracks/${this.props.currentTrack.id}`
       };
     }
   }
@@ -96,23 +99,22 @@ class TrackPlayer extends React.Component{
   render() {
     let { currentTrack, playing } = this.props;
     let { loop, volume, muted } = this.state;
-    let { trackToPlay, trackImage, trackUploader, trackName, likeButton} = this.testFunction();
-
+    let { trackToPlay, trackImage, trackUploader, trackName, likeButton, linkToTrack } = this.testFunction();
+    let playButton = (playing || currentTrack == null) ? 'play-pause-btn' : 'play-pause-btn-paused'; 
     let durationTime = this.secondsToTime(this.state.duration);
     let playedTime = this.secondsToTime(this.state.playedSeconds);
     let percentage = `${Math.ceil(this.state.played * 100)}%`;
-    let loopActive = loop ? 'loop-btn-active' : 'loop-btn';
-    console.log(this.state);
-    
+    // let loopActive = loop ? 'loop-btn-active' : 'loop-btn';
+
     return (
       <div id='track-player-bar'>
         <div id='track-player-container'>
           <div id='tp-controller'>
             <div id='previous-btn' className='controller-btn'></div>
-            <div id='play-pause-btn' className='controller-btn' onClick={(e) => this.playPause(e) }></div>
+            <div id={playButton} className='controller-btn' onClick={(e) => this.playPause(e) }></div>
             <div id='next-btn' className='controller-btn' onClick={() => console.log(this.state)}></div>
-            <div id='shuffle-btn' className='controller-btn'></div>
-            <div id={loopActive} className='controller-btn' onClick={() => this.setState({loop: !loop}) }></div>
+            <div className='shuffle-btn controller-btn non-active-btn'></div>
+            <div className='loop-btn controller-btn non-active-btn' onClick={() => this.setState({loop: !loop}) }></div>
           </div>
           <div id='tp-progress'>
             <div id='tp-timepassed'>{playedTime}</div>
@@ -129,8 +131,8 @@ class TrackPlayer extends React.Component{
               <img src={trackImage}/>
             </div>
             <div className='tp-td-track-info'>
-              <p>{trackUploader}</p>
-              <p>{trackName}</p>
+            <a href={linkToTrack}><p className='tp-trackuploader'>{trackUploader}</p></a>
+            <a href={linkToTrack}><p className='tp-trackname'>{trackName}</p></a>
             </div>
             <div id={likeButton} className='controller-btn' onClick={(e) => this.toggleLike(currentTrack.id, e)}></div>
             <div id='playlist-button' className='controller-btn'></div>

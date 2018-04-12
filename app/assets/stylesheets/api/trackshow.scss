@@ -73,9 +73,7 @@
 
 .track-show-container-bottom{
   display: flex;
-
   width: 100%;
-  height: 120px;
 }
 
 .tscb-left{
@@ -105,15 +103,15 @@
   flex: 1;
   border-left: 1px lightgray solid;
   height: 100vh; 
+  margin-top: 22px;
 }
 
 .ts-uploader-ci{
   display: flex;
   max-width: 100%;
-  margin-top: 41px;
   border-top: 1px lightgray solid;
   padding-top: 25px;
-  margin: 30px 30px;
+  margin: 15px 30px;
   .ts-uc-left{
     flex: 1;
     .ts-artist-circle{

@@ -22,7 +22,7 @@ class WaveForm extends React.Component{
       if (checkTrack && !sameTrack) this.wavesurfer.play();
       if (!checkTrack) this.wavesurfer.stop();
       if (checkTrack && sameTrack && newProps.playing !== this.props.playing) this.wavesurfer.playPause();
-      this.wavesurfer.setMute(true);
+      
 
     
       this.wavesurfer.on('finish', () => {
@@ -51,15 +51,15 @@ class WaveForm extends React.Component{
     });
 
     this.wavesurfer.load(this.props.track.audioUrl);
-
+    this.wavesurfer.setMute(true);
     this.wavesurfer.on('ready', () => {
       console.log('wave surfer ready');
       
 
       //                       progress
-      this.wavesurfer.on('seek', progress => {
-        console.log(progress);
-      });
+      // this.wavesurfer.on('seek', progress => {
+      //   this.props.seekTrack(progress); 
+      // });
     });
   }
 

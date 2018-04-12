@@ -79,7 +79,7 @@ class TrackItem extends React.Component {
 
         <div className='track-item'>
           <div className='track-image-box'>
-            <img src={track.imageUrl}/>
+            <a href={`/#/tracks/${track.id}`}><img src={track.imageUrl}/></a>
           </div>
 
           <section className='track-details'>

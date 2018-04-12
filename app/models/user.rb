@@ -16,6 +16,7 @@ class User < ApplicationRecord
     class_name: :Track
 
   has_many :comments
+  has_many :likes 
     
   # associations:
   # has_many :tracks

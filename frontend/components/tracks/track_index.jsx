@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import TrackFormContainer from './track_form_container';
 import TrackItem from './track_index_item';
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player';
 
 //will import track index item
 class TrackIndex extends React.Component {
@@ -16,7 +16,7 @@ class TrackIndex extends React.Component {
 
   render(){
 
-    let { tracks, errors, trackplayer, setCurrentTrack, setPlayPause, deleteTrack } = this.props;
+    let { tracks, errors, trackplayer, setCurrentTrack, setPlayPause, deleteTrack, createLike, deleteLike } = this.props;
 
     let trackItems = Object.keys(tracks).map(key => (
       <TrackItem
@@ -27,6 +27,8 @@ class TrackIndex extends React.Component {
         setPlayPause={setPlayPause}
         deleteTrack={deleteTrack}
         currentUser={this.props.currentUser}
+        createLike={createLike}
+        deleteLike={deleteLike}
       />
     ));
     let styledErrors = errors.map(err => <li>{err}</li>);
@@ -45,7 +47,7 @@ class TrackIndex extends React.Component {
         <div className="sidebar-placeholder">
         </div>
       </span>
-    )
+    );
   }
 }
 

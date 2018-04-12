@@ -1,6 +1,4 @@
-export const createComment = (comment, id) => {
-
-  return (
+export const createComment = (comment, id) => (
     $.ajax({
         method: 'POST',
         url: `api/tracks/${id}/comments`,
@@ -10,7 +8,6 @@ export const createComment = (comment, id) => {
         data: comment
     })
   );
-};
 
 export const updateComment = (comment, id) => (
     $.ajax({

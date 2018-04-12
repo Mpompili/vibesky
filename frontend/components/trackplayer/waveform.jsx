@@ -47,11 +47,13 @@ class WaveForm extends React.Component{
       barWidth: 2,
       cursorWidth: 0,
       height: this.props.height,
-      waveColor: this.props.color
+      waveColor: this.props.color,
+      interact: false 
     });
 
     this.wavesurfer.load(this.props.track.audioUrl);
     this.wavesurfer.setMute(true);
+
     this.wavesurfer.on('ready', () => {
       console.log('wave surfer ready');
       

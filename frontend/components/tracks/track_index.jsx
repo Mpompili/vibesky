@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import TrackFormContainer from './track_form_container';
-import TrackItem from './track_index_item';
+import TrackItem from './track_index_item_container';
 import ReactPlayer from 'react-player';
 
 //will import track index item
@@ -16,21 +16,12 @@ class TrackIndex extends React.Component {
 
   render(){
 
-    let { tracks, errors, trackplayer, setCurrentTrack, setPlayPause, deleteTrack, createLike, deleteLike } = this.props;
+    let { tracks, errors } = this.props;
 
     let trackItems = Object.keys(tracks).map(key => (
-      <TrackItem
-        key={key}
-        track={tracks[key]}
-        trackplayer={trackplayer}
-        setCurrentTrack={setCurrentTrack}
-        setPlayPause={setPlayPause}
-        deleteTrack={deleteTrack}
-        currentUser={this.props.currentUser}
-        createLike={createLike}
-        deleteLike={deleteLike}
-      />
+      <TrackItem key={key} track={tracks[key]} />
     ));
+
     let styledErrors = errors.map(err => <li>{err}</li>);
 
     return (

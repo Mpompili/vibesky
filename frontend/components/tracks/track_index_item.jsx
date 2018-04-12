@@ -10,6 +10,13 @@ class TrackItem extends React.Component {
     this.songButton = this.songButton.bind(this);
     this.toggleLike = this.toggleLike.bind(this); 
   }
+  //added for likes...
+  // componentWillReceiveProps(newProps) {
+  //   if (this.props.currentUser.liked !== newProps.currentUser.liked){
+  //     console.log('new like toggle in index');
+  //     this.props.fetchTrack(this.props.track.id); 
+  //   }
+  // }
 
   songButton(track, e) {
     e.preventDefault();
@@ -31,12 +38,7 @@ class TrackItem extends React.Component {
 
   toggleLike(trackId, e){
     e.preventDefault();
-
-    if (this.props.track.liked) {
-      this.props.deleteLike(this.props.track.likeId);
-    }else{
-      this.props.createLike(trackId);
-    }
+    this.props.toggleLike(trackId);
   }
 
   componentDidMount() {
@@ -44,7 +46,7 @@ class TrackItem extends React.Component {
 
   userTrackButtons() {
     let track = this.props.track;
-    let likeButton =  track.liked ? 'controller-btn like-btn liked' : 'controller-btn like-btn'; 
+    let likeButton =  this.props.liked ? 'controller-btn like-btn liked' : 'controller-btn like-btn'; 
 
     if (this.props.currentUser.id == track.uploaderId){
       return (

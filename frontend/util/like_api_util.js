@@ -1,15 +1,14 @@
 //data trackId gets put into the params within the controller 
 export const createLike = (trackId) => (
     $.ajax({
-        url: 'api/likes',
+        url: `api/tracks/${trackId}/like`,
         method: 'POST',
-        data: {trackId}
     })
 );
 
-export const deleteLike = (likeId) => (
+export const deleteLike = (trackId) => (
     $.ajax({
-        url: `api/likes/${likeId}`,
+        url: `api/tracks/${trackId}/like`,
         method: 'DELETE'
     })
 );

@@ -17,6 +17,10 @@ class User < ApplicationRecord
 
   has_many :comments
   has_many :likes 
+
+  has_many :liked_tracks,
+  through: :likes, 
+  source: :track
     
   # associations:
   # has_many :tracks

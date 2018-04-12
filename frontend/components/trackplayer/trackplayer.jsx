@@ -23,6 +23,11 @@ class TrackPlayer extends React.Component{
     if (newProps.seek !== this.props.seek ){
       this.reactplayer.current.seekTo(newProps.seek);
     }
+
+    // if (this.props.currentUser.liked !== newProps.currentUser.liked){
+    //   console.log('new like toggle');
+    //   this.props.fetchTrack(newProps.match.params.id); 
+    // }
   }
 
   onDuration(){
@@ -64,7 +69,7 @@ class TrackPlayer extends React.Component{
         likeButton: 'liked-button'
     };} else {
       let liked; 
-      if (this.props.currentTrack.liked){
+      if (this.props.liked){
         liked = 'liked-button-t';}else{ liked = 'liked-button';}
       return {
         trackToPlay: this.props.currentTrack.audioUrl,
@@ -85,12 +90,7 @@ class TrackPlayer extends React.Component{
 
   toggleLike(trackId, e){
     e.preventDefault();
-
-    if (this.props.currentTrack.liked) {
-      this.props.deleteLike(this.props.currentTrack.likeId);
-    }else{
-      this.props.createLike(trackId);
-    }
+    this.props.toggleLike(trackId); 
   }
 
   render() {
@@ -102,7 +102,8 @@ class TrackPlayer extends React.Component{
     let playedTime = this.secondsToTime(this.state.playedSeconds);
     let percentage = `${Math.ceil(this.state.played * 100)}%`;
     let loopActive = loop ? 'loop-btn-active' : 'loop-btn';
-   
+    console.log(this.state);
+    
     return (
       <div id='track-player-bar'>
         <div id='track-player-container'>

@@ -43,20 +43,30 @@ class TrackShow extends React.Component {
     this.props.deleteTrack(trackId).then(()=> this.props.history.push('/tracks'));
   }
 
+  toggleLike(trackId, e){
+    e.preventDefault();
+
+    if (this.props.track.liked) {
+      this.props.deleteLike(this.props.track.likeId);
+    }else{
+      this.props.createLike(trackId);
+    }
+  }
 
   userTrackButtons() {
     let track = this.props.track;
+    let likeButton =  track.liked ? 'controller-btn like-btn liked' : 'controller-btn like-btn'; 
     if (this.props.currentUser.id == track.uploaderId){
       return (
         <div className='button-bar'>
-          <div className='controller-btn like-btn'>like</div>
+          <div className={likeButton} onClick={(e) => this.toggleLike(track.id, e)}>like</div>
           <Link to={`/tracks/${track.id}/edit`} className="controller-btn edit-btn">Edit</Link>
           <div className='controller-btn delete-btn' onClick={(e) => this.deleteSong(track.id, e)}>Delete</div>
         </div>
       );}else{
         return (
           <div className='button-bar'>
-            <div className='controller-btn like-btn'>like</div>
+            <div className={likeButton} onClick={(e) => this.toggleLike(track.id, e)}>like</div>
           </div>
         );}
   }

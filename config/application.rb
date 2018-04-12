@@ -15,6 +15,7 @@ module Vibesky
     # -- all .rb files in that directory are automatically loaded.
 
     config.paperclip_defaults = {
+      :s3_protocol => :https,
       :storage => :s3,
       :s3_region => 'us-west-1',
       :bucket => ENV["s3_bucket"],

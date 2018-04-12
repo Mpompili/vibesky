@@ -15,6 +15,14 @@ class TrackPlayer extends React.Component{
         playbackRate: 1.0,
         loop: false
     };
+    this.reactplayer = React.createRef(); 
+    this.seekTest = this.seekTest.bind(this); 
+  }
+
+  componentWillReceiveProps(newProps){
+    if (newProps.seek !== this.props.seek ){
+      this.reactplayer.current.seekTo(newProps.seek);
+    }
   }
 
   onDuration(){
@@ -26,7 +34,7 @@ class TrackPlayer extends React.Component{
   onProgress(){
     return ((state) => {
       if (!this.state.seeking) { this.setState(state);}
-    })
+    });
   }
 
   playPause(e) {
@@ -52,27 +60,49 @@ class TrackPlayer extends React.Component{
         trackToPlay: '',
         trackImage: 'https://image.flaticon.com/icons/svg/3/3722.svg',
         trackUploader: '',
-        trackName: ''
-    }} else {
+        trackName: '',
+        likeButton: 'liked-button'
+    };} else {
+      let liked; 
+      if (this.props.currentTrack.liked){
+        liked = 'liked-button-t';}else{ liked = 'liked-button';}
       return {
         trackToPlay: this.props.currentTrack.audioUrl,
         trackImage: this.props.currentTrack.imageUrl,
         trackUploader: this.props.currentTrack.uploader,
-        trackName: this.props.currentTrack.title
-      }
-    };
+        trackName: this.props.currentTrack.title,
+        likeButton: liked 
+      };
+    }
+  }
+
+  seekTest(){
+    console.log('hit seekTest');
+    this.reactplayer.current.seekTo(0.5);
+    console.log(this.reactplayer); 
+    console.log(' ^ is react player'); 
+  }
+
+  toggleLike(trackId, e){
+    e.preventDefault();
+
+    if (this.props.currentTrack.liked) {
+      this.props.deleteLike(this.props.currentTrack.likeId);
+    }else{
+      this.props.createLike(trackId);
+    }
   }
 
   render() {
     let { currentTrack, playing } = this.props;
     let { loop, volume, muted } = this.state;
-    let { trackToPlay, trackImage, trackUploader, trackName} = this.testFunction();
+    let { trackToPlay, trackImage, trackUploader, trackName, likeButton} = this.testFunction();
 
     let durationTime = this.secondsToTime(this.state.duration);
     let playedTime = this.secondsToTime(this.state.playedSeconds);
     let percentage = `${Math.ceil(this.state.played * 100)}%`;
     let loopActive = loop ? 'loop-btn-active' : 'loop-btn';
-
+   
     return (
       <div id='track-player-bar'>
         <div id='track-player-container'>
@@ -101,13 +131,13 @@ class TrackPlayer extends React.Component{
               <p>{trackUploader}</p>
               <p>{trackName}</p>
             </div>
-            <div id='liked-button' className='controller-btn'></div>
+            <div id={likeButton} className='controller-btn' onClick={(e) => this.toggleLike(currentTrack.id, e)}></div>
             <div id='playlist-button' className='controller-btn'></div>
 
           </div>
         </div>
         <ReactPlayer
-             ref={node => this.reactplayer = node}
+             ref={this.reactplayer}
              width='0%'
              height='0%'
              url={trackToPlay}

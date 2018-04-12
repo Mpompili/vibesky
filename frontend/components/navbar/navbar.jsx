@@ -6,6 +6,12 @@ class Navbar extends React.Component {
     super(props);
   }
 
+  componentWillReceiveProps(newProps){
+    if (newProps.location.pathname === "/"){
+      this.props.history.push('/tracks');
+    }
+  }
+
   logged_in_left() {
     return (
       <div className="navbar-left">

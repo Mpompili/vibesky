@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import WaveForm from './waveform';
-import { endCurrentTrack } from '../../actions/trackplayer_actions';
+import { endCurrentTrack, seekTrack } from '../../actions/trackplayer_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   currentTrack: state.trackplayer.currentTrack,
@@ -9,8 +9,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    playTrack: (url) => dispatch(playTrack(url)),
-    endCurrentTrack: () => dispatch(endCurrentTrack())
+    endCurrentTrack: () => dispatch(endCurrentTrack()),
+    seekTrack: (seconds) => dispatch(seekTrack(seconds))
 });
 
 

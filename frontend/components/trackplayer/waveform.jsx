@@ -9,6 +9,13 @@ class WaveForm extends React.Component{
   componentWillReceiveProps(newProps) {
     if (newProps.currentTrack == null) {
     } else {
+
+      // currentTrack: state.trackplayer.currentTrack,
+      // playing: state.trackplayer.playing,
+      // trackId: state.trackplayer.trackId
+      // track: is passed in 
+
+
       let checkTrack = newProps.trackId == this.props.track.id;
       let sameTrack = newProps.trackId == this.props.trackId;
       if (checkTrack && !sameTrack) this.wavesurfer.play();
@@ -16,12 +23,20 @@ class WaveForm extends React.Component{
       if (checkTrack && sameTrack && newProps.playing !== this.props.playing) this.wavesurfer.playPause();
       this.wavesurfer.setMute(true);
 
+      // if newProps.playing 
+
       //when the song ends, the waveform resets and currentTrack is set to null.
       this.wavesurfer.on('finish', () => {
         this.wavesurfer.stop();
         this.props.endCurrentTrack();
       });
 
+     
+      this.wavesurfer.on('seek', (seek) => {
+        console.log(seek);
+        
+        // this.props.seekTrack(seek);
+      });
     }
   }
 

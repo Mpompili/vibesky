@@ -2,6 +2,8 @@ export const RECEIVE_CURRENT_TRACK = 'RECEIVE_CURRENT_TRACK';
 export const PLAY_PAUSE_TRACK = 'PLAY_PAUSE_TRACK';
 export const TRACK_PROGRESS = 'TRACK_PROGRESS';
 export const END_CURRENT_TRACK = 'END_CURRENT_TRACK';
+export const SEEK_TRACK = 'SEEK_TRACK'; 
+
 
 export const receiveCurrentTrack = track => ({
   type: RECEIVE_CURRENT_TRACK,
@@ -11,6 +13,11 @@ export const receiveCurrentTrack = track => ({
 export const playPauseTrack = boolean => ({
   type: PLAY_PAUSE_TRACK,
   boolean
+});
+
+export const setSeekTrack = seconds => ({
+  type: SEEK_TRACK,
+  seconds
 });
 
 export const trackProgress = (currentTime, duration) => ({
@@ -33,4 +40,8 @@ export const setTrackProgress = (currentTime, duration) => dispatch => (
 
 export const endCurrentTrack = () => dispatch => (
   dispatch({ type: END_CURRENT_TRACK })
+);
+
+export const seekTrack = seconds => dispatch => (
+  dispatch(setSeekTrack(seconds))
 );

@@ -60,7 +60,7 @@ class TrackPlayer extends React.Component{
 
   testFunction(){
 
-    if (this.props.currentTrack == null){
+    if (this.props.currentTrack === null){
       return {
         trackToPlay: '',
         trackImage: 'https://image.flaticon.com/icons/svg/3/3722.svg',

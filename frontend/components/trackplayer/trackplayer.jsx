@@ -84,12 +84,12 @@ class TrackPlayer extends React.Component{
     }
   }
 
-  seekTest(){
-    console.log('hit seekTest');
-    this.reactplayer.current.seekTo(0.5);
-    console.log(this.reactplayer); 
-    console.log(' ^ is react player'); 
-  }
+  // seekTest(){
+  //   console.log('hit seekTest');
+  //   this.reactplayer.current.seekTo(0.5);
+  //   console.log(this.reactplayer); 
+  //   console.log(' ^ is react player'); 
+  // }
 
   toggleLike(trackId, e){
     e.preventDefault();
@@ -97,10 +97,22 @@ class TrackPlayer extends React.Component{
   }
 
   render() {
+    
+    
     let { currentTrack, playing } = this.props;
     let { loop, volume, muted } = this.state;
     let { trackToPlay, trackImage, trackUploader, trackName, likeButton, linkToTrack } = this.testFunction();
-    let playButton = (playing || currentTrack == null) ? 'play-pause-btn' : 'play-pause-btn-paused'; 
+    // let playButton = (currentTrack == null || playing ) ? 'play-pause-btn' : 'play-pause-btn-paused'; 
+    // let playButton;
+    // if (playing){ 
+    //   playButton = 'play-pause-btn';}else{
+    //     playButton = 'play-pause-btn-paused';
+    //   }
+    //  if (!currentTrack) playButton = 'play-pause-btn';
+
+    let playButton = (playing) ?
+    'play-pause-btn-paused' : 'play-pause-btn';
+
     let durationTime = this.secondsToTime(this.state.duration);
     let playedTime = this.secondsToTime(this.state.playedSeconds);
     let percentage = `${Math.ceil(this.state.played * 100)}%`;
@@ -110,9 +122,9 @@ class TrackPlayer extends React.Component{
       <div id='track-player-bar'>
         <div id='track-player-container'>
           <div id='tp-controller'>
-            <div id='previous-btn' className='controller-btn'></div>
+            <div id='previous-btn' className='controller-btn non-active-btn'></div>
             <div id={playButton} className='controller-btn' onClick={(e) => this.playPause(e) }></div>
-            <div id='next-btn' className='controller-btn' onClick={() => console.log(this.state)}></div>
+            <div id='next-btn' className='controller-btn non-active-btn' ></div>
             <div className='shuffle-btn controller-btn non-active-btn'></div>
             <div className='loop-btn controller-btn non-active-btn' onClick={() => this.setState({loop: !loop}) }></div>
           </div>

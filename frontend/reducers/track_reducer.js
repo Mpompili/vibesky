@@ -12,7 +12,7 @@ const trackReducer = (oldState = {}, action) => {
       newState = {[action.payload.track.id]: action.payload.track};
       return Object.assign({}, oldState, newState);
     case REMOVE_TRACK:
-      newState = merge({}, oldState);
+      newState = Object.assign({}, oldState);
       delete newState[action.trackId];
       return newState;
     case LOGOUT_CURRENT_USER:

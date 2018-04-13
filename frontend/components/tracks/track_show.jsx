@@ -15,7 +15,6 @@ class TrackShow extends React.Component {
   
   componentWillReceiveProps(newProps) {
     if (this.props.match.params.id !== newProps.match.params.id){
-      console.log('willreceiveprops');
       this.props.fetchTrack(newProps.match.params.id);
     }
   }

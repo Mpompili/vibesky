@@ -5,7 +5,7 @@ import { toggleLike } from '../../actions/like_actions';
 import { fetchTrack } from '../../actions/track_actions';
 
 const currentUserLikes = ({session: {currentUser}, trackplayer: {currentTrack}}) => {
-  if (!currentUser || !currentTrack) return false; 
+  if (!currentTrack) return false; 
   return currentUser.likes.includes(parseInt(currentTrack.id)); 
 }
 

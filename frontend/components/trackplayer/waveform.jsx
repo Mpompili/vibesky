@@ -55,7 +55,6 @@ class WaveForm extends React.Component{
     this.wavesurfer.setMute(true);
 
     this.wavesurfer.on('ready', () => {
-      console.log('wave surfer ready');
       
 
       //                       progress

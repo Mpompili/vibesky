@@ -85,3 +85,110 @@ font-family: "Roboto", "Lucida Grande", Arial, sans-serif;
 .titlespacing{
 letter-spacing: 5px;
 }
+
+#splashpage{
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+#splashbottom{
+  width: 91.75vw;
+  max-width: 1240px;
+  padding-top: 46px;
+  background: #fff;
+  min-width: 960px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  h1{
+    font-size: 32px;
+    line-height: 41.6px;
+    font-weight: 300;
+    margin: 0 auto 30px;
+  }
+}
+
+.badgeListUl{
+  list-style: none;
+  margin: 0 5px;
+  display: flex;
+  margin-left: 5px;
+  flex-wrap: wrap;
+}
+
+.badge{
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+
+.badgeImage{
+  box-sizing: border-box;
+
+  background-color: $cloud-orange; 
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  max-width: 180px;
+  max-height: 180px;
+  min-width: 180px;
+  min-height: 180px;
+  img {
+    flex-shrink: 0;
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+.badgeInfo{
+  display: flex;
+  flex-direction: column;
+  padding-top: 5px;
+}
+
+.badgeDet{
+  font-weight: 300; 
+}
+
+.badgeDet:hover{
+  color: black; 
+}
+
+.bdsn{
+  color: gray; 
+}
+.bda{
+  color: $cloud-gray; 
+  padding-top: 3px; 
+}
+
+.splash-title{
+  position: absolute;
+  top: 17%;
+  left: 50%;
+  transform: translate(-50%);
+  color: white;
+  text-align: center;
+  letter-spacing: 1px;
+  font-family: $sans-serif; 
+}
+
+.splash-subtitle{
+  position: absolute;
+  top: 23%;
+  left: 50%;
+  transform: translate(-50%);
+  color: white;
+  text-align: center;
+  letter-spacing: 1px;
+  font-family: "Roboto", arial, helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 100;
+  width: 500px;
+  line-height: 1.5;
+}

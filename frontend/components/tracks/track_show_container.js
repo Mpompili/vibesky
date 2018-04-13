@@ -5,7 +5,7 @@ import { setCurrentTrack, setPlayPause  } from '../../actions/trackplayer_action
 import { toggleLike } from '../../actions/like_actions'; 
 
 const currentUserLikes = ({session: {currentUser}}, trackid) => {
-  if (!currentUser) return false; 
+  if (!currentUser || !currentUser.likes) return false; 
   return currentUser.likes.includes(parseInt(trackid)); 
 }
 

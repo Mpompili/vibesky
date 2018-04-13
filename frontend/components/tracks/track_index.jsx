@@ -9,7 +9,14 @@ class TrackIndex extends React.Component {
   constructor(props) {
     super(props);
   }
+  
+  componentWillReceiveProps(newProps){
 
+    if (Object.keys(this.props.tracks).length < Object.keys(newProps.tracks).length){
+      this.props.fetchTracks(); 
+    }
+    
+  }
   componentDidMount() {
     this.props.fetchTracks();
   }

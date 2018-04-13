@@ -16,19 +16,19 @@ class TrackPlayer extends React.Component{
         loop: false,
     };
     this.reactplayer = React.createRef(); 
-    this.seekTest = this.seekTest.bind(this); 
+
   }
 
-  componentWillReceiveProps(newProps){
-    if (newProps.seek !== this.props.seek ){
-      this.reactplayer.current.seekTo(newProps.seek);
-    }
+  // componentWillReceiveProps(newProps){
+  //   if (newProps.seek !== this.props.seek ){
+  //     this.reactplayer.current.seekTo(newProps.seek);
+  //   }
 
-    // if (this.props.currentUser.liked !== newProps.currentUser.liked){
-    //   console.log('new like toggle');
-    //   this.props.fetchTrack(newProps.match.params.id); 
-    // }
-  }
+  //   // if (this.props.currentUser.liked !== newProps.currentUser.liked){
+  //   //   console.log('new like toggle');
+  //   //   this.props.fetchTrack(newProps.match.params.id); 
+  //   // }
+  // }
 
   onDuration(){
     return ((duration) => {
@@ -166,7 +166,7 @@ class TrackPlayer extends React.Component{
              onDuration={this.onDuration()}
            />
       </div>
-    )
+    );
   }
 
 }

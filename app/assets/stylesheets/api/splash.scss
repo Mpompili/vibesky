@@ -180,7 +180,7 @@ letter-spacing: 5px;
 
 .splash-subtitle{
   position: absolute;
-  top: 23%;
+  top: 22%;
   left: 50%;
   transform: translate(-50%);
   color: white;
@@ -191,4 +191,15 @@ letter-spacing: 5px;
   font-weight: 100;
   width: 500px;
   line-height: 1.5;
+  margin-top: 15px;
+}
+
+.badge-a-tags{
+ margin: 0 auto; 
+}
+
+h3.bl-header {
+  margin: 10px auto 40px;
+  font-size: 25px;
+  font-weight: 300;
 }

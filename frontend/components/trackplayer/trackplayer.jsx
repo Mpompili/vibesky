@@ -115,6 +115,9 @@ class TrackPlayer extends React.Component{
     let playButton = (playing) ?
     'play-pause-btn-paused' : 'play-pause-btn';
 
+    let muteButton = (this.state.muted) ?
+    'mute-volume-btn-muted' : 'mute-volume-btn'; 
+
     let durationTime = this.secondsToTime(this.state.duration);
     let playedTime = this.secondsToTime(this.state.playedSeconds);
     let percentage = `${Math.ceil(this.state.played * 100)}%`;
@@ -140,7 +143,7 @@ class TrackPlayer extends React.Component{
             <div id='tp-duration'>{durationTime}</div>
           </div>
           <div className='tp-track-dets'>
-            <div id='mute-volume-btn' className='controller-btn'></div>
+            <div id={muteButton} className='controller-btn' onClick={() => this.setState({muted: !muted})}></div>
             <div className='tp-td-uploader-pic'>
               <img src={trackImage}/>
             </div>

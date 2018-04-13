@@ -128,6 +128,12 @@
   background: url(https://a-v2.sndcdn.com/assets/images/playback/volume-max-1fbfd63.svg) no-repeat center;
   margin: 0 12px;
 }
+
+#mute-volume-btn-muted{
+  background: url(https://a-v2.sndcdn.com/assets/images/playback/volume-muted-745945a.svg) no-repeat center; 
+  margin: 0 12px; 
+}
+
 #liked-button{
   background: image_url('heart.svg') no-repeat center;
   margin-left: 7px;

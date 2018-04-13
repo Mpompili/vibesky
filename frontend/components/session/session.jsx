@@ -67,7 +67,7 @@ class sessionForm extends React.Component {
 
   render(){
     let { path, submitForm, errors } = this.props;
-    let message = path === 'signup' ?
+    let message = path === 'home/signup' ?
       <h1>Create your <span className="titlespacing">VIBESKY</span> account</h1> : <h1>Log in</h1>;
 
     let styledErrors = errors.map(err => <li>{err}</li>);

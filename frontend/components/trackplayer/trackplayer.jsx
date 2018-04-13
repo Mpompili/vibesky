@@ -174,6 +174,3 @@ class TrackPlayer extends React.Component{
 }
 
 export default TrackPlayer;
-// onReady={() => console.log('onReady')}
-// onStart={() => console.log('onStart')}
-// onError={e => console.log('onError', e)}

@@ -23,8 +23,6 @@ class TrackItem extends React.Component {
 
   songButton(e) {
     e.preventDefault();
-    console.log("in song button");
-    console.log(this.props);
     let { track } = this.props;
     let { currentTrack, playing, trackId } = this.props.trackplayer;
     if (currentTrack === null) {

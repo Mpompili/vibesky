@@ -33,7 +33,6 @@ class Navbar extends React.Component {
 
 
   render(){
-    console.log("rerendering");
     
       // carosel = 'header-carousel-off';
 

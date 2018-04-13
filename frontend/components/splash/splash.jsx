@@ -29,9 +29,6 @@ class Splash extends React.Component {
 
   render(){
 
-    this.currentUser = this.props.currentUser;
-    this.logout = this.props.logout;
-
     let splashleft = this.splash_left();
     let splashright = this.splash_right();
 

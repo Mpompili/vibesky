@@ -4,7 +4,6 @@ class Api::LikesController < ApplicationController
     @like.track_id = params[:track_id]
     if @like.save
         @track = Track.find(@like.track_id)
-        # render "api/tracks/show"
         render json: {trackId: @track.id}
     else 
         render json: @like.errors.full_messages, status: 401
@@ -18,6 +17,7 @@ class Api::LikesController < ApplicationController
     render "api/tracks/show"
   end
   
+ 
 end
 
 

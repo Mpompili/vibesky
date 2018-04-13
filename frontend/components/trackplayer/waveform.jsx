@@ -54,14 +54,14 @@ class WaveForm extends React.Component{
     this.wavesurfer.load(this.props.track.audioUrl);
     this.wavesurfer.setMute(true);
 
-    this.wavesurfer.on('ready', () => {
+    // this.wavesurfer.on('ready', () => {
       
 
-      //                       progress
-      // this.wavesurfer.on('seek', progress => {
-      //   this.props.seekTrack(progress); 
-      // });
-    });
+    //   //                       progress
+    //   // this.wavesurfer.on('seek', progress => {
+    //   //   this.props.seekTrack(progress); 
+    //   // });
+    // });
   }
 
   render() {

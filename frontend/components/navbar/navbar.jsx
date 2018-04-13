@@ -4,12 +4,10 @@ import { Link, Redirect } from 'react-router-dom';
 class Navbar extends React.Component {
   constructor(props){
     super(props);
-  }
 
-  componentWillReceiveProps(newProps){
-    if (newProps.location.pathname === "/"){
-      this.props.history.push('/tracks');
-    }
+    this.logged_in_left = this.logged_in_left.bind(this);
+    this.logged_in_right = this.logged_in_right.bind(this);
+
   }
 
   logged_in_left() {
@@ -21,42 +19,34 @@ class Navbar extends React.Component {
         <a href="/#/tracks" className="header-item">Home</a>
         <a href="/#/tracks" className="header-item">Collection</a>
       </div>
-    )
+    );
   }
 
   logged_in_right() {
     return (
       <div className="navbar-right">
         <Link to='/tracks/new' className="header-item">Upload</Link>
-        <Link to='/home' className="header-item" onClick={this.logout}>Logout</Link>
+        <button className="header-item" onClick={this.props.logout}>Logout</button>
       </div>
-    )
+    );
   }
 
 
-
   render(){
-
-    this.currentUser = this.props.currentUser;
-    this.logout = this.props.logout;
-
-    let navright, navleft, carosel;
-
-
-      navleft = this.logged_in_left();
-      navright = this.logged_in_right();
-      carosel = 'header-carousel-off';
+    console.log("rerendering");
+    
+      // carosel = 'header-carousel-off';
 
     return (
       <div id='header-carousel-off'>
         <div className="backbar">
           <div className="navbar">
-            {navleft}
-            {navright}
+            {this.logged_in_left()}
+            {this.logged_in_right()}
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

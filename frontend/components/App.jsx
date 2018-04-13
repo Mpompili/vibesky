@@ -18,11 +18,12 @@ const App = () => (
       <AuthRoute path ='/home' component={SplashContainer}/>
 
     <div className="content-container">
-      <Switch>g
+      <Switch>
         <ProtectedRoute exact path ='/tracks/new' component={TrackFormContainer} />
         <ProtectedRoute exact path ='/tracks/:id/edit' component={EditFormContainer} />
         <ProtectedRoute exact path ='/tracks/:id' component={TrackShowContainer} />
         <ProtectedRoute exact path ='/tracks' component={TrackIndexContainer} />
+        <ProtectedRoute path ='/' component={TrackIndexContainer} />
       </Switch>
     </div>
 

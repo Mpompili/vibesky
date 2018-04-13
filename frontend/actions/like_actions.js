@@ -26,8 +26,10 @@ export const removeLike = ({trackId}) => (
 );
 
 export const toggleLike = (trackId) => (dispatch, getState) => {
+
 const {session: {currentUser}} = getState();
-if (currentUser.likes.includes(trackId)){
+
+if (currentUser.likes && currentUser.likes.includes(trackId)){
     dispatch(deleteLike(trackId));
     }else{
     dispatch(createLike(trackId)); 

@@ -9,6 +9,9 @@ class TrackItem extends React.Component {
     super(props);
     this.songButton = this.songButton.bind(this);
     this.toggleLike = this.toggleLike.bind(this); 
+    this.deleteSong = this.deleteSong.bind(this);
+    this.userTrackButtons = this.userTrackButtons.bind(this);
+    this.showComments = this.showComments.bind(this);
   }
   //added for likes...
   // componentWillReceiveProps(newProps) {
@@ -18,11 +21,15 @@ class TrackItem extends React.Component {
   //   }
   // }
 
-  songButton(track, e) {
+  songButton(e) {
     e.preventDefault();
+    console.log("in song button");
+    console.log(this.props);
+    let { track } = this.props;
     let { currentTrack, playing, trackId } = this.props.trackplayer;
     if (currentTrack === null) {
       this.props.setCurrentTrack(track);
+      
     } else if (currentTrack !== null && trackId == track.id) {
         this.props.setPlayPause(!playing);
     } else {
@@ -82,7 +89,6 @@ class TrackItem extends React.Component {
     let commentShow = this.showComments();
     return (
       <div className='track-item-container'>
-
         <div className='track-uploader-info'>
           <aside className="track-uploader-circle">
             <img src={track.imageUrl}/>
@@ -97,7 +103,7 @@ class TrackItem extends React.Component {
 
           <section className='track-details'>
             <div className='td-top'>
-              <div className={buttonPlaying} onClick={(e) => this.songButton(track, e)}>
+              <div className={buttonPlaying} onClick={(e) => this.songButton(e)}>
 
               </div>
               <div className="ti-upload-det">

@@ -93,15 +93,17 @@ class TrackPlayer extends React.Component{
 
   toggleLike(trackId, e){
     e.preventDefault();
-    // this.props.toggleLike(trackId); 
+    this.props.toggleLike(trackId); 
   }
 
   render() {
     
+  
     
     let { currentTrack, playing } = this.props;
     let { loop, volume, muted } = this.state;
     let { trackToPlay, trackImage, trackUploader, trackName, likeButton, linkToTrack } = this.testFunction();
+
     // let playButton = (currentTrack == null || playing ) ? 'play-pause-btn' : 'play-pause-btn-paused'; 
     // let playButton;
     // if (playing){ 

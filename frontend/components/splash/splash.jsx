@@ -14,7 +14,7 @@ class Splash extends React.Component {
           <div className="splash-text">VIBESKY</div>
         </a>
       </div>
-    )
+    );
   }
 
   splash_right() {
@@ -23,7 +23,7 @@ class Splash extends React.Component {
         <Link to="/home/login" className="signin-button sbutton">Sign in</Link>
         <Link to="/home/signup" className="signup-button sbutton">Create Account</Link>
       </nav>
-    )
+    );
   }
 
 
@@ -172,7 +172,7 @@ class Splash extends React.Component {
         </ul> 
         </div> 
       </div> 
-    )
+    );
   }
 }
 

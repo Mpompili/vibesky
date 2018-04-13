@@ -8,10 +8,11 @@ json.track do
   json.audioUrl asset_path(@track.audio.url)
   json.commentIds @track.comments.pluck(:id)
 
-  json.liked @track.likes.pluck(:user_id).include?(current_user.id)
+  test = current_user ? current_user.id : -1 
+  json.liked @track.likes.pluck(:user_id).include?(test)
 
 
-  likeid = @track.likes.find{|like| like.user_id == current_user.id}
+  likeid = @track.likes.find{|like| like.user_id == test}
   likeid = likeid.nil? ? -1 : likeid.id
   json.likeId likeid
 end

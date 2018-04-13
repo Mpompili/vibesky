@@ -57,7 +57,7 @@ class sessionForm extends React.Component {
     e.preventDefault();
     let user = Object.assign({},
       {email: this.state.email, password: this.state.password});
-    this.props.submitForm(user);
+    this.props.submitForm(user).then(this.props.fetchTracks());
   }
 
   handleDemo(e){

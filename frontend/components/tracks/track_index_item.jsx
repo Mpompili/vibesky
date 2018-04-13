@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 import WaveFormContainer from '../trackplayer/waveform_container';
 import CommentsContainer from '../comments/comments_container';
 
@@ -23,12 +23,11 @@ class TrackItem extends React.Component {
     let { currentTrack, playing, trackId } = this.props.trackplayer;
     if (currentTrack === null) {
       this.props.setCurrentTrack(track);
-    }
-    if (currentTrack !== null && trackId == track.id) {
+    } else if (currentTrack !== null && trackId == track.id) {
         this.props.setPlayPause(!playing);
-      } else {
-        this.props.setCurrentTrack(track);
-      }
+    } else {
+      this.props.setCurrentTrack(track);
+    } 
   }
 
   deleteSong(trackId, e){
@@ -77,7 +76,7 @@ class TrackItem extends React.Component {
 
   render(){
     let { track, trackplayer } = this.props;
-
+    debugger;
     let buttonPlaying = (trackplayer.playing && trackplayer.trackId === track.id) ?
       'ti-play playing' : 'ti-play';
     let buttonBar = this.userTrackButtons();
@@ -124,4 +123,4 @@ class TrackItem extends React.Component {
   }
 }
 
-export default TrackItem;
+export default withRouter(TrackItem);

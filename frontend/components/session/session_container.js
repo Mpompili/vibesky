@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import sessionForm from './session';
 import { signup, login, clearErrors } from '../../actions/session_actions';
 import { Link } from 'react-router-dom';
+import { fetchTracks } from '../../actions/track_actions';
 
 const mapStateToProps = (state, ownProps) =>({
   path: ownProps.location.pathname.slice(1),

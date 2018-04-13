@@ -19,16 +19,16 @@ class TrackPlayer extends React.Component{
 
   }
 
-  // componentWillReceiveProps(newProps){
-  //   if (newProps.seek !== this.props.seek ){
-  //     this.reactplayer.current.seekTo(newProps.seek);
-  //   }
+  componentWillReceiveProps(newProps){
+    if (newProps.seek !== this.props.seek ){
+      this.reactplayer.current.seekTo(newProps.seek);
+    }
 
-  //   // if (this.props.currentUser.liked !== newProps.currentUser.liked){
-  //   //   console.log('new like toggle');
-  //   //   this.props.fetchTrack(newProps.match.params.id); 
-  //   // }
-  // }
+    // if (this.props.currentUser.liked !== newProps.currentUser.liked){
+    //   console.log('new like toggle');
+    //   this.props.fetchTrack(newProps.match.params.id); 
+    // }
+  }
 
   onDuration(){
     return ((duration) => {
@@ -93,7 +93,7 @@ class TrackPlayer extends React.Component{
 
   toggleLike(trackId, e){
     e.preventDefault();
-    this.props.toggleLike(trackId); 
+    // this.props.toggleLike(trackId); 
   }
 
   render() {

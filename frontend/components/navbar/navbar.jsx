@@ -26,7 +26,7 @@ class Navbar extends React.Component {
     return (
       <div className="navbar-right">
         <Link to='/tracks/new' className="header-item">Upload</Link>
-        <button className="header-item" onClick={this.props.logout}>Logout</button>
+        <Link to='/home' className="header-item" onClick={this.props.logout}>Logout</Link>
       </div>
     );
   }

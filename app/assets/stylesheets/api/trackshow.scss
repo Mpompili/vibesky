@@ -163,9 +163,20 @@
 }
 
 .track-sd-uploader{
-  font-size: 20px;
-    color: white;
-    background-color: black;
-    text-align: center;
-    padding: 10px 5px;
+  font-size: 16px;
+  color: lightgray;
+  font-weight: 300;
+  background-color: rgba(0,0,0,0.75);
+  padding: 5px 8px;
+  margin-bottom: 5px;
+  width: fit-content;
+}
+
+.track-sd-title{
+  font-size: 25px;
+  font-weight: 300;
+  color: white;
+  background-color: rgba(0,0,0,0.75);
+  text-align: center;
+  padding: 10px 9px;
 }

@@ -18,10 +18,9 @@ class UserShow extends React.Component {
 //     }
 //   }
 
-//   componentDidMount(){
-//     this.props.fetchTrack(this.props.match.params.id)
-//     .then(()=> this.setState({firstLoad: false}));
-//   }
+  componentDidMount(){
+    this.props.fetchUser(this.props.match.params.id); 
+  }
   
 //   songButton(track, e) {
 //     e.preventDefault();
@@ -67,7 +66,7 @@ class UserShow extends React.Component {
 
   render(){
     let { tracks, trackplayer, currentUser, errors } = this.props;
-
+    console.warn('user form props: ', this.props.user);
     // let buttonPlaying = (trackplayer.playing && trackplayer.trackId === track.id) ?
     //   'ts-play playing' : 'ts-play';
     // let buttonBar = this.userTrackButtons();

@@ -81,6 +81,7 @@ class TrackItem extends React.Component {
 
   render(){
     let { track, trackplayer } = this.props;
+    console.warn('in trackindex heres props', this.props); 
     let buttonPlaying = (trackplayer.playing && trackplayer.trackId === track.id) ?
       'ti-play playing' : 'ti-play';
     let buttonBar = this.userTrackButtons();

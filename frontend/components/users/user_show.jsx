@@ -12,108 +12,44 @@ class UserShow extends React.Component {
     };
   }
   
-//   componentWillReceiveProps(newProps) {
-//     if (this.props.match.params.id !== newProps.match.params.id){
-//       this.props.fetchTrack(newProps.match.params.id);
-//     }
-//   }
 
-  componentDidMount(){
+  componentWillMount(){
     this.props.fetchUser(this.props.match.params.id); 
   }
-  
-//   songButton(track, e) {
-//     e.preventDefault();
-//     let { currentTrack, playing, trackId } = this.props.trackplayer;
-//     if (currentTrack === null) {
-//       this.props.setCurrentTrack(track);
-//     }
-//     if (currentTrack !== null && trackId == track.id) {
-//         this.props.setPlayPause(!playing);
-//       } else {
-//         this.props.setCurrentTrack(track);
-//       }
-//   }
-
-//   deleteSong(trackId, e){
-//     e.preventDefault();
-//     this.props.deleteTrack(trackId).then(()=> this.props.history.push('/tracks'));
-//   }
-
-//   userTrackButtons() {
-//     let track = this.props.track;
-//     let likeButton =  this.props.liked ? 'controller-btn like-btn liked' : 'controller-btn like-btn'; 
-//     if (this.props.currentUser.id == track.uploaderId){
-//       return (
-//         <div className='button-bar'>
-//           <div className={likeButton} onClick={() => this.props.toggleLike(track.id)}>like</div>
-//           <Link to={`/tracks/${track.id}/edit`} className="controller-btn edit-btn">Edit</Link>
-//           <div className='controller-btn delete-btn' onClick={(e) => this.deleteSong(track.id, e)}>Delete</div>
-//         </div>
-//       );}else{
-//         return (
-//           <div className='button-bar'>
-//             <div className={likeButton} onClick={() => this.props.toggleLike(track.id)}>like</div>
-//           </div>
-//         );}
-//   }
-
-//   deleteSong(trackId, e){
-//     e.preventDefault();
-//     this.props.deleteTrack(trackId);
-//     this.props.history.push('/tracks');
-//   }
 
   render(){
-    let { tracks, trackplayer, currentUser, errors } = this.props;
-    console.warn('user form props: ', this.props.user);
-    // let buttonPlaying = (trackplayer.playing && trackplayer.trackId === track.id) ?
-    //   'ts-play playing' : 'ts-play';
-    // let buttonBar = this.userTrackButtons();
+    let { tracks, trackplayer, currentUser, errors, user } = this.props;
+    // debugger; 
+    let userpic, useremail; 
+    if (user === undefined){
+      userpic = '';
+      useremail = ''; 
+    }else{
+      userpic = user.imageUrl; 
+      useremail = user.email; 
+    }
+
+    
     return (
       <div className='track-show-page'>
-        <div className='track-show-container'>
-          <div className='track-show-detail'>
-            <div className='track-sd-top'>
+        <div className='user-show-container'>
+          <div className='user-show-image-container'>
+            <img src={userpic}/>
+          </div>
+          <div className='user-show-detail'>
+            <div className='user-sd-top'>
               {/* <div className={buttonPlaying} onClick={(e) => this.songButton(track, e)}></div> */}
-              <div className='track-sd-info'>
-                {/* <div className='track-sd-uploader'>{track.uploader}</div> */}
-                {/* <div className='track-sd-title'>{track.title}</div> */}
+              <div className='user-sd-info'>
+                {/* <div className='track-sd-uploader'>{useremail}</div> */}
+                <div className='user-sd-title'>{useremail}</div>
               </div>
             </div>
-            {/* <div className='track-sd-bott'>
-              <WaveFormContainer track={track} height={100} color={'#fff'}/>
-            </div> */}
+
           </div>
-          <div className='track-show-image-container'>
-            <img src={'https://s3-us-west-1.amazonaws.com/vibesky-dev/tracks/images/public_images/missing.png'}/>
-          </div>
+         
         </div>
           <div className='track-show-container-bottom'>
-            <TrackIndex fetchTracks={this.props.fetchTracks} tracks={tracks} errors={errors}/> 
-            {/* <div className='tscb-left'>
-              <div className='track-show-comment-bar'>
-                <CommentsContainer track={track}/>
-              </div>
-              { buttonBar }
-              <div className='ts-uploader-ci'>
-                <div className='ts-uc-left'>
-                  <div className='ts-artist-circle'>
-                    <img src={track.imageUrl}/> 
-                  </div>
-                  <div className='ts-artist-name'>{track.uploader}</div>
-                  <div className='ts-follow-btn'>Follow</div> 
-                </div> 
-                <div className='ts-uc-right'>
-                  <div className='ts-track-description'>{track.description}</div> 
-                  <div className='track-show-comment-index'>
-                    <CommentIndexContainer track={track}/> 
-                  </div> 
-                </div> 
-              </div> 
-            </div>
-            <div className='tscb-sidebar'>
-            </div> */}
+            <TrackIndex fetchTracks={this.props.fetchTracks} tracks={tracks} errors={errors} userpage={true} /> 
         </div>
       </div>
     );
@@ -122,14 +58,3 @@ class UserShow extends React.Component {
 
 export default withRouter(UserShow);
 
-// <div className='comment-container'>
-//   <div className='comment-form'>
-//     <div className='comment-form-user'>
-//       <img src={track.imageUrl}/>
-//     </div>
-//     <div className='comment-input-container'>
-//       <input className='comment-input' type='text' placeholder='Write a Comment'/>
-//     </div>
-//   </div>
-//   <div className='comment-buttons'></div>
-// </div>

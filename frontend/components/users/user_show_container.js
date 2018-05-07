@@ -13,19 +13,22 @@ const mapStateToProps = (state, ownProps) => {
     const trackIds = tracks.map((track) => {
         return (track.uploaderId); 
     }); 
-    
+    const userId = ownProps.match.params.id; 
+
+    const user = Object.keys(state.entities.users).map(key=> state.entities.users[key])[0];
+
     const userTracks = tracks.filter((track) => {
        if (track.uploaderId == ownProps.match.params.id) return track; 
     }); 
     console.warn('this is userTracks:', userTracks); 
-
+    // debugger; 
     return ({
         tracks: userTracks,
-        user: state.entities.users,
+        user: user,
         errors: state.errors.tracks || [],
         trackplayer: state.trackplayer || {},
         currentUser: state.session.currentUser,
-        // user: state. NEED TO GET USER STUFF
+
     });
 };
 

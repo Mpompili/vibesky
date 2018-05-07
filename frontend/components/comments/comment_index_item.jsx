@@ -32,11 +32,11 @@ class CommentIndexItem extends React.Component {
       return (
             <div className='posted-comment'>
                 <div className='comment-uploader-img'>
-                    <img src={track.imageUrl}/> 
+                    <img src={comment.user.imageUrl}/> 
                 </div>
                 <div className='comment-uploader-body'>
                     <div>{comment.user}</div>
-                    <div>{comment.body}</div>
+                    <div>{comment.body}</div>\
                 </div>
                 {userButton}
             </div>

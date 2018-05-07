@@ -86,11 +86,12 @@ class TrackItem extends React.Component {
       'ti-play playing' : 'ti-play';
     let buttonBar = this.userTrackButtons();
     let commentShow = this.showComments();
+
     return (
       <div className='track-item-container'>
         <div className='track-uploader-info'>
           <aside className="track-uploader-circle">
-            <img src={track.imageUrl}/>
+            <img src={track.uploaderPic}/>
           </aside>
           <aside className="track-uploader-name">{track.uploader}</aside>
         </div>

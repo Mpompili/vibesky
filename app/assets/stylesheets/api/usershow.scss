@@ -1,0 +1,77 @@
+.user-show-container{
+    display: flex;
+    box-sizing: border-box;
+    height: 260px;
+    width: 100%;
+    background-color: #7E99CC;
+}
+  
+  .user-show-detail{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #7E99CC;
+    margin: 30px 0px;
+    .user-sd-top{
+      display: flex;
+      box-sizing: border-box;
+      height: 63px;
+      align-items: center;
+      .ts-play{
+        box-sizing: border-box;
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDggMTQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHRpdGxlPlBsYXkgMjg8L3RpdGxlPjxwYXRoIGQ9Ik0wIDE0bDEuODQ2LTdMMCAwbDggNy04IDd6IiBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=);
+        background-size: 35px 35px;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 50%;
+        height: 60px;
+        width: 60px;
+        background-color: $cloud-orange;
+        cursor: pointer;
+      }
+      .playing {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOCIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDggMTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHRpdGxlPlBhdXNlIDI4PC90aXRsZT48cGF0aCBkPSJNNSAwdjEyaDNWMEg1ek0wIDB2MTJoM1YwSDB6IiBmaWxsPSIjRkZGIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=);
+        background-color: rgb(255, 51, 0);
+      }
+      .user-sd-info{
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+      }
+    }
+    .user-sd-bott{
+      width: 100%;
+      height: 100px;
+    }
+  }
+  
+  .user-show-image-container{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-sizing: border-box;
+    max-width: 200px;
+    max-height: 200px;
+    min-width: 200px;
+    min-height: 200px;
+    margin: auto 30px;
+    border-radius: 50%; 
+
+    img {
+      flex-shrink: 0;
+      min-width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  .user-sd-title{
+    font-size: 25px;
+    font-weight: 300;
+    color: white;
+    background-color: rgba(0,0,0,0.75);
+    text-align: center;
+    padding: 10px 9px;
+  }

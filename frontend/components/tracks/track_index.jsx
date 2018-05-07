@@ -27,18 +27,32 @@ class TrackIndex extends React.Component {
     let { tracks, errors } = this.props;
 
     let trackItems = Object.keys(tracks).map(key => (
-      <TrackItem key={key} track={tracks[key]} />
+      <TrackItem key={key} track={tracks[key]} user={this.props.user || null} />
     ));
 
-    let styledErrors = errors.map(err => <li>{err}</li>);
+    let indexTab;
+     if (this.props.userpage) {
+      indexTab = (
+      <ul className='track-index-tabs'>
+        <li className='ti-tab'><a href='/#/tracks'>Tracks</a></li>
+      </ul>);
+     } else {
+      indexTab = (
+        <ul className='track-index-tabs'>
+          <li className='ti-tab'><a href='/#/tracks'>Stream</a></li>
+          <li className='ti-tab ttmid'><a href='/#/tracks'>Discover</a></li>
+        </ul>);
+     }
 
+    let styledErrors = errors.map(err => <li>{err}</li>);
     return (
       <span className='track-index-page-container'>
         <div className='track-index-container'>
-          <ul className='track-index-tabs'>
+        {indexTab}
+          {/* <ul className='track-index-tabs'>
             <li className='ti-tab'><a href='/#/tracks'>Stream</a></li>
             <li className='ti-tab ttmid'><a href='/#/tracks'>Discover</a></li>
-          </ul>
+          </ul> */}
           <div className="track-index">
             {trackItems}
           </div>

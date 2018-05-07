@@ -1,17 +1,37 @@
 import React from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 
-class TrackForm extends React.Component {
+class UserForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.user;
+    // this.state = this.props.user;
+    this.state = {
+        imageFile: null, 
+        imageUrl: null, 
+    }; 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateFile = this.updateFile.bind(this);
+    this.setProfPic = this.setProfPic.bind(this); 
   }
 
   update(type) {
     return e => this.setState({ [type]: e.currentTarget.value });
   }
+
+//   componentWillMount(){
+//       this.props.fetchUser(this.props.match.params.id); 
+//     //   this.state = this.props.user; 
+//     //   debugger;
+//     // this.setState({
+//     //     this.props.user;  
+//     // });
+//       console.warn('this is state after component Did mount', this.state); 
+//   }
+
+//   componentDidMount(){
+
+//   }
+
 
   updateFile(type, e) {
     const typeFile = type.concat('File');
@@ -19,9 +39,11 @@ class TrackForm extends React.Component {
     const file = e.currentTarget.files[0];
     const fileReader = new FileReader();
 
+    console.log('this is state before upload', this.state);
     fileReader.onloadend = () => {
       return this.setState({ [typeFile]: file, [typeUrl]: fileReader.result });
     };
+    console.log('this is state after upload', this.state);
     file ? fileReader.readAsDataURL(file) :
       this.setState({ [typeUrl]: 'didnt work', [typeFile]: null });
   }
@@ -32,15 +54,22 @@ class TrackForm extends React.Component {
     const formData = new FormData();
     // formData.append("track[title]", this.state.title);
     // formData.append("track[description]", this.state.description);
-    if (this.state.imageFile) formData.append("user[image]", this.state.imageFile);
-    this.props.updateUser(formData, this.props.user.id).then(() => this.props.history.push(`/users/${this.props.user.id}`));
+    if (this.state.imageFile) {
+        formData.append("user[image]", this.state.imageFile);
+    }
+    debugger; 
+    this.props.updateUser(formData, this.props.user.id);
+    debugger; 
+    // .then(() => this.props.history.push(`/users/${this.props.user.id}`));
   }
 
-  generalDetailForm() {
+  generalDetailForm(editPic) {
+  
+     
     return (
     <div className="detail-submit">
       <div className='ds-image-box'>
-        <img src={this.state.imageUrl}/>
+        <img src={editPic}/>
         <label className='imageLabel'>Upload Image
           <input className="h-input" type="file" onChange={(e) => this.updateFile('image', e)}/>
         </label>
@@ -56,15 +85,35 @@ class TrackForm extends React.Component {
     </div>);
   }
 
+  componentWillMount(){
+      this.props.fetchUser(this.props.match.params.id); 
+    //   debugger; 
+      this.setState({
+          imageUrl: this.props.user.imageUrl
+      });
+  }
+  setProfPic(){
+      if (this.props.user) {
+          return this.state.imageUrl; 
+      } else {
+          return ''; 
+      }
+  }
   render(){
   let detailSubmit, upload_container;
+//   let editPic = (this.props.user === null) ? '' : this.state.imageUrl;
+//   debugger;
+    let editPic = this.setProfPic(); 
+    // editPic = (this.state.imageUrl === undefined) ? '' : this.state.imageUrl; 
+
+    // (this.state.user === undefined) ? ' ' : console.log(this.props.user);
 
 //   if (this.state.audioUrl === null) {
 //     upload_container = 'audio-upload-container';
 //     detailSubmit = '';
 //   } else {
 //     upload_container = 'audio-upload-container auc-special';
-    detailSubmit = this.generalDetailForm();
+    detailSubmit = this.generalDetailForm(editPic);
 //   }
 
     return (
@@ -83,7 +132,7 @@ class TrackForm extends React.Component {
   }
 }
 
-export default withRouter(TrackForm);
+export default withRouter(UserForm);
 
 // let detailSubmit, upload_container;
 //

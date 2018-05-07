@@ -17,24 +17,32 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class EditUserForm extends React.Component {
-  componentDidMount(){
+  componentWillMount(){
     this.props.fetchUser(this.props.match.params.id);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.user.id != nextProps.match.params.id) {
-      this.props.fetchUser(nextProps.match.params.id);
+    if (this.props.user){
+        if (this.props.user.id != nextProps.match.params.id) {
+        this.props.fetchUser(nextProps.match.params.id);
+        }
+        if (this.props.user.imageUrl != nextProps.user.imageUrl) {
+            this.props.fetchUser(nextProps.match.params.id);
+        }
     }
   }
 
   render() {
     const { user } = this.props;
+    if (user === undefined) return (<div></div>); 
+    // debugger; 
     return (
       <UserForm
+        fetchUser={fetchUser}
         updateUser={updateUser}
         user={user} />
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserForm);
+export default connect(mapStateToProps, mapDispatchToProps)(EditUserForm);

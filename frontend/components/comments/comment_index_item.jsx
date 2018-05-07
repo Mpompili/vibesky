@@ -26,17 +26,20 @@ class CommentIndexItem extends React.Component {
         );}
   }
 
+ 
   render() {
+
       let { track, id, comment } = this.props;
       let userButton = this.userTrackButtons(); 
+
       return (
             <div className='posted-comment'>
                 <div className='comment-uploader-img'>
-                    <img src={comment.user.imageUrl}/> 
+                    <img src={comment.userPic}/> 
                 </div>
                 <div className='comment-uploader-body'>
                     <div>{comment.user}</div>
-                    <div>{comment.body}</div>\
+                    <div>{comment.body}</div>
                 </div>
                 {userButton}
             </div>

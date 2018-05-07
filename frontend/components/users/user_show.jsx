@@ -20,13 +20,15 @@ class UserShow extends React.Component {
   render(){
     let { tracks, trackplayer, currentUser, errors, user } = this.props;
     // debugger; 
-    let userpic, useremail; 
+    let userpic, useremail, userId; 
     if (user === undefined){
       userpic = '';
       useremail = ''; 
+      userId = ''; 
     }else{
       userpic = user.imageUrl; 
       useremail = user.email; 
+      userId = user.id; 
     }
 
     
@@ -46,7 +48,7 @@ class UserShow extends React.Component {
             </div>
 
           </div>
-         
+          <Link to={`/users/${userId}/edit`} className="controller-btn edit-btn">Edit</Link>
         </div>
           <div className='track-show-container-bottom'>
             <TrackIndex fetchTracks={this.props.fetchTracks} tracks={tracks} errors={errors} userpage={true} /> 

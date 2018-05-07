@@ -24,6 +24,8 @@ json.comments do
       json.id comment.id 
       json.body comment.body
       json.user comment.user.email
+      json.userId comment.user.id
+      json.userPic asset_path(comment.user.image.url)  
     end 
   end
 end

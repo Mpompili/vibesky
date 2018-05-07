@@ -93,7 +93,7 @@ class TrackItem extends React.Component {
           <aside className="track-uploader-circle">
             <img src={track.uploaderPic}/>
           </aside>
-          <aside className="track-uploader-name">{track.uploader}</aside>
+          <a href={`/#/users/${track.uploaderId}`}><aside className="track-uploader-name">{track.uploader}</aside></a> 
         </div>
 
         <div className='track-item'>
@@ -107,7 +107,7 @@ class TrackItem extends React.Component {
 
               </div>
               <div className="ti-upload-det">
-                <aside className="ti-description">{track.uploader}</aside>
+                <a href={`/#/users/${track.uploaderId}`}><aside className="ti-description">{track.uploader}</aside></a> 
                 <a href={`/#/tracks/${track.id}`} className="ti-title">{track.title}</a>
               </div>
             </div>

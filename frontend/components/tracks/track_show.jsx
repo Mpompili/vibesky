@@ -42,6 +42,8 @@ class TrackShow extends React.Component {
     this.props.deleteTrack(trackId).then(()=> this.props.history.push('/tracks'));
   }
 
+  
+
   userTrackButtons() {
     let track = this.props.track;
     let likeButton =  this.props.liked ? 'controller-btn like-btn liked' : 'controller-btn like-btn'; 

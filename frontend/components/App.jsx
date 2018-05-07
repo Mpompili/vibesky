@@ -11,6 +11,7 @@ import TrackPlayerContainer from './trackplayer/trackplayer_container';
 import EditFormContainer from './tracks/edit_track_container';
 import TrackShowContainer from './tracks/track_show_container';
 import UserShowContainer from './users/user_show_container'; 
+import UserEditContainer from './users/user_form_container';
 
 const App = () => (
   <div id='app'>
@@ -21,6 +22,7 @@ const App = () => (
     <div className="content-container">
       <Switch>
         <ProtectedRoute exact path ='/users/:id' component={UserShowContainer} /> 
+        <ProtectedRoute exact path ='/users/:id/edit' component={UserEditContainer} /> 
         <ProtectedRoute exact path ='/tracks/new' component={TrackFormContainer} />
         <ProtectedRoute exact path ='/tracks/:id/edit' component={EditFormContainer} />
         <ProtectedRoute exact path ='/tracks/:id' component={TrackShowContainer} />

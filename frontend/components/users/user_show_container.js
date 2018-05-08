@@ -15,15 +15,31 @@ const mapStateToProps = (state, ownProps) => {
     }); 
     const userId = ownProps.match.params.id; 
 
-    const user = Object.keys(state.entities.users).map(key=> state.entities.users[key])[0];
-
-    const userTracks = tracks.filter((track) => {
+    let user;  
+    Object.keys(state.entities.users).forEach(key=> {
+        if (key == ownProps.match.params.id){
+            user = state.entities.users[key];
+        }
+    }); 
+    // const user = users
+    // const user = Object.keys(state.entities.users).filter((_user) => {
+    //     if (_user.id == ownProps.match.params.id) return _user; 
+    // });
+    // const userTracks = tracks.filter((track) => {
+    //    if (track.uploaderId == ownProps.match.params.id) return track; 
+    // }); 
+    
+    const postedTracks = tracks.filter((track) => {
        if (track.uploaderId == ownProps.match.params.id) return track; 
     }); 
-    console.warn('this is userTracks:', userTracks); 
+    const likedTracks = tracks.filter((track) => {
+       if (track.id == ownProps.match.params.id) return track; 
+    }); 
+
     // debugger; 
     return ({
-        tracks: userTracks,
+        tracks: postedTracks,
+        likedTracks: likedTracks,
         user: user,
         errors: state.errors.tracks || [],
         trackplayer: state.trackplayer || {},

@@ -8,8 +8,10 @@ class UserShow extends React.Component {
     super(props);
     // this.songButton = this.songButton.bind(this);
     this.state = {
-      firstLoad: true
+      firstLoad: true,
+      postlike: false
     };
+    this.togglePostLike = this.togglePostLike.bind(this);
   }
   
 
@@ -17,9 +19,12 @@ class UserShow extends React.Component {
     this.props.fetchUser(this.props.match.params.id); 
   }
 
+ 
+
   render(){
-    let { tracks, trackplayer, currentUser, errors, user } = this.props;
-    // debugger; 
+    let { tracks, trackplayer, currentUser, errors, user, likedTracks } = this.props;
+
+
     let userpic, useremail, userId; 
     if (user === undefined){
       userpic = '';
@@ -31,6 +36,7 @@ class UserShow extends React.Component {
       userId = user.id; 
     }
 
+    
     
     return (
       <div className='track-show-page'>
@@ -51,7 +57,7 @@ class UserShow extends React.Component {
           <Link to={`/users/${userId}/edit`} className="controller-btn edit-btn">Edit</Link>
         </div>
           <div className='track-show-container-bottom'>
-            <TrackIndex fetchTracks={this.props.fetchTracks} tracks={tracks} errors={errors} userpage={true} /> 
+            <TrackIndex fetchTracks={this.props.fetchTracks} tracks={tracks} likedTracks={likedTracks} errors={errors} userpage={true} /> 
         </div>
       </div>
     );

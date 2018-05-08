@@ -17,7 +17,7 @@ class Navbar extends React.Component {
           <div className="cloud-logo-li"></div>
         </a>
         <a href="/#/tracks" className="header-item">Home</a>
-        <a href="/#/tracks" className="header-item">Collection</a>
+        <a href={`/#/users/${this.props.currentUser.id}`} className="header-item">Collection</a>
       </div>
     );
   }

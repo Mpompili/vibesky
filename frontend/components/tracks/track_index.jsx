@@ -8,7 +8,7 @@ import ReactPlayer from 'react-player';
 class TrackIndex extends React.Component {
   constructor(props) {
     super(props);
-  }
+  } 
   
   // componentWillReceiveProps(newProps){
 
@@ -25,7 +25,6 @@ class TrackIndex extends React.Component {
   render(){
 
     let { tracks, errors } = this.props;
-
     let trackItems = Object.keys(tracks).map(key => (
       <TrackItem key={key} track={tracks[key]} user={this.props.user || null} />
     ));

@@ -11,7 +11,7 @@ class UserShow extends React.Component {
       firstLoad: true,
       postlike: false
     };
-    // this.togglePostLike = this.togglePostLike.bind(this);
+    this.togglePostLike = this.togglePostLike.bind(this);
   }
   
 
@@ -19,14 +19,20 @@ class UserShow extends React.Component {
     this.props.fetchUser(this.props.match.params.id); 
   }
 
-  // togglePost
+  togglePostLike(){
+    console.log('wtf'); 
+    this.setState({
+      postlike: !this.state.postlike
+    });
+    console.log('this is state', this.state); 
+  }
  
 
   render(){
     let { tracks, trackplayer, currentUser, errors, user, likedTracks } = this.props;
 
 
-    let userpic, useremail, userId; 
+    let userpic, useremail, userId, tag1, tag2, tIndex; 
     if (user === undefined){
       userpic = '';
       useremail = ''; 
@@ -36,6 +42,17 @@ class UserShow extends React.Component {
       useremail = user.email; 
       userId = user.id; 
     }
+     if (this.state.postlike){
+       tag1 = 'ti-tab';
+       tag2 = 'ti-tab ttmid tagpicked';
+       tIndex = (<TrackIndex fetchTracks={this.props.fetchTracks} tracks={likedTracks} errors={errors} userpage={true} />);
+     } else {
+       tag1 = 'ti-tab tagpicked';
+       tag2 = 'ti-tab ttmid'; 
+       tIndex = (<TrackIndex fetchTracks={this.props.fetchTracks} tracks={tracks} errors={errors} userpage={true} /> );
+     }
+
+
 
     
     
@@ -61,9 +78,11 @@ class UserShow extends React.Component {
           <span className='track-index-page-container'>
             <div className='track-index-container'>
               <ul className='track-index-tabs'>
-                <li className='ti-tab'><a href='/#/tracks'>Tracks</a></li>
+                <li className={tag1}><a onClick={()=> this.togglePostLike()}>Tracks</a></li>
+                <li className={tag2}><a onClick={()=> this.togglePostLike()}>Liked</a></li>
               </ul>
-            <TrackIndex fetchTracks={this.props.fetchTracks} tracks={tracks} errors={errors} userpage={true} /> 
+              {tIndex}
+            {/* <TrackIndex fetchTracks={this.props.fetchTracks} tracks={tracks} errors={errors} userpage={true} />  */}
             </div> 
             <div className="sidebar-placeholder"></div>
           </span>

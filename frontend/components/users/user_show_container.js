@@ -28,13 +28,21 @@ const mapStateToProps = (state, ownProps) => {
     // const userTracks = tracks.filter((track) => {
     //    if (track.uploaderId == ownProps.match.params.id) return track; 
     // }); 
-    
-    const postedTracks = tracks.filter((track) => {
+    // debugger;
+    let postedTracks;
+    let likedTracks; 
+
+     postedTracks = tracks.filter((track) => {
        if (track.uploaderId == ownProps.match.params.id) return track; 
     }); 
-    const likedTracks = tracks.filter((track) => {
-       if (track.id == ownProps.match.params.id) return track; 
+    likedTracks = tracks.filter((track) => {
+        if (user){
+            if (track.id == user.likes) return track; 
+        } else {
+        if (track.id == ownProps.match.params.id) return track; 
+        }
     }); 
+ 
 
     // debugger; 
     return ({

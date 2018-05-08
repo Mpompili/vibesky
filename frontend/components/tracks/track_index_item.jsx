@@ -42,6 +42,7 @@ class TrackItem extends React.Component {
 
   toggleLike(trackId, e){
     e.preventDefault();
+    console.warn('trackId in toggleLike: ', trackId); 
     this.props.toggleLike(trackId);
   }
 

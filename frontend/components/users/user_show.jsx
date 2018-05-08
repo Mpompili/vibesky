@@ -19,19 +19,31 @@ class UserShow extends React.Component {
     this.props.fetchUser(this.props.match.params.id); 
   }
 
+  componentWillReceiveProps(newProps){
+    // debugger;
+    if (this.props.user){
+      if (this.props.user.id != newProps.match.params.id){
+        console.log('detect siwtch'); 
+        this.props.fetchUser(newProps.match.params.id); 
+        this.setState({postlike: !this.state.postlike}); 
+      }
+    }
+  }
+
   togglePostLike(){
     console.log('wtf'); 
     this.setState({
       postlike: !this.state.postlike
     });
     console.log('this is state', this.state); 
+    console.log('this is props', this.props); 
   }
  
 
   render(){
     let { tracks, trackplayer, currentUser, errors, user, likedTracks } = this.props;
 
-
+    console.warn('liked tracks: ', likedTracks); 
     let userpic, useremail, userId, tag1, tag2, tIndex; 
     if (user === undefined){
       userpic = '';

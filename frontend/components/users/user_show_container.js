@@ -9,7 +9,7 @@ import track_show from '../tracks/track_show';
 const mapStateToProps = (state, ownProps) => {
     // debugger;
     const tracks = Object.values(state.entities.tracks);
-    
+    const currentUser = state.session.currentUser; 
     const trackIds = tracks.map((track) => {
         return (track.uploaderId); 
     }); 
@@ -29,19 +29,42 @@ const mapStateToProps = (state, ownProps) => {
     //    if (track.uploaderId == ownProps.match.params.id) return track; 
     // }); 
     // debugger;
-    let postedTracks;
-    let likedTracks; 
+    // let postedTracks;
+    // let likedTracks = []; 
 
-     postedTracks = tracks.filter((track) => {
+    let postedTracks = tracks.filter((track) => {
        if (track.uploaderId == ownProps.match.params.id) return track; 
     }); 
-    likedTracks = tracks.filter((track) => {
-        if (user){
-            if (track.id == user.likes) return track; 
-        } else {
-        if (track.id == ownProps.match.params.id) return track; 
-        }
-    }); 
+    // let likedTracks = tracks.filter((track) => {
+    let likedTracks;
+    if (user && user.id == currentUser.id) { 
+        likedTracks = tracks.filter((track) => {
+            if (currentUser.likes.includes(track.id)) return track;
+        });
+    } else if (user) {
+        likedTracks = tracks.filter((track) => {
+            if (user.likes.includes(track.id)) return track;
+        });
+    } else {
+        likedTracks = tracks.filter((track) => {
+            if (track.id == ownProps.match.params.id) return track; 
+        });
+    }
+    //  = tracks.filter((track) => {
+    //     if (user){
+    //         user.likes.includes(track.id) 
+    //         // user.likes.forEach(like => {
+    //         //     if (track.id == like) {
+    //         //         console.log('track id = like id'); 
+    //         //         return track; 
+    //         //     }
+    //         // });
+    //     } else {
+    //     if (track.id == ownProps.match.params.id) return track; 
+    //     }
+    // }); 
+    console.warn('this is likedTracks: ', likedTracks);
+    debugger;
  
 
     // debugger; 

@@ -15,6 +15,7 @@ const sessionReducer = (state = { currentUser: null }, action) => {
       newState.currentUser.likes.push(action.trackId);
       return newState; 
     case REMOVE_LIKE:
+      console.log('remove_like: ', action);
       const sliceIdx = newState.currentUser.likes.indexOf(action.trackId);
       newState.currentUser.likes.splice(sliceIdx,1); 
       return newState; 

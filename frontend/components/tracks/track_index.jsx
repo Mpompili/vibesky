@@ -31,35 +31,33 @@ class TrackIndex extends React.Component {
 
     let indexTab;
      if (this.props.userpage) {
-      indexTab = (
-      <ul className='track-index-tabs'>
-        <li className='ti-tab'><a href='/#/tracks'>Tracks</a></li>
-      </ul>);
+      return (
+        <div className="track-index">
+          {trackItems}
+        </div>);
      } else {
-      indexTab = (
-        <ul className='track-index-tabs'>
-          <li className='ti-tab'><a href='/#/tracks'>Stream</a></li>
-          <li className='ti-tab ttmid'><a href='/#/tracks'>Discover</a></li>
-        </ul>);
-     }
-
-    let styledErrors = errors.map(err => <li>{err}</li>);
-    return (
-      <span className='track-index-page-container'>
+      return (
+        <span className='track-index-page-container'>
         <div className='track-index-container'>
-        {indexTab}
-          {/* <ul className='track-index-tabs'>
+          <ul className='track-index-tabs'>
             <li className='ti-tab'><a href='/#/tracks'>Stream</a></li>
-            <li className='ti-tab ttmid'><a href='/#/tracks'>Discover</a></li>
-          </ul> */}
+            {/* <li className='ti-tab ttmid'><a href='/#/tracks'>Discover</a></li> */}
+          </ul> 
           <div className="track-index">
             {trackItems}
           </div>
-        </div>
-        <div className="sidebar-placeholder">
-        </div>
+        </div> 
+          <div className="sidebar-placeholder"></div>
       </span>
-    );
+        );
+     }
+
+    // let styledErrors = errors.map(err => <li>{err}</li>);
+    // return (
+    //   <span> 
+    //   {indexTab}
+    //   </span> 
+    // );
   }
 }
 

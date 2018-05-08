@@ -11,7 +11,7 @@ class UserShow extends React.Component {
       firstLoad: true,
       postlike: false
     };
-    this.togglePostLike = this.togglePostLike.bind(this);
+    // this.togglePostLike = this.togglePostLike.bind(this);
   }
   
 
@@ -19,6 +19,7 @@ class UserShow extends React.Component {
     this.props.fetchUser(this.props.match.params.id); 
   }
 
+  // togglePost
  
 
   render(){
@@ -57,7 +58,15 @@ class UserShow extends React.Component {
           <Link to={`/users/${userId}/edit`} className="controller-btn edit-btn">Edit</Link>
         </div>
           <div className='track-show-container-bottom'>
-            <TrackIndex fetchTracks={this.props.fetchTracks} tracks={tracks} likedTracks={likedTracks} errors={errors} userpage={true} /> 
+          <span className='track-index-page-container'>
+            <div className='track-index-container'>
+              <ul className='track-index-tabs'>
+                <li className='ti-tab'><a href='/#/tracks'>Tracks</a></li>
+              </ul>
+            <TrackIndex fetchTracks={this.props.fetchTracks} tracks={tracks} errors={errors} userpage={true} /> 
+            </div> 
+            <div className="sidebar-placeholder"></div>
+          </span>
         </div>
       </div>
     );

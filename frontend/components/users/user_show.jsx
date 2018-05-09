@@ -39,7 +39,7 @@ class UserShow extends React.Component {
   render(){
     let { tracks, trackplayer, currentUser, errors, user, likedTracks } = this.props;
 
-    let tag1, tag2, tIndex, editUser; 
+    let tag1, tag2, tIndex, editUser, userName; 
     if (user === undefined){
       return (<div></div>); 
       // userpic = '';
@@ -47,7 +47,6 @@ class UserShow extends React.Component {
       // userId = ''; 
     }else{
       if (currentUser.id == user.id){
-        
         // editUser = (<Link to={`/users/${user.id}/edit`} className="controller-btn edit-btn">Edit Profile</Link>);
         editUser = (<Link to={`/users/${user.id}/edit`} className="edit-user-prof">Edit Profile</Link>);
       } else {
@@ -62,6 +61,8 @@ class UserShow extends React.Component {
         tag2 = 'ti-tab ttmid'; 
         tIndex = (<TrackIndex fetchTracks={this.props.fetchTracks} tracks={tracks} errors={errors} userpage={true} /> );
       }
+
+      userName = (user.username == null) ? user.email : user.username; 
     }
     
     return (
@@ -76,8 +77,8 @@ class UserShow extends React.Component {
               {/* <div className={buttonPlaying} onClick={(e) => this.songButton(track, e)}></div> */}
               <div className='user-sd-info'>
                 {/* <div className='track-sd-uploader'>{useremail}</div> */}
-                <div className='user-sd-title'>{user.email}</div>
-                <div className='user-sd-other'>{user.email || "name here"}</div>
+                <div className='user-sd-title'>{userName}</div>
+                <div className='user-sd-other'>{user.email}</div>
                 <div className='user-sd-other'>{user.location || "vibesphere, Earth"}</div>
               </div>
             </div>

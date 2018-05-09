@@ -62,12 +62,12 @@ class UserForm extends React.Component {
       </div>
 
       <div className='track-detail-form'>
-        <p className='tdf-text extraspace'>username</p>
-        <input className='txt-input' type="text" onChange={this.update('username')} value={this.state.username || 'username'}/>
+        <p className='tdf-text'>username</p>
+        <input className='txt-input' type="text" onChange={this.update('username')} value={this.state.username || this.state.email } placeholder={'what username you want?'}/>
         <p className='tdf-text extraspace'>location</p>
-        <input className='txt-input' type="text" onChange={this.update('location')} value={this.state.location || 'where you from?'}/>
+        <input className='txt-input' type="text" onChange={this.update('location')} value={this.state.location || 'vibesphere, Earth'} placeholder={'where ya from?'}/>
         <p className='tdf-text extraspace'>about</p>
-        <textarea className='txt-input txta active-ring' onChange={this.update('about')} value={this.state.about || 'tell us about yourself'}></textarea>
+        <textarea className='txt-input txta active-ring' onChange={this.update('about')} value={this.state.about} placeholder={'tell us about yourself'}></textarea>
         <input className="inputLabel extraspace" type="submit" value={`${this.props.formType}`} />
       </div>
     </div>);
@@ -75,6 +75,8 @@ class UserForm extends React.Component {
 
   render(){
   let detailSubmit, upload_container;
+
+  if (!this.props.user) return (<div></div>); 
   if (this.props.user.id != this.props.currentUser.id) {
   return <Redirect to="/tracks"/>;
   }

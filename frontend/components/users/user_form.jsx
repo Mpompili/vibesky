@@ -44,8 +44,9 @@ class UserForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
-    // formData.append("track[title]", this.state.title);
-    // formData.append("track[description]", this.state.description);
+    formData.append("user[username]", this.state.username);
+    formData.append("user[location]", this.state.location);
+    formData.append("user[about]", this.state.about);
     if (this.state.imageFile) formData.append("user[image]", this.state.imageFile);
     this.props.updateUser(formData, this.props.user.id).then(() => this.props.history.push(`/users/${this.props.user.id}`));
   }
@@ -61,11 +62,13 @@ class UserForm extends React.Component {
       </div>
 
       <div className='track-detail-form'>
-        <p className='tdf-text tdf-required'>Title</p>
-        {/* <input className='txt-input'type="text" onChange={this.update('title')} value={this.state.title}/> */}
-        <p className='tdf-text'>Description</p>
-        {/* <textarea className='txt-input txta active-ring' onChange={this.update('description')} value={this.state.description}></textarea> */}
-        <input className="inputLabel" type="submit" value={`${this.props.formType}`} />
+        <p className='tdf-text extraspace'>username</p>
+        <input className='txt-input' type="text" onChange={this.update('username')} value={this.state.username || 'username'}/>
+        <p className='tdf-text extraspace'>location</p>
+        <input className='txt-input' type="text" onChange={this.update('location')} value={this.state.location || 'where you from?'}/>
+        <p className='tdf-text extraspace'>about</p>
+        <textarea className='txt-input txta active-ring' onChange={this.update('about')} value={this.state.about || 'tell us about yourself'}></textarea>
+        <input className="inputLabel extraspace" type="submit" value={`${this.props.formType}`} />
       </div>
     </div>);
   }
@@ -84,7 +87,7 @@ class UserForm extends React.Component {
     return (
       <div className='track-form-container'>
         <form onSubmit={this.handleSubmit} className='track-form'>
-          {/* <div className={upload_container}>
+          {/* <div classNgame={upload_container}>
             <h1>Upload to VIBESKY</h1>
             <label className='inputLabel il-main active-ring'>Choose a file to upload
               <input className="h-input" type="file" onChange={(e) => this.updateFile('audio', e)}/>

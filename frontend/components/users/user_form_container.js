@@ -9,7 +9,8 @@ const mapStateToProps = (state, ownProps) => {
     return ({
     errors: state.errors.tracks || [],
     user: state.entities.users[ownProps.match.params.id],
-    formType: 'update'
+    formType: 'update',
+    currentUser: state.session.currentUser
     });
 };
 const mapDispatchToProps = (dispatch) => ({

@@ -75,7 +75,9 @@ class UserForm extends React.Component {
 
   render(){
   let detailSubmit, upload_container;
-
+  if (this.props.user.id != this.props.currentUser.id) {
+  return <Redirect to="/tracks"/>;
+  }
 //   if (this.state.audioUrl === null) {
 //     upload_container = 'audio-upload-container';
 //     detailSubmit = '';

@@ -83,7 +83,7 @@ class TrackShow extends React.Component {
             <div className='track-sd-top'>
               <div className={buttonPlaying} onClick={(e) => this.songButton(track, e)}></div>
               <div className='track-sd-info'>
-                <div className='track-sd-uploader'>{track.uploader}</div>
+                <a href={`/#/users/${track.uploaderId}`}><div className='track-sd-uploader'>{track.uploader}</div></a> 
                 <div className='track-sd-title'>{track.title}</div>
               </div>
             </div>

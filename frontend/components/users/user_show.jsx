@@ -39,14 +39,20 @@ class UserShow extends React.Component {
   render(){
     let { tracks, trackplayer, currentUser, errors, user, likedTracks } = this.props;
 
-    let tag1, tag2, tIndex; 
+    let tag1, tag2, tIndex, editUser; 
     if (user === undefined){
       return (<div></div>); 
       // userpic = '';
       // useremail = ''; 
       // userId = ''; 
     }else{
-
+      if (currentUser.id == user.id){
+        
+        // editUser = (<Link to={`/users/${user.id}/edit`} className="controller-btn edit-btn">Edit Profile</Link>);
+        editUser = (<Link to={`/users/${user.id}/edit`} className="edit-user-prof">Edit Profile</Link>);
+      } else {
+        editUser = (<span style={{display: 'none'}}></span>); 
+      }
       if (this.state.postlike){
         tag1 = 'ti-tab';
         tag2 = 'ti-tab ttmid tagpicked';
@@ -63,6 +69,7 @@ class UserShow extends React.Component {
         <div className='user-show-container'>
           <div className='user-show-image-container'>
             <img src={user.imageUrl}/>
+            {editUser} 
           </div>
           <div className='user-show-detail'>
             <div className='user-sd-top'>
@@ -70,11 +77,13 @@ class UserShow extends React.Component {
               <div className='user-sd-info'>
                 {/* <div className='track-sd-uploader'>{useremail}</div> */}
                 <div className='user-sd-title'>{user.email}</div>
+                <div className='user-sd-other'>{user.email || "name here"}</div>
+                <div className='user-sd-other'>{user.location || "vibesphere, Earth"}</div>
               </div>
             </div>
 
           </div>
-          <Link to={`/users/${user.id}/edit`} className="controller-btn edit-btn">Edit</Link>
+          {/* <Link to={`/users/${user.id}/edit`} className="controller-btn edit-btn">Edit</Link> */}
         </div>
           <div className='track-show-container-bottom'>
           <span className='track-index-page-container'>

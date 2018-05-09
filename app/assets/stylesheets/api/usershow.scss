@@ -38,6 +38,7 @@
         display: flex;
         flex-direction: column;
         margin-left: 10px;
+        margin-top: 55px;
       }
     }
     .user-sd-bott{
@@ -59,7 +60,7 @@
     min-height: 200px;
     margin: auto 30px;
     border-radius: 50%; 
-
+    position: relative;
     img {
       flex-shrink: 0;
       min-width: 100%;
@@ -74,6 +75,7 @@
     background-color: rgba(0,0,0,0.75);
     text-align: center;
     padding: 10px 9px;
+    width: fit-content;
   }
 
   .user-sd-other{
@@ -82,6 +84,23 @@
     font-weight: 300;
     background-color: rgba(0,0,0,0.75);
     padding: 5px 8px;
-    margin-bottom: 5px;
+    margin-top: 5px;
     width: fit-content;
+  }
+
+  .edit-user-prof{
+    position: absolute; 
+    font-size: 14px;
+    font-weight: 300;
+    bottom: 18px; 
+    color: black;
+    background-color: white;
+    cursor: pointer;
+    padding: 4px 10px;
+    border: 0.5px lightgrey solid;
+    letter-spacing: 0.8px;
+    box-shadow: 1px 1px 5px lightgrey;
+    z-index: 1;
+    // margin-top: 10px;
+    border-radius: 3px;
   }

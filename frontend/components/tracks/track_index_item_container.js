@@ -7,7 +7,7 @@ import { toggleLike } from '../../actions/like_actions';
 const currentUserLikes = ({session: {currentUser}}, trackid) => {
   if (!currentUser || !currentUser.likes) return false; 
   return currentUser.likes.includes(parseInt(trackid)); 
-}
+};
 
 const mapStateToProps = (state, ownProps) => ({
   comments: state.entities.comments, 

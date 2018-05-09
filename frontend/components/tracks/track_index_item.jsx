@@ -13,6 +13,7 @@ class TrackItem extends React.Component {
     this.userTrackButtons = this.userTrackButtons.bind(this);
     this.showComments = this.showComments.bind(this);
   }
+
   //added for likes...
   // componentWillReceiveProps(newProps) {
   //   if (this.props.currentUser.liked !== newProps.currentUser.liked){
@@ -42,7 +43,7 @@ class TrackItem extends React.Component {
 
   toggleLike(trackId, e){
     e.preventDefault();
-    console.warn('trackId in toggleLike: ', trackId); 
+    // console.warn('trackId in toggleLike: ', trackId); 
     this.props.toggleLike(trackId);
   }
 

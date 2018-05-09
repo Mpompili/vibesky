@@ -23,7 +23,6 @@ class UserShow extends React.Component {
     // debugger;
     if (this.props.user){
       if (this.props.user.id != newProps.match.params.id){
-        console.log('detect siwtch'); 
         this.props.fetchUser(newProps.match.params.id); 
         this.setState({postlike: !this.state.postlike}); 
       }
@@ -31,60 +30,51 @@ class UserShow extends React.Component {
   }
 
   togglePostLike(){
-    console.log('wtf'); 
     this.setState({
       postlike: !this.state.postlike
     });
-    console.log('this is state', this.state); 
-    console.log('this is props', this.props); 
   }
  
 
   render(){
     let { tracks, trackplayer, currentUser, errors, user, likedTracks } = this.props;
 
-    console.warn('liked tracks: ', likedTracks); 
-    let userpic, useremail, userId, tag1, tag2, tIndex; 
+    let tag1, tag2, tIndex; 
     if (user === undefined){
-      userpic = '';
-      useremail = ''; 
-      userId = ''; 
+      return (<div></div>); 
+      // userpic = '';
+      // useremail = ''; 
+      // userId = ''; 
     }else{
-      userpic = user.imageUrl; 
-      useremail = user.email; 
-      userId = user.id; 
+
+      if (this.state.postlike){
+        tag1 = 'ti-tab';
+        tag2 = 'ti-tab ttmid tagpicked';
+        tIndex = (<TrackIndex fetchTracks={this.props.fetchTracks} tracks={likedTracks} errors={errors} userpage={true} />);
+      } else {
+        tag1 = 'ti-tab tagpicked';
+        tag2 = 'ti-tab ttmid'; 
+        tIndex = (<TrackIndex fetchTracks={this.props.fetchTracks} tracks={tracks} errors={errors} userpage={true} /> );
+      }
     }
-     if (this.state.postlike){
-       tag1 = 'ti-tab';
-       tag2 = 'ti-tab ttmid tagpicked';
-       tIndex = (<TrackIndex fetchTracks={this.props.fetchTracks} tracks={likedTracks} errors={errors} userpage={true} />);
-     } else {
-       tag1 = 'ti-tab tagpicked';
-       tag2 = 'ti-tab ttmid'; 
-       tIndex = (<TrackIndex fetchTracks={this.props.fetchTracks} tracks={tracks} errors={errors} userpage={true} /> );
-     }
-
-
-
-    
     
     return (
       <div className='track-show-page'>
         <div className='user-show-container'>
           <div className='user-show-image-container'>
-            <img src={userpic}/>
+            <img src={user.imageUrl}/>
           </div>
           <div className='user-show-detail'>
             <div className='user-sd-top'>
               {/* <div className={buttonPlaying} onClick={(e) => this.songButton(track, e)}></div> */}
               <div className='user-sd-info'>
                 {/* <div className='track-sd-uploader'>{useremail}</div> */}
-                <div className='user-sd-title'>{useremail}</div>
+                <div className='user-sd-title'>{user.email}</div>
               </div>
             </div>
 
           </div>
-          <Link to={`/users/${userId}/edit`} className="controller-btn edit-btn">Edit</Link>
+          <Link to={`/users/${user.id}/edit`} className="controller-btn edit-btn">Edit</Link>
         </div>
           <div className='track-show-container-bottom'>
           <span className='track-index-page-container'>

@@ -38,7 +38,7 @@ class TrackIndex extends React.Component {
      } else {
       return (
         <span className='track-index-page-container'>
-        <div className='track-index-container'>
+        <div className='track-index-container invisi-scroll'>
           <ul className='track-index-tabs'>
             <li className='ti-tab'><a href='/#/tracks'>Stream</a></li>
             {/* <li className='ti-tab ttmid'><a href='/#/tracks'>Discover</a></li> */}

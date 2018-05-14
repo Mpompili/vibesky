@@ -118,6 +118,13 @@ class TrackShow extends React.Component {
               </div> 
             </div>
             <div className='tscb-sidebar'>
+              <div className="ad-container">
+                  <img src="http://res.cloudinary.com/mpompili/image/upload/v1526013412/gotogithub.jpg"/> 
+              </div> 
+              <div className="ad-container">
+                  <img src="http://res.cloudinary.com/mpompili/image/upload/v1526013412/gotogithub.jpg"/> 
+              </div> 
+              <div className="extraspace"></div> 
             </div>
         </div>
       </div>

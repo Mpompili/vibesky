@@ -14,10 +14,33 @@
 
 .sidebar-placeholder{
   flex: 1;
-  border-left: 0.5px $light-gray solid;
+  display: flex; 
+  flex-direction: column; 
+  border-left: 1px $light-gray solid;
+  margin-top: 22px; 
 }
 
 .track-index-page-container{
   display: flex;
   width: 100%;
+}
+
+.extraspace{
+  margin-bottom: 40px; 
+}
+
+.ad-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 15px auto; 
+  height: 250px;
+  width: 300px;
+  img {
+    flex-shrink: 0; 
+    min-width: 100%; 
+    max-width: 100%; 
+  }
 }

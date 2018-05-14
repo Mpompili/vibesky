@@ -96,7 +96,15 @@ class UserShow extends React.Component {
               {tIndex}
             {/* <TrackIndex fetchTracks={this.props.fetchTracks} tracks={tracks} errors={errors} userpage={true} />  */}
             </div> 
-            <div className="sidebar-placeholder"></div>
+            <div className="sidebar-placeholder">
+              <div className="ad-container">
+                <img src="http://res.cloudinary.com/mpompili/image/upload/v1526013412/gotogithub.jpg"/> 
+              </div> 
+              <div className="ad-container">
+                <img src="http://res.cloudinary.com/mpompili/image/upload/v1526013412/gotogithub.jpg"/> 
+              </div> 
+              <div className="extraspace"></div> 
+            </div>
           </span>
         </div>
       </div>

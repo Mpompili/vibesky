@@ -47,7 +47,11 @@ class TrackIndex extends React.Component {
             {trackItems}
           </div>
         </div> 
-          <div className="sidebar-placeholder"></div>
+          <div className="sidebar-placeholder">
+            <div className="ad-container">
+              <img src="http://res.cloudinary.com/mpompili/image/upload/v1526013412/gotogithub.jpg"/> 
+            </div> 
+          </div>
       </span>
         );
      }

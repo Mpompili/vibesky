@@ -101,8 +101,9 @@
 
 .tscb-sidebar{
   flex: 1;
+  display: flex; 
+  flex-direction: column; 
   border-left: 1px lightgray solid;
-  height: 100vh; 
   margin-top: 22px;
 }
 

@@ -21,7 +21,11 @@ class TrackShow extends React.Component {
 
   componentDidMount(){
     this.props.fetchTrack(this.props.match.params.id)
-    .then(()=> this.setState({firstLoad: false}));
+    .then(()=> {
+      this.setState({firstLoad: false});
+      this.props.fetchUser(this.props.track.uploaderId);
+    }
+    );
   }
   
   songButton(track, e) {
@@ -72,10 +76,11 @@ class TrackShow extends React.Component {
     let { track, trackplayer, comments, loading, currentUser, deleteTrack } = this.props;
   
     if (this.state.firstLoad || loading) return (<div>loading</div>);
-
+    let user = this.props.users[track.uploaderId] || track;
     let buttonPlaying = (trackplayer.playing && trackplayer.trackId === track.id) ?
       'ts-play playing' : 'ts-play';
     let buttonBar = this.userTrackButtons();
+    
     return (
       <div className='track-show-page'>
         <div className='track-show-container'>
@@ -104,9 +109,9 @@ class TrackShow extends React.Component {
               <div className='ts-uploader-ci'>
                 <div className='ts-uc-left'>
                   <div className='ts-artist-circle'>
-                    <img src={track.imageUrl}/> 
+                  <a href={`/#/users/${track.uploaderId}`}><img src={user.imageUrl}/></a> 
                   </div>
-                  <div className='ts-artist-name'>{track.uploader}</div>
+                  <a href={`/#/users/${track.uploaderId}`}><div className='ts-artist-name'>{track.uploader}</div></a> 
                   <div className='ts-follow-btn'>Follow</div> 
                 </div> 
                 <div className='ts-uc-right'>

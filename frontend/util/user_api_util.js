@@ -5,9 +5,7 @@ export const fetchUser = id => (
   })
 );
 
-export const updateUser = (user, id) => {
-  debugger; 
-return (
+export const updateUser = (user, id) => (
    $.ajax({
     method: 'PATCH',
     url: `api/users/${id}`,
@@ -15,7 +13,8 @@ return (
     contentType: false,
     dataType: 'json',
     data: user
-  })); 
-};
+  })
+); 
+
 
 

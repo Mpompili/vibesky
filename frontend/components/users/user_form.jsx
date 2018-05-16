@@ -64,11 +64,11 @@ class UserForm extends React.Component {
       <div className='track-detail-form'>
         <p className='tdf-text'>username</p>
         <input className='txt-input' type="text" onChange={this.update('username')} value={this.state.username || this.state.email } placeholder={'what username you want?'}/>
-        <p className='tdf-text extraspace'>location</p>
+        <p className='tdf-text extraspace-f'>location</p>
         <input className='txt-input' type="text" onChange={this.update('location')} value={this.state.location || 'vibesphere, Earth'} placeholder={'where ya from?'}/>
-        <p className='tdf-text extraspace'>about</p>
+        <p className='tdf-text extraspace-f'>about</p>
         <textarea className='txt-input txta active-ring' onChange={this.update('about')} value={this.state.about} placeholder={'tell us about yourself'}></textarea>
-        <input className="inputLabel extraspace" type="submit" value={`${this.props.formType}`} />
+        <input className="inputLabel extraspace-f" type="submit" value={`${this.props.formType}`} />
       </div>
     </div>);
   }

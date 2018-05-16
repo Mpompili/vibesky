@@ -39,7 +39,7 @@ class UserShow extends React.Component {
   render(){
     let { tracks, trackplayer, currentUser, errors, user, likedTracks } = this.props;
 
-    let tag1, tag2, tIndex, editUser, userName; 
+    let tag1, tag2, tIndex, editUser, userName, about, aboutstyle; 
     if (user === undefined){
       return (<div></div>); 
       // userpic = '';
@@ -61,9 +61,21 @@ class UserShow extends React.Component {
         tag2 = 'ti-tab ttmid'; 
         tIndex = (<TrackIndex fetchTracks={this.props.fetchTracks} tracks={tracks} errors={errors} userpage={true} /> );
       }
-
+      // let tracknum = tracks.count
       userName = (user.username == null) ? user.email : user.username; 
+      if (user.about == null) {
+        about = null;
+        aboutstyle = "no-about";
+      }
+      else {
+        about = user.about;
+        aboutstyle = "about-user";
+      }
+
     }
+    // debugger;
+    // let tracknum = parseInt(tracks.length); 
+    
     
     return (
       <div className='track-show-page'>
@@ -97,6 +109,18 @@ class UserShow extends React.Component {
             {/* <TrackIndex fetchTracks={this.props.fetchTracks} tracks={tracks} errors={errors} userpage={true} />  */}
             </div> 
             <div className="sidebar-placeholder">
+              <div className="user-stats">
+                <div className="us-track-num">
+                  <p>Tracks</p>
+                  <p>{parseInt(tracks.length)}</p> 
+                </div> 
+                <div className="vertical-line"></div>
+                <div className="us-track-num">
+                  <p>Liked Tracks</p>
+                  <p>{parseInt(likedTracks.length)}</p> 
+                </div> 
+              </div> 
+              <div className={aboutstyle}>{about}</div> 
               <div className="ad-container">
                 <a href="https://github.com/Mpompili" target="_blank"><img src="http://res.cloudinary.com/mpompili/image/upload/v1526013412/gotogithub.jpg"/></a>  
               </div> 

@@ -21,16 +21,6 @@ const mapStateToProps = (state, ownProps) => {
             user = state.entities.users[key];
         }
     }); 
-    // const user = users
-    // const user = Object.keys(state.entities.users).filter((_user) => {
-    //     if (_user.id == ownProps.match.params.id) return _user; 
-    // });
-    // const userTracks = tracks.filter((track) => {
-    //    if (track.uploaderId == ownProps.match.params.id) return track; 
-    // }); 
-    // debugger;
-    // let postedTracks;
-    // let likedTracks = []; 
 
     let postedTracks = tracks.filter((track) => {
        if (track.uploaderId == ownProps.match.params.id) return track; 

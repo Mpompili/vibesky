@@ -31,14 +31,28 @@ class TrackShow extends React.Component {
   songButton(track, e) {
     e.preventDefault();
     let { currentTrack, playing, trackId } = this.props.trackplayer;
+    // if (currentTrack === null) {
+    //   this.props.setCurrentTrack(track);
+    // }
+    // if (currentTrack !== null && trackId == track.id) {
+    //     this.props.setPlayPause(!playing);
+    //   } else {
+    //     this.props.setCurrentTrack(track);
+    //   }
     if (currentTrack === null) {
-      this.props.setCurrentTrack(track);
-    }
-    if (currentTrack !== null && trackId == track.id) {
-        this.props.setPlayPause(!playing);
-      } else {
-        this.props.setCurrentTrack(track);
-      }
+      // this.props.setCurrentTrack(track);
+      this.props.setPlayPause(!playing, trackId, 0);
+      
+    // } 
+    // else if (currentTrack !== null && trackId == track.id) {
+    //     let tplayer = this.props.trackplayer.player; 
+    //     let prog = tplayer.getCurrentTime() / tplayer.getDuration(); 
+    //     this.props.setPlayPause(!playing, trackId, prog);
+    } else {
+      let tplayer = this.props.trackplayer.player; 
+      let prog = tplayer.getCurrentTime() / tplayer.getDuration(); 
+      this.props.setPlayPause(!playing, trackId, prog);
+    } 
   }
 
   deleteSong(trackId, e){

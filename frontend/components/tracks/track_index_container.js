@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchTracks: () => dispatch(fetchTracks()),
   fetchTrack: (id) => dispatch(fetchTrack(id)),
   setCurrentTrack: (track) => dispatch(setCurrentTrack(track)),
-  setPlayPause: (boolean) => dispatch(setPlayPause(boolean)),
+  setPlayPause: (boolean, trackId, progress) => dispatch(setPlayPause(boolean, trackId, progress)),
   deleteTrack: (trackId) => dispatch(deleteTrack(trackId)),
   createLike: (trackId) => dispatch(createLike(trackId)),
   deleteLike: (id) => dispatch(deleteLike(id))

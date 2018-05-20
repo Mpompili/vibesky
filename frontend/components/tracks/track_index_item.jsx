@@ -39,12 +39,16 @@ class TrackItem extends React.Component {
     } else if (track.id == trackId) { //if we are pausing the same song
       // then we will update the progress of this track
       let tplayer = this.props.trackplayer.player; 
-      let prog = tplayer.getCurrentTime() / tplayer.getDuration(); 
-      
+      console.log('player: ', this.props.trackplayer); 
+      // let prog = tplayer.getCurrentTime() / tplayer.getDuration(); 
+      let prog = this.props.trackplayer.progressTrackId[this.props.track.id]; 
+      console.warn('PLAYING!?!: ', this.props.trackplayer.playing); 
+      console.warn('track.id == trackId playpause prog: ', prog); 
+      console.log(': ', prog); 
       this.props.setPlayPause(!playing, track.id, prog);
     } else { // track.id !== trackId - we are switching songs
       let progress = this.props.trackplayer.progressTrackId[track.id] || 0; 
-
+      console.warn('different track and its progressTId:', this.props.trackplayer.progressTrackId[track.id]); 
       this.props.setPlayPause(!playing, track.id, progress);
     }//
   }

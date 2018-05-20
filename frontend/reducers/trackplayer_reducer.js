@@ -59,12 +59,14 @@ const trackplayerReducer = (oldState = defaultState, action) => {
     case SET_TRACK_PLAYER: 
       return merge({}, oldState, {player: action.trackplayer});
     case SEEK_WAVE_FORM:
-      if (action.trackId && action.trackId !== oldState.trackId) { // if new track is not current track
+      if (action.trackId && (action.trackId !== oldState.trackId)) { // if new track is not current track
         return merge({}, oldState, {
           progressTrackId: { [action.trackId]: action.progress } //save progress of leaving track 
         });
+      } else { //it is the same track 
+        // return Object.assign({}, oldState, { waveSeek: action.progress }); 
+        return merge({}, oldState, { progressTrackId: {[action.trackId]: action.progress}, waveSeek: action.progress }); 
       }
-      return Object.assign({}, oldState, { waveSeek: action.progress }); 
     default:
       return oldState;
   }

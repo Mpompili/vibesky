@@ -42,40 +42,45 @@ class TrackPlayer extends React.Component{
 
   componentDidUpdate(prevProps) {
     if (prevProps.trackId == -1 || this.props.trackId == -1) return;
+    // console.log('component did update, trackplayer progressTrackId: ', this.props.trackplayer.progressTrackId); 
     
-    if (this.props.trackId !== prevProps.trackId) {
-      console.log('hit inside, heres trackplayer.waveseek', this.props.trackplayer); 
-      console.log('hit inside, trackid', this.props.trackId); 
-      console.log('this is the progress of newly switched track:', this.props.trackplayer.progressTrackId[this.props.trackId]);
-      let progress = this.props.trackplayer.progressTrackId[this.props.trackId];
-      console.log('this is progress1: ',progress); 
+    if (this.props.trackId !== prevProps.trackId) { //new track is being played, look at waveseek 
+      // let progress = this.props.trackplayer.progressTrackId[this.props.trackId];
+      console.warn('this is the trackplayer after selecting new track in CDU: ', this.props.trackplayer); 
+      let progress = this.props.trackplayer.waveSeek; 
+      console.table('props:::', this.props);
+      console.warn('current duration', this.state.duration);
+      console.warn('current track duration', this.state.duration);
+      console.warn('current trackId', this.props.trackId);
+      console.log('this is progress from trackplayer.waveSeek: ',progress); 
       progress = progress ? progress : 0; 
-      console.log('this is progress: ',progress); 
       this.setState({startT: progress});
       // this.setState({startT: progress});
-      console.log('this is the new state:', this.state); 
+      console.log('seekTo where new track does not equal previous track:', this.state.duration * progress); 
       this.props.player.seekTo(progress * this.state.duration);
       // this.props.player.seekTo(this.state.startT);
     } else if (
-      this.props.trackplayer.waveSeek !== prevProps.trackplayer.waveSeek
+      (this.props.trackId == prevProps.trackId) && this.props.trackplayer.waveSeek !== prevProps.trackplayer.waveSeek
     ) {
-      let tester = this.props.trackplayer.waveSeek * this.state.duration;
+      let tester = this.props.trackplayer.progressTrackId[this.props.trackId] * this.state.duration;
       console.log('mother ufkcing tester', tester); 
       this.props.player.seekTo(tester);
+    } else {
+      console.warn('pausing same song here are the details'); 
+      console.log('duration: ', this.state.duration); 
+      console.log('making sure its the same song: ', this.props.trackId); 
     }
   }
 
   keepProgress() {
-console.warn('this is keepProgress'); 
+
     if (this.state.startT !== null) {
-      console.log('kp: this.state.startT does NOT = null', this.state.startT); 
       const startTime = this.state.startT; 
-      console.log('startTime1:', startTime);
       this.setState({ startT: null }); 
-      console.log('startTime2:', startTime);
+      console.warn('seekTo in keep progress:', startTime * this.state.duration);
       // this.player.seekTo(startT); 
       console.log('this');
-      this.props.player.seekTo(parseFloat(startTime)); 
+      this.props.player.seekTo(startTime * this.state.duration); 
     }
   }
 
@@ -114,12 +119,16 @@ console.warn('this is keepProgress');
     e.preventDefault();
     console.log('this is state:', this.state); 
     let { currentTrack, playing, player, trackId} = this.props;
-    if (trackId !== -1) {
-        console.log('yo');
-        let prog = player.getCurrentTime() / player.getDuration(); 
-        console.warn('in trackplayer let prog = ', prog); 
-        this.props.setPlayPause(!playing, trackId, prog);
-      }
+    // if (trackId !== -1) {
+    //     console.log('yo');
+    //     let prog = player.getCurrentTime() / player.getDuration(); 
+    //     console.warn('in trackplayer let prog = ', prog); 
+    //     this.props.setPlayPause(!playing, trackId, prog);
+    //   }
+    if (trackId !== -1) { // it should be the same song 
+      let prog = this.props.trackplayer.progressTrackId[trackId] || 0; 
+      this.props.setPlayPause(!playing, trackId, prog); 
+    }
   }
 
 

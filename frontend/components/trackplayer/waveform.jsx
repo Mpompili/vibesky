@@ -55,11 +55,14 @@ class WaveForm extends React.Component{
 
     let start; 
 
-    if (this.props.player && this.props.playing){
-      start = this.props.player.getCurrentTime() / this.props.player.getDuration(); 
-    } else {
-      start = this.props.prevProg || 0; 
-    }
+    start = this.props.prevProg ? this.props.prevProg : 0;
+
+
+    // if (this.props.player && this.props.playing){
+    //   start = this.props.player.getCurrentTime() / this.props.player.getDuration(); 
+    // } else {
+    //   start = this.props.prevProg || 0; 
+    // }
 
     console.warn('this is start', start); 
 

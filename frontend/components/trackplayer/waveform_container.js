@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => ({
   trackId: state.trackplayer.trackId,
   player: state.trackplayer.player,
   prevSeek: state.trackplayer.playerSeek, 
-  prevProg: state.trackplayer.progressTrackId[ownProps.track.id]
+  prevProg: state.trackplayer.progressTrackId[ownProps.track.id] || null
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

@@ -115,19 +115,21 @@ class TrackPlayer extends React.Component{
         trackUploader: '',
         trackName: '',
         likeButton: 'liked-button',
-        linkToTrack: `/#/tracks`
+        linkToTrack: `/#/tracks`,
+        linkToUploader: '/#/tracks'
     };} else {
       let liked; 
-      
+      let cTrack = this.props.currentTrack;
       if (this.props.liked){
         liked = 'liked-button-t';}else{ liked = 'liked-button';}
       return {
-        trackToPlay: this.props.currentTrack.audioUrl,
-        trackImage: this.props.currentTrack.imageUrl,
-        trackUploader: this.props.currentTrack.uploader,
-        trackName: this.props.currentTrack.title,
+        trackToPlay: cTrack.audioUrl,
+        trackImage: cTrack.imageUrl,
+        trackUploader: cTrack.uploader,
+        trackName: cTrack.title,
         likeButton: liked,
-        linkToTrack: `/#/tracks/${this.props.currentTrack.id}`
+        linkToTrack: `/#/tracks/${cTrack.id}`,
+        linkToUploader: `/#/users/${cTrack.uploaderId}`
       };
     }
   }
@@ -143,7 +145,7 @@ class TrackPlayer extends React.Component{
     
     let { currentTrack, playing } = this.props;
     let { loop, volume, muted } = this.state;
-    let { trackToPlay, trackImage, trackUploader, trackName, likeButton, linkToTrack } = this.testFunction();
+    let { trackToPlay, trackImage, trackUploader, trackName, likeButton, linkToTrack, linkToUploader } = this.testFunction();
 
     let playButton = (playing) ?
     'play-pause-btn-paused' : 'play-pause-btn';
@@ -178,10 +180,10 @@ class TrackPlayer extends React.Component{
           <div className='tp-track-dets'>
             <div id={muteButton} className='controller-btn' onClick={() => this.setState({muted: !muted})}></div>
             <div className='tp-td-uploader-pic'>
-              <img src={trackImage}/>
+              <a href={linkToTrack}><img src={trackImage}/></a>
             </div>
             <div className='tp-td-track-info'>
-            <a href={linkToTrack}><p className='tp-trackuploader'>{trackUploader}</p></a>
+            <a href={linkToUploader}><p className='tp-trackuploader'>{trackUploader}</p></a>
             <a href={linkToTrack}><p className='tp-trackname'>{trackName}</p></a>
             </div>
             <div id={likeButton} className='controller-btn' onClick={(e) => this.toggleLike(currentTrack.id, e)}></div>

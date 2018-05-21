@@ -17,6 +17,15 @@ class TrackShow extends React.Component {
     if (this.props.match.params.id !== newProps.match.params.id){
       this.props.fetchTrack(newProps.match.params.id);
     }
+
+    let { playing, trackId, player, progressTrackId } = this.props.trackplayer;
+    let trackProg = progressTrackId[this.props.track.id];
+    let thisId = this.props.track.id;
+
+    if (playing && (trackId == thisId) && (thisId !== newProps.trackplayer.trackId)) {
+      let prog = trackProg ? trackProg : player.getCurrentTime() / player.getDuration();
+      this.props.setProg(thisId, prog);  
+    }
   }
 
   componentDidMount(){
@@ -31,41 +40,21 @@ class TrackShow extends React.Component {
   songButton(track, e) {
     e.preventDefault();
     let { currentTrack, playing, trackId } = this.props.trackplayer;
-    // // if (currentTrack === null) {
-    // //   this.props.setCurrentTrack(track);
-    // // }
-    // // if (currentTrack !== null && trackId == track.id) {
-    // //     this.props.setPlayPause(!playing);
-    // //   } else {
-    // //     this.props.setCurrentTrack(track);
-    // //   }
-    // if (currentTrack === null) {
-    //   // this.props.setCurrentTrack(track);
-    //   this.props.setPlayPause(!playing, trackId, 0);
-      
-    // // } 
-    // // else if (currentTrack !== null && trackId == track.id) {
-    // //     let tplayer = this.props.trackplayer.player; 
-    // //     let prog = tplayer.getCurrentTime() / tplayer.getDuration(); 
-    // //     this.props.setPlayPause(!playing, trackId, prog);
-    // } else {
-    //   let tplayer = this.props.trackplayer.player; 
-    //   let prog = tplayer.getCurrentTime() / tplayer.getDuration(); 
-    //   this.props.setPlayPause(!playing, trackId, prog);
-    // } 
+    let tplayer = this.props.trackplayer.player; 
+    let trackProg = this.props.trackplayer.progressTrackId[this.props.track.id];
+    let prog; 
+
     if (trackId == -1) {
       // this.props.setCurrentTrack(track);
       this.props.setPlayPause(!playing, track.id, 0);
     } else if (track.id == trackId) { //if we are pausing the same song
       // then we will update the progress of this track
-      let tplayer = this.props.trackplayer.player; 
-      let prog = tplayer.getCurrentTime() / tplayer.getDuration(); 
+      prog = trackProg ? trackProg : tplayer.getCurrentTime() / tplayer.getDuration();
       
       this.props.setPlayPause(!playing, track.id, prog);
-    } else { // track.id !== trackId - we are switching songs
-      let progress = this.props.trackplayer.progressTrackId[track.id] || 0; 
-
-      this.props.setPlayPause(!playing, track.id, progress);
+    } else { // track.id !== trackId - we are switching songs 
+      prog = trackProg ? trackProg : 0;
+      this.props.setPlayPause(!playing, track.id, prog);
     }//
   }
 
@@ -73,8 +62,6 @@ class TrackShow extends React.Component {
     e.preventDefault();
     this.props.deleteTrack(trackId).then(()=> this.props.history.push('/tracks'));
   }
-
-  
 
   userTrackButtons() {
     let track = this.props.track;

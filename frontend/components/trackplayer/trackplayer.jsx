@@ -92,9 +92,6 @@ class TrackPlayer extends React.Component{
 
   onEnded() {
     let {trackId} = this.props;
-    // console.warn('hit on end before seek', this.props); 
-    // this.props.player.seekTo(0); 
-    // console.warn('hit on end after seek', this.props); 
     this.props.endCurrentTrack(trackId); 
   }
 

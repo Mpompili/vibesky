@@ -12,18 +12,14 @@ class Api::LikesController < ApplicationController
 
   def destroy
     @like = Like.find_by(user_id: current_user.id, track_id: params[:track_id])
-    # debugger;
-    # p '@like: ', @like, ' user_id: ', current_user.id, 'track_id via params: ', params[:track_id]
+   
     if @like.destroy
       @track = Track.find(@like.track_id)
       render json: {trackId: @track.id} 
-      # render "api/tracks/show"
+   
     end 
     
-    
-    # @like.destroy
-    # @track = Track.find(@like.track_id)
-    # render "api/tracks/show"
+   
   end
   
  

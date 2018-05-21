@@ -7,7 +7,6 @@ import { toggleLike } from '../../actions/like_actions';
 import track_show from '../tracks/track_show';
 
 const mapStateToProps = (state, ownProps) => {
-    // debugger;
     const tracks = Object.values(state.entities.tracks);
     const currentUser = state.session.currentUser; 
     const trackIds = tracks.map((track) => {
@@ -40,8 +39,6 @@ const mapStateToProps = (state, ownProps) => {
             if (track.id == ownProps.match.params.id) return track; 
         });
     }
-
-    // debugger; 
     return ({
         tracks: postedTracks,
         likedTracks: likedTracks,

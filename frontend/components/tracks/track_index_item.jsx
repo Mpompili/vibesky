@@ -14,43 +14,47 @@ class TrackItem extends React.Component {
     this.showComments = this.showComments.bind(this);
   }
 
-  //added for likes...
-  // componentWillReceiveProps(newProps) {
-  //   if (this.props.currentUser.liked !== newProps.currentUser.liked){
-  //     console.log('new like toggle in index');
-  //     this.props.fetchTrack(this.props.track.id); 
-  //   }
-  // }
+  componentWillReceiveProps(nextProps) {
+
+    //this is for the circumstance whree 
+    let { playing, trackId, player } = this.props.trackplayer;
+    let trackProg = this.props.trackplayer.progressTrackId[this.props.track.id];
+    let thisId = this.props.track.id;
+
+    if (playing && (trackId == thisId) && (thisId !== nextProps.trackplayer.trackId)) {
+      let prog = trackProg ? trackProg : player.getCurrentTime() / player.getDuration();
+      this.props.setProg(thisId, prog);  
+    } //if song is currently playing and it switches update the progress of left song
+
+  }
 
   songButton(e) {
     e.preventDefault();
     let { track } = this.props;
     let { currentTrack, playing, trackId } = this.props.trackplayer;
-    if (trackId == -1) {
-      
-      // this.props.setCurrentTrack(track);
+    let trackProg = this.props.trackplayer.progressTrackId[this.props.track.id];
+    let tplayer = this.props.trackplayer.player; 
+    if (trackId == -1) { // no song played previously 
       this.props.setPlayPause(!playing, track.id, 0);
+    } 
+    else if (track.id == trackId) { //if we are pausing the same song
+      let prog = trackProg ? trackProg : tplayer.getCurrentTime() / tplayer.getDuration();
       
-    // } 
-    // else if (currentTrack !== null && trackId == track.id) {
-    //     let tplayer = this.props.trackplayer.player; 
-    //     let prog = tplayer.getCurrentTime() / tplayer.getDuration(); 
-    //     this.props.setPlayPause(!playing, trackId, prog);
-    } else if (track.id == trackId) { //if we are pausing the same song
-      // then we will update the progress of this track
-      let tplayer = this.props.trackplayer.player; 
-      console.log('player: ', this.props.trackplayer); 
-      // let prog = tplayer.getCurrentTime() / tplayer.getDuration(); 
-      let prog = this.props.trackplayer.progressTrackId[this.props.track.id]; 
-      console.warn('PLAYING!?!: ', this.props.trackplayer.playing); 
-      console.warn('track.id == trackId playpause prog: ', prog); 
-      console.log(': ', prog); 
       this.props.setPlayPause(!playing, track.id, prog);
-    } else { // track.id !== trackId - we are switching songs
-      let progress = this.props.trackplayer.progressTrackId[track.id] || 0; 
-      console.warn('different track and its progressTId:', this.props.trackplayer.progressTrackId[track.id]); 
-      this.props.setPlayPause(!playing, track.id, progress);
-    }//
+    } else { // not same track 
+      let prog = trackProg ? trackProg : 0; // if previous pause ,pick that, if never played start at 0 
+      
+      this.props.setPlayPause(!playing, track.id, prog);
+    }
+    // else if (track.id == trackId) { //if we are pausing the same song
+    //   let tplayer = this.props.trackplayer.player; 
+    //   let prog = this.props.trackplayer.progressTrackId[this.props.track.id]; 
+
+    //   this.props.setPlayPause(!playing, track.id, prog);
+    // } else { // new song 
+    //   let progress = this.props.trackplayer.progressTrackId[track.id] || 0;       
+    //   this.props.setPlayPause(!playing, track.id, progress);
+    // }//
   }
 
   deleteSong(trackId, e){
@@ -60,11 +64,7 @@ class TrackItem extends React.Component {
 
   toggleLike(trackId, e){
     e.preventDefault();
-    // console.warn('trackId in toggleLike: ', trackId); 
     this.props.toggleLike(trackId);
-  }
-
-  componentDidMount() {
   }
 
   userTrackButtons() {

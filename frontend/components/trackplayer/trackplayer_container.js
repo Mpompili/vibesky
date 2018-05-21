@@ -1,14 +1,13 @@
 import { connect } from 'react-redux';
 import TrackPlayer from './trackplayer';
-import { setPlayPause, setTrackPlayer, seekPlayer } from '../../actions/trackplayer_actions';
+import { setPlayPause, setTrackPlayer, seekPlayer, endCurrentTrack } from '../../actions/trackplayer_actions';
 import { toggleLike } from '../../actions/like_actions'; 
 import { fetchTrack } from '../../actions/track_actions';
 
 const currentUserLikes = ({session: {currentUser}, trackplayer: {trackId}}) => {
   if (trackId == -1) return false; 
-  console.log('this is trackId', trackId); 
   return currentUser.likes.includes(parseInt(trackId)); 
-}
+};
 
 const mapStateToProps = (state, ownProps) => ({
   // currentTrack: state.trackplayer.currentTrack,
@@ -26,7 +25,8 @@ const mapDispatchToProps = (dispatch) => ({
   toggleLike: (trackId) => dispatch(toggleLike(trackId)), 
   fetchTrack: (id) => dispatch(fetchTrack(id)),
   setTrackPlayer: (trackplayer) => dispatch(setTrackPlayer(trackplayer)),
-  seekPlayer: (progress) => dispatch(seekPlayer(progress))
+  seekPlayer: (progress) => dispatch(seekPlayer(progress)),
+  endCurrentTrack: (id) => dispatch(endCurrentTrack(id))
 });
 
 

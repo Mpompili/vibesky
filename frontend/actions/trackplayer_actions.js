@@ -6,6 +6,7 @@ export const SEEK_TRACK = 'SEEK_TRACK';
 export const SET_TRACK_PLAYER = 'SET_TRACK_PLAYER'; 
 export const SEEK_WAVE_FORM = 'SEEK_WAVE_FORM'; 
 export const SEEK_PLAYER = 'SEEK_PLAYER'; 
+export const SET_PROGRESS = 'SET_PROGRESS'; 
 
 export const receiveCurrentTrack = track => ({
   type: RECEIVE_CURRENT_TRACK,
@@ -58,10 +59,20 @@ export const setTrackProgress = (currentTime, duration) => dispatch => (
   dispatch(trackProgress(currentTime, duration))
 );
 
-export const endCurrentTrack = () => dispatch => (
-  dispatch({ type: END_CURRENT_TRACK })
+export const endCurrentTrack = (trackId) => dispatch => (
+  dispatch({ 
+    type: END_CURRENT_TRACK,
+    trackId })
 );
 
 export const seekTrack = seconds => dispatch => (
   dispatch(setSeekTrack(seconds))
+);
+
+export const setProg = (trackId, progress) => dispatch => (
+  dispatch({
+    type: SET_PROGRESS,
+    trackId,
+    progress
+  })
 );

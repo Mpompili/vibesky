@@ -20,56 +20,29 @@ class TrackPlayer extends React.Component{
     this.keepProgress = this.keepProgress.bind(this); 
     this.onDuration = this.onDuration.bind(this); 
     this.onProgress = this.onProgress.bind(this); 
-
-    
+    this.onEnded = this.onEnded.bind(this); 
     this.ref = this.ref.bind(this); 
-    // this.reactplayer = React.createRef(); 
-    // this.ref = this.ref.bind(this); 
-    // this.reactplayer = React.createRef();  
-
-
-    // this.reactplayer = null; 
-    // this.setPlayerRef = element => {
-    //   this.reactplayer = element;
-    //   console.log('in constructor clalback ref:', this.reactplayer); 
-    // };
   }
 
-  // componentWillMount(){
-  //   console.log('helllo'); 
- 
-  // }
+  ref(player) {
+    this.player = player; 
+    this.props.setTrackPlayer(player); 
+  }
 
   componentDidUpdate(prevProps) {
     if (prevProps.trackId == -1 || this.props.trackId == -1) return;
-    // console.log('component did update, trackplayer progressTrackId: ', this.props.trackplayer.progressTrackId); 
     
     if (this.props.trackId !== prevProps.trackId) { //new track is being played, look at waveseek 
-      // let progress = this.props.trackplayer.progressTrackId[this.props.trackId];
-      console.warn('this is the trackplayer after selecting new track in CDU: ', this.props.trackplayer); 
       let progress = this.props.trackplayer.waveSeek; 
-      console.table('props:::', this.props);
-      console.warn('current duration', this.state.duration);
-      console.warn('current track duration', this.state.duration);
-      console.warn('current trackId', this.props.trackId);
-      console.log('this is progress from trackplayer.waveSeek: ',progress); 
       progress = progress ? progress : 0; 
       this.setState({startT: progress});
-      // this.setState({startT: progress});
-      console.log('seekTo where new track does not equal previous track:', this.state.duration * progress); 
       this.props.player.seekTo(progress * this.state.duration);
-      // this.props.player.seekTo(this.state.startT);
     } else if (
       (this.props.trackId == prevProps.trackId) && this.props.trackplayer.waveSeek !== prevProps.trackplayer.waveSeek
     ) {
-      let tester = this.props.trackplayer.progressTrackId[this.props.trackId] * this.state.duration;
-      console.log('mother ufkcing tester', tester); 
-      this.props.player.seekTo(tester);
-    } else {
-      console.warn('pausing same song here are the details'); 
-      console.log('duration: ', this.state.duration); 
-      console.log('making sure its the same song: ', this.props.trackId); 
-    }
+      let seek = this.props.trackplayer.progressTrackId[this.props.trackId] * this.state.duration;
+      this.props.player.seekTo(seek);
+    } 
   }
 
   keepProgress() {
@@ -77,19 +50,9 @@ class TrackPlayer extends React.Component{
     if (this.state.startT !== null) {
       const startTime = this.state.startT; 
       this.setState({ startT: null }); 
-      console.warn('seekTo in keep progress:', startTime * this.state.duration);
-      // this.player.seekTo(startT); 
-      console.log('this');
       this.props.player.seekTo(startTime * this.state.duration); 
     }
   }
-
-
-  // ref(player) {
-  //   this.player = player; 
-  //   console.warn('setting player: ', player); 
-  //   this.props.setPlayerRef(player); 
-  // }
 
   // componentWillReceiveProps(newProps){
   //   if (newProps.seek !== this.props.seek ){
@@ -97,7 +60,6 @@ class TrackPlayer extends React.Component{
   //   }
 
   //   // if (this.props.currentUser.liked !== newProps.currentUser.liked){
-  //   //   console.log('new like toggle');
   //   //   this.props.fetchTrack(newProps.match.params.id); 
   //   // }
   // }
@@ -108,27 +70,32 @@ class TrackPlayer extends React.Component{
     });
   }
 
-  onProgress(){
+  onProgress() {
     return ((state) => {
-      // console.log('hitting on progress');
       if (!this.state.seeking) { this.setState(state);}
     });
   }
 
   playPause(e) {
     e.preventDefault();
-    console.log('this is state:', this.state); 
+    let tplayer = this.props.trackplayer.player; 
+    let trackProg = this.props.trackplayer.progressTrackId[this.props.trackId];
     let { currentTrack, playing, player, trackId} = this.props;
-    // if (trackId !== -1) {
-    //     console.log('yo');
-    //     let prog = player.getCurrentTime() / player.getDuration(); 
-    //     console.warn('in trackplayer let prog = ', prog); 
-    //     this.props.setPlayPause(!playing, trackId, prog);
-    //   }
     if (trackId !== -1) { // it should be the same song 
-      let prog = this.props.trackplayer.progressTrackId[trackId] || 0; 
+
+      // let prog = this.props.trackplayer.progressTrackId[trackId] || 0;
+      
+      let prog = trackProg ? trackProg : tplayer.getCurrentTime() / tplayer.getDuration();
       this.props.setPlayPause(!playing, trackId, prog); 
     }
+  }
+
+  onEnded() {
+    let {trackId} = this.props;
+    // console.warn('hit on end before seek', this.props); 
+    // this.props.player.seekTo(0); 
+    // console.warn('hit on end after seek', this.props); 
+    this.props.endCurrentTrack(trackId); 
   }
 
 
@@ -165,41 +132,18 @@ class TrackPlayer extends React.Component{
     }
   }
 
-  // seekTest(){
-  //   console.log('hit seekTest');
-  //   this.reactplayer.current.seekTo(0.5);
-  //   console.log(this.reactplayer); 
-  //   console.log(' ^ is react player'); 
-  // }
-
   toggleLike(trackId, e){
     e.preventDefault();
     this.props.toggleLike(trackId); 
   }
 
-  ref(player) {
-    this.player = player; 
-    // console.log('IN REF METHODDDDD', player); 
-    this.props.setTrackPlayer(player); 
-  }
+ 
 
   render() {
-    
-    // if (!currentTrack) return ""; 
     
     let { currentTrack, playing } = this.props;
     let { loop, volume, muted } = this.state;
     let { trackToPlay, trackImage, trackUploader, trackName, likeButton, linkToTrack } = this.testFunction();
-
-    
-
-    // let playButton = (currentTrack == null || playing ) ? 'play-pause-btn' : 'play-pause-btn-paused'; 
-    // let playButton;
-    // if (playing){ 
-    //   playButton = 'play-pause-btn';}else{
-    //     playButton = 'play-pause-btn-paused';
-    //   }
-    //  if (!currentTrack) playButton = 'play-pause-btn';
 
     let playButton = (playing) ?
     'play-pause-btn-paused' : 'play-pause-btn';
@@ -256,6 +200,7 @@ class TrackPlayer extends React.Component{
              muted={muted}
 
              progressInterval={50}
+             onEnded={() => this.onEnded()}
              onProgress={this.onProgress()}
              onDuration={this.onDuration()}
              onReady={this.keepProgress()}

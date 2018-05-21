@@ -1,4 +1,4 @@
-import { RECEIVE_CURRENT_TRACK, PLAY_PAUSE_TRACK, END_CURRENT_TRACK, SEEK_TRACK, SET_TRACK_PLAYER, SEEK_WAVE_FORM, SEEK_PLAYER } from '../actions/trackplayer_actions';
+import { RECEIVE_CURRENT_TRACK, PLAY_PAUSE_TRACK, END_CURRENT_TRACK, SEEK_TRACK, SET_TRACK_PLAYER, SEEK_WAVE_FORM, SEEK_PLAYER, SET_PROGRESS} from '../actions/trackplayer_actions';
 import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 import merge from 'lodash/merge';
 
@@ -31,25 +31,23 @@ const trackplayerReducer = (oldState = defaultState, action) => {
           progressTrackId: {[action.trackId]: action.progress} //setting leaving track progress out
         });
       }
-      // if (oldState.playing) {
-      //   return merge({}, oldState, {
-      //     playing: false, 
-      //     progressTrackId: { [action.trackId]: action.progress }, 
-      //   });
-      // }
       else {
         return merge({}, oldState, {
           playing: !oldState.playing, 
           progressTrackId: { [action.trackId]: action.progress }, 
         });
       }
-      // //not sure why below 
-      // return Object.assign({}, oldState, {
-      //   playing: !oldState.playing 
-      // }); 
-
     case END_CURRENT_TRACK:
-      return defaultState;
+      return merge({}, oldState, {
+        playing: false,
+        progressTrackId: { [action.trackId]: 0},
+        waveSeek: 0, 
+        playerSeek: 0, 
+      });
+    case SET_PROGRESS: 
+      return merge({}, oldState, {
+        progressTrackId: { [action.trackId]: action.progress}
+      });
     case LOGOUT_CURRENT_USER:
       return defaultState;
     case SEEK_TRACK:

@@ -15,7 +15,6 @@ export const removeLike = ({trackId}) => (
 
 export const createLike = (trackId) => dispatch => (
     APIUtil.createLike(trackId).then(payload => {
-        console.log('CREATELIKE payload: ', payload);
         return (
         dispatch(receiveLike(payload))
     );}
@@ -23,12 +22,8 @@ export const createLike = (trackId) => dispatch => (
 );
 
 export const deleteLike = trackId => dispatch => {
-    console.log('in deleteLike actions: ', trackId); 
     return (
     APIUtil.deleteLike(trackId).then(payload => {
-        console.log('payload is: ', payload); 
-        // console.log('payload.track is: ', payload.track); 
-        // console.log('payload.track.id is: ', payload.track.id); 
         return (
         dispatch(removeLike(payload))
     );}

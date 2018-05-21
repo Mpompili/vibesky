@@ -203,7 +203,7 @@ class TrackPlayer extends React.Component{
              onEnded={() => this.onEnded()}
              onProgress={this.onProgress()}
              onDuration={this.onDuration()}
-             onReady={this.keepProgress()}
+             onReady={() => this.keepProgress()}
            />
       </div>
     );

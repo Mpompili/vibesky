@@ -12,12 +12,12 @@ ActiveRecord::Base.transaction do
 
   User.create!([
     {email: 'Diplo', password: 'password'},
-    {email: 'LordeRandy', password: 'password'},
+    {email: 'Lorde', password: 'password'},
     {email: 'Muse', password: 'password'},
-    {email: 'GeorgeHarison', password: 'password'},
+    {email: 'The Beatles', password: 'password'},
     {email: 'MGMT', password: 'password'},
-    {email: 'StevieNicks', password: 'password'},
-    {email: 'HallandOats', password: 'password'},
+    {email: 'Fleetwood Mac', password: 'password'},
+    {email: 'Hall and Oates', password: 'password'},
     {email: 'demouser', password: 'password'}
   ])
 
@@ -27,12 +27,12 @@ ActiveRecord::Base.transaction do
 
   uploadernames = [
     "Diplo",
-    "LordeRandy",
+    "Lorde",
     "Muse",
-    "GeorgeHarison",
+    "The Beatles",
     "MGMT",
-    "StevieNicks",
-    "HallandOats",
+    "Fleetwood Mac",
+    "Hall and Oates",
   ]
   track_names = [
     "Get It Right (Feat. Mø & Goldlink) Remix.mp3",
@@ -63,34 +63,46 @@ ActiveRecord::Base.transaction do
  
 
   comments = [
-    "Fresh work you have here.",
-    "Such killer.",
-    "Just fresh, friend.",
-    "Ivory. You just won the internet!",
+    "I love this song.",
+    "Such good music.",
+    "So fresh.",
+    "Wow. You just won the internet!",
     "Incredibly exquisite!",
-    "Such music, many fold, so neat",
+    "This is a neat one",
     "I wonder what would have happened if I made this",
     "Nice use of flow in this idea, friend.",
     "My 52 year old son rates this concept very simple :)",
     "This beat has navigated right into my heart.",
-    "Fresh. So sleek.",
-    "I adore your thoughts!",
-    "Classic album colour m8",
-    "I want to learn this kind of layout! Teach me.",
+    "Smooth.",
+    "I adore your ideas!",
+    "Classic album cover m8",
+    "I want to master this kind of percussion! Teach me.",
     "That's incredible and sexy dude",
     "This track blew my mind.",
     "This is bold work :)",
-    "Mission accomplished. It's incredible, friend.",
-    "I think I'm crying. It's that minimal.",
-    "Fabulous. Adore the use of music and sound!",
+    "It's incredible, friend.",
+    "Killed it!",
+    "Unbelievable track", 
+    "This track speaks to me",
+    "One of my favorites already",
+    "The hook is addicting", 
+    "Who made this website!? I should have them build my site",
+    "I love listening to this track while driving",
+    "Brilliant",
+    "Amazing",
+    "classsssiccccc",
+    "love this",
+    "too good",
+    "I'm literally dying because it's so good.",
+    "Fabulous",
     "Designgasmed all over this!",
     "Wow love it!",
-    "This is meh",
-    "On a scale from nope to dope, this track is dope",
-    "How many animals did you sacrifice to make such incredible work?",
-    "This isn't JambaJuice...",
-    "Extra neat notification!!",
-    "Overly thought out! Leading the way mate."
+    "This is a-ma-zing",
+    "Love it",
+    "How did you make such incredible work?!",
+    "This is tooo gooooodd",
+    "Instant Classic",
+    "Overly thought out! Leading the way!"
   ]
 #   track_names.each do |track|
 #     Track.create!({
@@ -115,7 +127,7 @@ trackids = track_names.map do |tname|
   Track.find_by(title: tname[0..-5]).id
 end 
 
-30.times do |t| 
+78.times do |t| 
   Comment.create!({
     body: comments.sample,
     user_id: uploaderids.sample,

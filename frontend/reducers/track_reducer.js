@@ -9,7 +9,6 @@ const trackReducer = (oldState = {}, action) => {
     case RECEIVE_TRACKS:
       return action.tracks;
     case RECEIVE_TRACK:
-      console.warn('ACTION: ', action); 
       newState = {[action.payload.track.id]: action.payload.track};
       return Object.assign({}, oldState, newState);
     case REMOVE_TRACK:

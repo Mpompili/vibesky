@@ -20,17 +20,15 @@ class WaveForm extends React.Component{
       normalize: true,
       backend: 'MediaElement' 
     });
+
+    //will set audio peaks if not stored yet. 
     if (this.props.track.audioPeaks.length !== 0) {
-      console.log('it has an audioPeak');
-      debugger;
       let peaks = JSON.parse(this.props.track.audioPeaks);
-      console.log('this is peaks: ', peaks);  
       this.wavesurfer.load(this.props.track.audioUrl, peaks);  
     }else {
-      console.warn('no peaks here'); 
       this.wavesurfer.load(this.props.track.audioUrl);
     }
-    // }
+
     this.wavesurfer.setMute(true);
 
     let start; 
@@ -49,19 +47,18 @@ class WaveForm extends React.Component{
           this.props.setPlayPause(!this.props.playing, this.props.track.id, progress);
         }
       });
-      // console.log('gdxginb', this.wavesurfer.backend.getPeaks(40));
+      
    
     });
     
-    this.wavesurfer.on('waveform-ready', () => {
-      console.log('waveform is finished forming, gunna hit up action'); 
-      let string = JSON.stringify(this.wavesurfer.backend.getPeaks(40));
-      const formData = new FormData();
-      formData.append("track[audioPeaks]", string); 
-      console.log('form data: ', formData); 
-      this.props.updateTrack(formData, this.props.track.id); 
-      // console.warn(this.wavesurfer.backend.mergedPeaks); 
-    });
+    if (this.props.tracks.audioPeaks.length === 0){
+      this.wavesurfer.on('waveform-ready', () => { 
+        let string = JSON.stringify(this.wavesurfer.backend.getPeaks(40));
+        const formData = new FormData();
+        formData.append("track[audioPeaks]", string); 
+        this.props.updateTrack(formData, this.props.track.id); 
+      });
+    }
   }
 
 

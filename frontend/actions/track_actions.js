@@ -73,10 +73,3 @@ export const deleteTrack = trackId => dispatch => (
   ))
 );
 
-export const setPeaks = (trackId, peaks) => dispatch => (
-  APIUtil.setPeaks(trackId, peaks).then(payload => (
-    dispatch(updateTrack(payload))
-  ), err => (
-    dispatch(receiveTrackErrors(err.responseJSON))
-  ))
-);

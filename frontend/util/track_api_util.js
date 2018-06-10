@@ -41,3 +41,16 @@ export const deleteTrack = id => (
     url: `api/tracks/${id}`
   })
 );
+
+export const setPeaks = (id, peaks) => {
+  return (
+  $.ajax({
+    method: 'PATCH',
+    url: `api/tracks/${id}`,
+    processData: false,
+    contentType: false,
+    dataType: 'json',
+    data: {track: {audioPeak: peaks}}
+  })
+);
+};

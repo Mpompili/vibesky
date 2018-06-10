@@ -1,3 +1,4 @@
+
 json.id track.id
 json.title track.title
 json.description track.description
@@ -6,6 +7,10 @@ json.uploaderId track.user.id
 json.uploaderPic asset_path(track.user.image.url)
 json.imageUrl asset_path(track.image.url)
 json.audioUrl asset_path(track.audio.url)
+
+peaks = track.audioPeaks ? track.audioPeaks : []
+json.audioPeaks peaks 
+
 json.commentIds track.comments.pluck(:id)
 test = current_user ? current_user.id : -1 
 

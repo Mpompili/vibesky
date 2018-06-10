@@ -12,15 +12,25 @@ class WaveForm extends React.Component{
       container: `#track-${this.props.track.id}-waveform`,
       progressColor: '#f50',
       barHeight: 3,
-      barWidth: 2,
+      barWidth: 3,
       cursorWidth: 0,
       height: this.props.height,
       waveColor: this.props.color,
       responsive: true, 
-      normalize: true, 
+      normalize: true,
+      backend: 'MediaElement' 
     });
-
-    this.wavesurfer.load(this.props.track.audioUrl);
+    if (this.props.track.audioPeaks.length !== 0) {
+      console.log('it has an audioPeak');
+      debugger;
+      let peaks = JSON.parse(this.props.track.audioPeaks);
+      console.log('this is peaks: ', peaks);  
+      this.wavesurfer.load(this.props.track.audioUrl, peaks);  
+    }else {
+      console.warn('no peaks here'); 
+      this.wavesurfer.load(this.props.track.audioUrl);
+    }
+    // }
     this.wavesurfer.setMute(true);
 
     let start; 
@@ -29,17 +39,33 @@ class WaveForm extends React.Component{
 
 
     this.wavesurfer.on('ready', () => {
+      
       this.wavesurfer.seekTo(start);
-      this.forceUpdate(); 
 
+      this.forceUpdate(); 
       this.wavesurfer.on("seek", progress => { 
         this.props.seekWaveForm(progress);
         if (!this.props.playing) {
           this.props.setPlayPause(!this.props.playing, this.props.track.id, progress);
         }
       });
+      // console.log('gdxginb', this.wavesurfer.backend.getPeaks(40));
+   
+    });
+    
+    this.wavesurfer.on('waveform-ready', () => {
+      console.log('waveform is finished forming, gunna hit up action'); 
+      let string = JSON.stringify(this.wavesurfer.backend.getPeaks(40));
+      const formData = new FormData();
+      formData.append("track[audioPeaks]", string); 
+      console.log('form data: ', formData); 
+      this.props.updateTrack(formData, this.props.track.id); 
+      // console.warn(this.wavesurfer.backend.mergedPeaks); 
     });
   }
+
+
+
 
   componentDidUpdate(prevProps) {
     if (!this.wavesurfer) return; 
@@ -50,6 +76,7 @@ class WaveForm extends React.Component{
     if (this.props.prevSeek !== prevProps.prevSeek) {
       this.wavesurfer.seekTo(this.props.prevSeek);
     }
+    
   }
 
 

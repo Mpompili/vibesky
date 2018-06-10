@@ -5,6 +5,7 @@ export const RECEIVE_TRACK = 'RECEIVE_TRACK';
 export const REMOVE_TRACK = 'REMOVE_TRACK';
 export const RECEIVE_TRACK_ERRORS = 'RECEIVE_TRACK_ERRORS';
 export const REQUEST_TRACK_FETCH = 'REQUEST_TRACK_FETCH'; 
+export const SET_PEAKS = 'SET_PEAKS'; 
 
 export const receiveTracks = tracks => ({
   type: RECEIVE_TRACKS,
@@ -67,6 +68,14 @@ export const updateTrack = (track, id) => dispatch => (
 export const deleteTrack = trackId => dispatch => (
   APIUtil.deleteTrack(trackId).then(track => (
     dispatch(removeTrack(trackId))
+  ), err => (
+    dispatch(receiveTrackErrors(err.responseJSON))
+  ))
+);
+
+export const setPeaks = (trackId, peaks) => dispatch => (
+  APIUtil.setPeaks(trackId, peaks).then(payload => (
+    dispatch(updateTrack(payload))
   ), err => (
     dispatch(receiveTrackErrors(err.responseJSON))
   ))

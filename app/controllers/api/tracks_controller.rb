@@ -24,6 +24,9 @@ class Api::TracksController < ApplicationController
 
   def update
     @track = Track.find(params[:id])
+    debugger 
+    p track_params
+    p 'above is track params '
     if @track.update(track_params)
       render "api/tracks/show"
     else
@@ -39,6 +42,6 @@ class Api::TracksController < ApplicationController
 
   private
   def track_params
-    params.require(:track).permit(:title, :description, :image, :audio)
+    params.require(:track).permit(:title, :description, :image, :audio, :audioPeaks)
   end
 end

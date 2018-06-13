@@ -51,7 +51,7 @@ class WaveForm extends React.Component{
    
     });
     
-    if (this.props.tracks.audioPeaks.length === 0){
+    if (this.props.track.audioPeaks.length === 0){
       this.wavesurfer.on('waveform-ready', () => { 
         let string = JSON.stringify(this.wavesurfer.backend.getPeaks(40));
         const formData = new FormData();

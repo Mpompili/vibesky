@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
-
+import SearchContainer from '../search/search_container';
 class Navbar extends React.Component {
   constructor(props){
     super(props);
@@ -36,16 +36,15 @@ class Navbar extends React.Component {
     
       // carosel = 'header-carousel-off';
 
-    return (
-      <div id='header-carousel-off'>
+    return <div id="header-carousel-off">
         <div className="backbar">
           <div className="navbar">
             {this.logged_in_left()}
+            <SearchContainer />
             {this.logged_in_right()}
           </div>
         </div>
-      </div>
-    );
+      </div>;
   }
 }
 

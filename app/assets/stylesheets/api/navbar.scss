@@ -69,3 +69,15 @@ background-color: $dark-gray;
 //   color: #fff;
 //   cursor: pointer;
 // }
+
+input.search {
+       margin: 0px;       
+       outline: 0;       
+       width: inherit;
+       min-width: 350px;       
+       position: relative;
+       height: 35px;
+       z-index: 2;
+       border-radius: 5px;
+       font-size: 20px;
+}

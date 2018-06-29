@@ -1,16 +1,13 @@
 import React from "react";
 import { Link, Redirect, withRouter } from "react-router-dom";
-import SearchResults from "./search_results";  
-import { fetchTracks } from "../../util/track_api_util"; 
-
-
+import SearchResults from "./search_results_container";
 
 class Search extends React.Component {
     constructor() {
         super();
         this.state = {
             searchText: '',
-            searchResults: []
+            searchResults: {noSearch: true, results: ''}
         };
         this.updateSearch = this.updateSearch.bind(this); 
         this.getResults = this.getResults.bind(this); 
@@ -33,27 +30,25 @@ class Search extends React.Component {
 
     getResults() {
         let keys = this.props.keys;
-        let values = this.props.values; 
         let tracks = this.props.tracks; 
 
-
-        let songResult = {}; 
-        let artistResult = {};
-
+        let results = {}; 
+        let noSearch = true; 
         //   let matches = this.props.tracks.filter(track => {
         let regex = new RegExp(this.state.searchText, 'gi');
 
         keys.forEach(function(key) {
-            if (tracks.hasOwnProperty(key) && tracks[key].title.match(regex))  {
-                songResult[key] = tracks[key]; 
-            } else if (tracks.hasOwnProperty(key) && tracks[key].uploader.match(regex)){
-                artistResult[key] = tracks[key]; 
+            if (tracks.hasOwnProperty(key) && (tracks[key].title.match(regex)) || tracks[key].uploader.match(regex)) {
+                results[key] = tracks[key]; 
+                noSearch = false; 
             }
         });
 
-        console.log("this is songResult: ", songResult);
-        console.log("this is artistResult: ", artistResult);
+        console.log('what is happening right hurr:', results, noSearch);
 
+        this.setState({searchResults: {noSearch: noSearch, results: results}}, () => {
+            console.log("changed state: ", this.state.searchResults);
+        });
         // let matches = this.props.tracks.filter(track => {
         //     let regex = new RegExp(this.state.searchText, 'gi');
         //     return track.title.match(regex) || track.uploader.match(regex);
@@ -65,10 +60,15 @@ class Search extends React.Component {
 
     render(){
         return (
-            <div className="search_bar">
-                <input className="search" type="search" onChange={e => this.updateSearch(e)} value={this.state.searchText} placeholder="Search..." />                    
+            <div className="search-bar" >
+                <input id="search" type="search" onChange={e => this.updateSearch(e)} value={this.state.searchText} placeholder="Search..."/> 
+                <div className="search-icon"></div> 
+                <SearchResults noSearch={this.state.searchResults.noSearch} searchText={this.state.searchText} results={this.state.searchResults.results}/> 
             </div>
+
         );
     }
 }
 export default Search; 
+
+

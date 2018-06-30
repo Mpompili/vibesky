@@ -6,12 +6,12 @@ import TrackIndex from '../tracks/track_index';
 class UserShow extends React.Component {
   constructor(props) {
     super(props);
-    // this.songButton = this.songButton.bind(this);
     this.state = {
       firstLoad: true,
       postlike: false
     };
-    this.togglePostLike = this.togglePostLike.bind(this);
+    this.togglePostTracks = this.togglePostTracks.bind(this);
+    this.togglePostLikes = this.togglePostLikes.bind(this);
   }
   
 
@@ -23,16 +23,24 @@ class UserShow extends React.Component {
     if (this.props.user){
       if (this.props.user.id != newProps.match.params.id){
         this.props.fetchUser(newProps.match.params.id); 
-        this.setState({postlike: !this.state.postlike}); 
+        this.setState({postlike: false}); 
       }
     }
   }
 
-  togglePostLike(){
+  togglePostTracks() {
     this.setState({
-      postlike: !this.state.postlike
+      postlike: false
     });
   }
+
+
+  togglePostLikes() {
+    this.setState({
+      postlike: true
+    });
+  }
+
  
 
   render(){
@@ -46,7 +54,7 @@ class UserShow extends React.Component {
       // userId = ''; 
     }else{
       if (currentUser.id == user.id){
-        // editUser = (<Link to={`/users/${user.id}/edit`} className="controller-btn edit-btn">Edit Profile</Link>);
+       
         editUser = (<Link to={`/users/${user.id}/edit`} className="edit-user-prof">Edit Profile</Link>);
       } else {
         editUser = (<span style={{display: 'none'}}></span>); 
@@ -60,7 +68,7 @@ class UserShow extends React.Component {
         tag2 = 'ti-tab ttmid'; 
         tIndex = (<TrackIndex fetchTracks={this.props.fetchTracks} tracks={tracks} errors={errors} userpage={true} /> );
       }
-      // let tracknum = tracks.count
+      
       userName = (user.username == null) ? user.email : user.username; 
       if (user.about == null) {
         about = null;
@@ -98,8 +106,8 @@ class UserShow extends React.Component {
           <span className='track-index-page-container'>
             <div className='track-index-container'>
               <ul className='track-index-tabs'>
-                <li className={tag1}><a onClick={()=> this.togglePostLike()}>Tracks</a></li>
-                <li className={tag2}><a onClick={()=> this.togglePostLike()}>Liked</a></li>
+                <li className={tag1}><a onClick={()=> this.togglePostTracks()}>Tracks</a></li>
+                <li className={tag2}><a onClick={()=> this.togglePostLikes()}>Liked</a></li>
               </ul>
               {tIndex}
            

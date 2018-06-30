@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, Redirect, withRouter } from "react-router-dom";
 import SearchResults from "./search_results_container";
+// import { browserHistory } from "react-router"; 
 
 class Search extends React.Component {
     constructor() {
@@ -15,7 +16,12 @@ class Search extends React.Component {
 
     componentDidMount(){
         this.props.fetchTracks();
+        this.props.history.listen((location, action) => {
+            this.setState({searchText: ''}); 
+        });
     }
+
+    // componentDidUpdate
 
 
 
@@ -57,6 +63,6 @@ class Search extends React.Component {
         );
     }
 }
-export default Search; 
+export default withRouter(Search); 
 
 

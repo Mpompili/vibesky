@@ -111,7 +111,7 @@ input#search:focus{
 
 .search-results {
   position: absolute;
-  top: 37px;
+  top: 29px;
   z-index: 10; 
   width: inherit;
   box-sizing: border-box;
@@ -134,12 +134,17 @@ input#search:focus{
 
 
  .search-item {
-    background: #333;
-    display: flex; 
+    background-color: #222;
+    display: flex;
     height: 40px;
     width: inherit;
-    align-items: center; 
-    padding: 2px; 
+    align-items: center;
+    padding: 2.5px;
+ }
+
+ .search-item:hover {
+  background: #333; 
+  cursor: pointer; 
  }
  
 
@@ -168,4 +173,8 @@ input#search:focus{
 
  .hl {
    color: #f50;
+ }
+
+ .hideforever {
+   display: none;
  }

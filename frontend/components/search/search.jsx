@@ -20,7 +20,6 @@ class Search extends React.Component {
 
 
     updateSearch(e) {
-        console.log("this is e: ", e); 
         this.setState({searchText: e.target.value }, () => {
             this.getResults(); 
         });
@@ -31,11 +30,12 @@ class Search extends React.Component {
     getResults() {
         let keys = this.props.keys;
         let tracks = this.props.tracks; 
-
         let results = {}; 
         let noSearch = true; 
-        //   let matches = this.props.tracks.filter(track => {
-        let regex = new RegExp(this.state.searchText, 'gi');
+        let text = this.state.searchText;
+
+        text = text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+        let regex = new RegExp(text, "gi");
 
         keys.forEach(function(key) {
             if (tracks.hasOwnProperty(key) && (tracks[key].title.match(regex)) || tracks[key].uploader.match(regex)) {
@@ -43,19 +43,7 @@ class Search extends React.Component {
                 noSearch = false; 
             }
         });
-
-        console.log('what is happening right hurr:', results, noSearch);
-
-        this.setState({searchResults: {noSearch: noSearch, results: results}}, () => {
-            console.log("changed state: ", this.state.searchResults);
-        });
-        // let matches = this.props.tracks.filter(track => {
-        //     let regex = new RegExp(this.state.searchText, 'gi');
-        //     return track.title.match(regex) || track.uploader.match(regex);
-        // });
-      
-
-
+        this.setState({searchResults: {noSearch: noSearch, results: results}});
     }
 
     render(){
